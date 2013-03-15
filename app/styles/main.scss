@@ -1,1 +1,37 @@
-@import "compass_twitter_bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
+@import "bootstrap.css";
+@import "bootstrap-responsive.css";
+/* @import "compass_twitter_bootstrap";
+@import "compass_twitter_bootstrap_responsive"; */
+
+h1 { font-family: 'Open Sans', sans-serif; }
+
+.navbar-fixed-top {
+  position: static;
+  margin-bottom: 20px;
+}
+.sidebar {
+    background: lime;
+    border-radius: 10px;
+}
+.content {
+    background: lightblue;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.innercol {
+    background: lightgray;
+    border-radius: 10px;
+}
+.btn-group {
+    margin-bottom: 10px;
+}
+.view { 
+  display: none; 
+}
+
+#flipbox { 
+  border: solid 1px black; 
+  min-height: 50px;
+  border-radius: 10px;
+}

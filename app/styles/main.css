@@ -1,0 +1,51 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
+@import url(bootstrap.css);
+@import url(bootstrap-responsive.css);
+/* @import "compass_twitter_bootstrap";
+@import "compass_twitter_bootstrap_responsive"; */
+/* line 7, main.scss */
+h1 {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* line 9, main.scss */
+.navbar-fixed-top {
+  position: static;
+  margin-bottom: 20px;
+}
+
+/* line 13, main.scss */
+.sidebar {
+  background: lime;
+  border-radius: 10px;
+}
+
+/* line 17, main.scss */
+.content {
+  background: lightblue;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 22, main.scss */
+.innercol {
+  background: lightgray;
+  border-radius: 10px;
+}
+
+/* line 26, main.scss */
+.btn-group {
+  margin-bottom: 10px;
+}
+
+/* line 29, main.scss */
+.view {
+  display: none;
+}
+
+/* line 33, main.scss */
+#flipbox {
+  border: solid 1px black;
+  min-height: 50px;
+  border-radius: 10px;
+}
