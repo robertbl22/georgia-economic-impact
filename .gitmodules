@@ -1,6 +1,0 @@
-[submodule "app/styles/sass-twitter-bootstrap"]
-	path = app/styles/sass-twitter-bootstrap
-	url = https://github.com/jlong/sass-twitter-bootstrap.git
-[submodule "app/styles/bootstrap"]
-	path = app/styles/bootstrap
-	url = https://github.com/twitter/bootstrap.git
