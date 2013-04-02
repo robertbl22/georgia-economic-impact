@@ -6,6 +6,7 @@ css_dir = "styles"
 sass_dir = "styles"
 images_dir = "images"
 javascripts_dir = "scripts"
+fonts_dir = "georgia-economic-impact/fonts"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

@@ -1,37 +1,149 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
-@import "bootstrap.css";
-@import "bootstrap-responsive.css";
-/* @import "compass_twitter_bootstrap";
-@import "compass_twitter_bootstrap_responsive"; */
+@import "compass_twitter_bootstrap_awesome";
+@import "compass_twitter_bootstrap_responsive";
 
-h1 { font-family: 'Open Sans', sans-serif; }
+/*********************************/
+/* Variables */
 
-.navbar-fixed-top {
-  position: static;
-  margin-bottom: 20px;
+$dark-blue: #00284c;
+$blue: #006990;
+$bright-blue: #04a7ea;
+$light-blue: #88cbde;
+$orange: #f7971e;
+$gray: #96a0a9;
+$light-gray: #ccd2d7;
+
+/*********************************/
+/* Styles */
+
+h1 {
+	font-family: 'Open Sans', sans-serif;
+	margin-top: 0;
+	text-transform: uppercase;
+	font-weight: semi-bold;
+	font-size: 32px;
+	letter-spacing: -1px;
+	color:          $dark-blue;
 }
-.sidebar {
-    background: lime;
-    border-radius: 10px;
+h2, h3 {
+	color:          $gray;
+	font-style: italic;
+	font-weight: normal;
+}
+#SearchTools {
+	p {
+	}
+	i {
+		color:  $gray;
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		text-align: center;
+		padding: 4px;
+		border-radius: 20px;
+		background-color:  $grayLighter;
+	}
+}
+#LocationPicker {
+	display: none;
+	margin-top: 30px;
+	-moz-transition: width .5s ease;
+	-webkit-transition: width .5s ease;
+	width: 300px;
+	
+	.alert {
+		margin-top: 10px;
+	}
+}
+#GPALogoBanner {
+	position: absolute;
+	top: -30px;
+	display: none;
+	right: 50px;
+	-moz-transition: width .5s ease;
+	-webkit-transition: width .5s ease;
+	width: 199px;
+}
+.navbar-fixed-top {
+	position: static;
+	margin-bottom: 50px;
 }
 .content {
-    background: lightblue;
-    border-radius: 10px;
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
-.innercol {
-    background: lightgray;
-    border-radius: 10px;
+.navbar-inverse .navbar-inner {
+	background-color: $dark-blue;
+	/*background-image: -webkit-radial-gradient(top, mix($bright-blue, $dark-blue), $dark-blue);*/
+	@include background-image(radial-gradient(top center, mix($bright-blue, $dark-blue), $dark-blue 600px));
 }
-.btn-group {
-    margin-bottom: 10px;
+.navbar-inverse .brand {
+	color: #FFFFFF;
 }
-.view { 
-  display: none; 
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+	background-color:          $dark-blue;
+}
+.subsection {
+	margin-top: 50px;
+	height: 250px;
+	background-color:        $light-gray;
+	padding-top: 30px;
+	border-bottom: solid 1px #FFFFFF;
+}
+.subsection .panel {
+	border-radius: 5px;
+	background-color: scale-lightness($light-gray, 10);
+	padding: 5px;
+	min-height: 200px;
+	color:        $gray;
+}
+#FooterContainer {
+	padding: 10px;
+	background-color: $dark-blue;
+	@include background-image(radial-gradient(bottom center, mix($blue, $dark-blue) 10px, $dark-blue 600px));
+}
+#FooterContainer div.smallFooter, #FooterContainer div.smallFooter a {
+	font-size: 10px;
+	color:        $gray;
+	text-align: center;
 }
 
-#flipbox { 
-  border: solid 1px black; 
-  min-height: 50px;
-  border-radius: 10px;
+@keyframes myfirst
+{
+	from { background: red; }
+	to { background: yellow; }
+}
+
+/*****************************************************/
+/* Responsive */
+
+/* Large desktop */
+@media (min-width: 1200px) {
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+	.navbar-inverse .nav-collapse .nav > li > a:hover, .navbar-inverse .nav-collapse .nav > li > a:focus, .navbar-inverse .nav-collapse .dropdown-menu a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:focus {
+		background-color:          $dark-blue;
+	}
+	input, textarea {
+		width: 160px;
+	}
+	#GPALogoBanner {
+		width: 174px;
+		top: -70px;
+		overflow: hidden;
+		height: 144px;
+	}
+	
+	#LocationPicker {
+		width: 228px;
+	}
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
 }
