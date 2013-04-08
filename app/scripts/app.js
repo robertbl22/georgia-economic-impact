@@ -1,32 +1,84 @@
+(function($) {
+    /*
+     var app = $.sammy('#Main', function() {
+
+     this.use(Sammy.Title);
+
+     this.swap = function(content, callback) {
+     var context = this;
+     context.$element().fadeOut('slow', function() {
+     context.$element().html(content);
+     context.$element().fadeIn('slow', function() {
+     if (callback) {
+     callback.apply();
+     }
+     });
+     });
+     };
+
+     this.get(/\#\!?\/$/, function(context) {
+
+     context.title("The State of Georgia");
+     function AppViewModel() {
+     this.firstName = "Bert";
+     this.lastName = "Bertington";
+     }
+
+     ko.applyBindings(new AppViewModel());
+     context.app.swap($("#State"));
+     });
+
+     this.get(/\#\!?\/region\/(.*)/i, function(context) {
+     context.title(this.params['splat']);
+     context.app.swap($("#Region"));
+     context.$element().append(this.params['splat']);
+     });
+
+     this.get(/\#\!?\/county\/(.*)/i, function(context) {
+     context.title(this.params['splat'] + " County");
+     context.app.swap($("#County"));
+     context.$element().append(this.params['splat']);
+     console.log(context)
+     });
+     });
+
+     $(function() {
+     app.run('#/');
+     });
+     */
+
+    function KoViewModel() {
+        var self = this;
+        self.chosenStateData = ko.observable();
+        self.chosenCountyData = ko.observable();
+        self.companies = [{
+            Company : "Acme",
+            ImportTEU : 5
+        }, {
+            Company : "Petco",
+            ImportTEU : 3
+        }];
+        $.sammy(function() {
+            this.use(Sammy.Title);
+            this.get('#/', function(context_) {
+                self.chosenCountyData(false);
+                self.chosenStateData(true);
+            });
+            this.get('#/county', function(context_) {
+                self.chosenStateData(false);
+                self.chosenCountyData(true);
+            });
+        }).run();
+    };
+    ko.applyBindings(new KoViewModel());
+
+})(jQuery);
+
 define([], function() {
 
     $("#GPALogoBanner").delay(50).slideDown();
     $("#LocationPicker").fadeIn("slow");
 
-    /*
-     $('.tabs').bind('change', function(e) {'use strict'
-     alert("change!");
-     var activeTab = e.target;
-     var divId = $(activeTab).attr('href').substr(1);
-
-     $.getJSON('xxx.php').success(function(data) {
-     $("#" + divId).text(data.msg);
-     });
-     });
-     */
-
-    /*
-     $('#TabSet a[data-toggle="tab"]').on('shown', function(e) {
-     // e.target is activated tab
-     // e.relatedTarget is previous tab
-
-     var tabPanelId = $(e.target).attr("data-target");
-     var tabPanel = $("#" + tabPanelId);
-     tabPanel.append("<strong>hello world!</strong>");
-     $(".tab-content .active").removeClass(".active");
-     tabPanel.addClass(".active").slideDown();
-     });
-     */
-
     return "App has finished loading";
 });
+
