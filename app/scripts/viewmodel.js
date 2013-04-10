@@ -1,9 +1,5 @@
 define(["datasource"], function(datasource) {"use strict";
 
-    var SelectedCommodity = ko.observable();
-    var SelectedRegion = ko.observable();
-    var SelectedCounty = ko.observable();
-
     var region = ko.observable();
     var county = ko.observable();
     var commodity = ko.observable();
@@ -11,6 +7,9 @@ define(["datasource"], function(datasource) {"use strict";
     var counties = ko.observableArray([]);
     var companies = ko.observableArray([]);
 
+    var SelectedCommodity = ko.observable();
+    var SelectedRegion = ko.observable();
+    var SelectedCounty = ko.observable();
     var selectTab = function(context, e) {
         switch (e.currentTarget.hash) {
             case "#overview":
@@ -33,6 +32,9 @@ define(["datasource"], function(datasource) {"use strict";
     datasource.getCommodity(commodity);
 
     return {
+        SelectedCommodity: SelectedCommodity,
+        SelectedRegion: SelectedRegion,
+        SelectedCounty: SelectedCounty,
         selectTab : selectTab,
         region : region,
         county : county,
