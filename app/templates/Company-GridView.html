@@ -1,24 +1,29 @@
-<table class="table table-bordered table-striped table-condensed">
+<table class="table table-bordered table-striped table-condensed" title="Company import and export">
 	<thead>
 		<tr>
+			<th>&nbsp;</th>
+			<th colspan="3" class="cell-border-left">Import</th>
+			<th colspan="3" class="cell-border-left">Export</th>
+		</tr>
+		<tr>
 			<th>Company</th>
-			<th>Import TEU</th>
-			<th>Import STONS</th>
-			<th>Import Est. Value</th>
-			<th>Export TEU</th>
-			<th>Export STONS</th>
-			<th>Export Est. Value</th>
+			<th class="cell-border-left">TEU</th>
+			<th>STONS</th>
+			<th>Est.&nbsp;Value</th>
+			<th class="cell-border-left">TEU</th>
+			<th>STONS</th>
+			<th>Est.&nbsp;Value</th>
 		</tr>
 	</thead>
 	<tbody data-bind="foreach: $data">
 		<tr>
-			<td data-bind="text: Name"></td>
-			<td data-bind="text: ImportTEU"></td>
-			<td data-bind="text: ImportSTONS"></td>
-			<td data-bind="text: ImportEstValue"></td>
-			<td data-bind="text: ExportTEU"></td>
-			<td data-bind="text: ExportSTONS"></td>
-			<td data-bind="text: ExportEstValue"></td>
+			<td><a data-bind="text: Name, attr: {href: Name}"></a></td>
+			<td data-bind="text: $.number(ImportTEU)" class="cell-numeric cell-border-left"></td>
+			<td data-bind="text: $.number(ImportSTONS)" class="cell-numeric"></td>
+			<td data-bind="text: ('$' + $.number(ImportEstValue))" class="cell-numeric"></td>
+			<td data-bind="text: $.number(ExportTEU)" class="cell-numeric cell-border-left"></td>
+			<td data-bind="text: $.number(ExportSTONS)" class="cell-numeric"></td>
+			<td data-bind="text: ('$' + $.number(ExportEstValue))" class="cell-numeric"></td>
 		</tr>
 	</tbody>
 </table>

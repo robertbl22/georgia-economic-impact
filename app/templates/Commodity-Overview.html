@@ -14,7 +14,7 @@
 					<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportSTONS)"></h4></td>
 				</tr>
 				<tr>
-					<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportEstValue)"></h4></td>
+					<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: ('$' + $.number(ImportEstValue))"></h4></td>
 				</tr>
 			</tbody>
 		</table>
@@ -34,7 +34,7 @@
 					<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportSTONS)"></h4></td>
 				</tr>
 				<tr>
-					<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportEstValue)"></h4></td>
+					<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: ('$' + $.number(ExportEstValue))"></h4></td>
 				</tr>
 			</tbody>
 		</table>
@@ -56,7 +56,7 @@
 					<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalSTONS)"></h4></td>
 				</tr>
 				<tr>
-					<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalEstValue)"></h4></td>
+					<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: ('$' + $.number(TotalEstValue))"></h4></td>
 				</tr>
 			</tbody>
 		</table>
