@@ -1,0 +1,14 @@
+<div class="row">
+	<div class="span6">
+		<ul class="breadcrumb">
+			<li>
+				<a href="#state">State of Georgia</a><span class="divider">/</span>
+			</li>
+			<li class="active" data-bind="text: Name"></li>
+		</ul>
+		<h1><i class="icon-star"></i> <span data-bind="text: Name"></span></h1>
+	</div>
+</div>
+<div class="tab-content">
+	<div class="tab-pane fade in active" id="overview" data-bind="template: {name: 'RegionOverview', data: $data}"></div>
+</div>

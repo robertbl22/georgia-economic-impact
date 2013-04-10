@@ -1,8 +1,6 @@
 {
-	"CountyID": 1,
-	"Name": "Chatham County",
-	"RegionName": "Economic Region 12",
-	"RegionID": "region12",
+	"CommodityId": 1,
+	"Name": "ALUMINUM FOIL",
 	"ImportTEU": 123,
 	"ImportSTONS": 345,
 	"ImportEstValue": 456,
@@ -13,6 +11,6 @@
 	"TotalSTONS": 890,
 	"TotalEstValue": 1024,
 	"TotalEmployment": 37319,
-	"TotalCommodities": 321,
+	"TotalCounties": 321,
 	"TotalCompanies": 123
 }
