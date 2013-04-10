@@ -1,0 +1,515 @@
+[
+	{
+		"Name": "ABRASIVES, MISC",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALDEHYDES-FORMALDEHYDE",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	},
+	{
+		"Name": "ACETALS",
+		"ImportTEU": 123,
+		"ImportSTONS": 345,
+		"ImportEstValue": 456,
+		"ExportTEU": 678,
+		"ExportSTONS": 890,
+		"ExportEstValue": 1024
+	}
+]
