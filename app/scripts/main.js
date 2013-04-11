@@ -13,7 +13,7 @@ require(['viewmodel'], function(viewmodel) {"use strict";
     $("#LocationPicker").fadeIn("slow");
 
     //infuser.defaults.templateSuffix = ".tmpl.html";
-    infuser.defaults.templateUrl = "/templates";
+    infuser.defaults.templateUrl = "/views";
 
     Modernizr.load([{
         test : Modernizr.input.placeholder,

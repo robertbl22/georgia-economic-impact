@@ -1,5 +1,15 @@
 define([], function() {"use strict";
 
+    var hasStateData = false;
+    var getState = function(myObservable) {
+        if (!hasStateData) {
+            $.getJSON("../data/state.json", function(data) {
+                myObservable(data);
+            });
+            hasStateData = true;
+        }
+    };
+    
     var hasRegionData = false;
     var getRegion = function(myObservable) {
         if (!hasRegionData) {
@@ -67,12 +77,13 @@ define([], function() {"use strict";
     };
 
     return {
-        getRegion : getRegion,
-        getCounty : getCounty,
-        getCommodity : getCommodity,
-        getCommodities : getCommodities,
-        getCounties : getCounties,
-        getCompanies : getCompanies
+        GetState : getState,
+        GetRegion : getRegion,
+        GetCounty : getCounty,
+        GetCommodity : getCommodity,
+        GetCommodities : getCommodities,
+        GetCounties : getCounties,
+        GetCompanies : getCompanies
     };
 
 });
