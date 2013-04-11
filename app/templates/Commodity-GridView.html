@@ -17,7 +17,7 @@
 	</thead>
 	<tbody data-bind="foreach: $data">
 		<tr>
-			<td><a data-bind="text: Name, attr: {href: Name}"></a></td>
+			<td><a data-bind="text: Name, attr: {href: ('#commodities/' + UrlKey)}"></a></td>
 			<td data-bind="text: $.number(ImportTEU)" class="cell-numeric cell-border-left"></td>
 			<td data-bind="text: $.number(ImportSTONS)" class="cell-numeric"></td>
 			<td data-bind="text: ('$' + $.number(ImportEstValue))" class="cell-numeric"></td>

@@ -1,6 +1,7 @@
 {
 	"CommodityId": 1,
 	"Name": "ALUMINUM FOIL",
+	"UrlKey": "aluminum-foil",
 	"ImportTEU": 123,
 	"ImportSTONS": 345,
 	"ImportEstValue": 456,
