@@ -3,11 +3,12 @@ require.config({
     },
 
     paths : {
-        jquery : 'vendor/jquery.min'
+        jquery : 'vendor/jquery.min',
+        ko : '//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js'
     }
 });
 
-require(['viewmodel'], function(viewmodel) {"use strict";
+require(['viewmodel', 'router'], function(vm, router) {"use strict";
 
     $("#GPALogoBanner").delay(50).slideDown();
     $("#LocationPicker").fadeIn("slow");
@@ -27,7 +28,9 @@ require(['viewmodel'], function(viewmodel) {"use strict";
         test : window.JSON,
         nope : '//cdnjs.cloudflare.com/ajax/libs/json3/3.2.4/json3.min.js',
         complete : function() {
-            ko.applyBindings(viewmodel);
+            ko.applyBindings(vm);
+            router.raise_errors = true;
+            router.run();
         }
     }]);
     

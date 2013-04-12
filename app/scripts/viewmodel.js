@@ -1,51 +1,67 @@
-define(["datasource"], function(datasource) {"use strict";
+define(["viewmodels/vm.state", "viewmodels/vm.region", "viewmodels/vm.county", "viewmodels/vm.commodity"], function(stateView, regionView, countyView, commodityView) {"use strict";
 
-    var state = ko.observable();
-    var region = ko.observable();
-    var county = ko.observable();
-    var commodity = ko.observable();
-    var commodities = ko.observableArray([]);
-    var counties = ko.observableArray([]);
-    var companies = ko.observableArray([]);
-
-    var selectedCommodity = ko.observable();
-    var selectedState = ko.observable();
-    var selectedRegion = ko.observable();
-    var selectedCounty = ko.observable();
-    var selectTab = function(context, e) {
-        switch (e.currentTarget.hash) {
-            case "#overview":
-                break;
-            case "#commodities":
-                datasource.GetCommodities(commodities);
-                break;
-            case "#counties":
-                datasource.GetCounties(counties);
-                break;
-            case "#companies":
-                datasource.GetCompanies(companies);
-                break;
-        }
-    };
+    /*
+     var selectTab = function(context, e) {
+     switch (e.currentTarget.hash) {
+     case "#/overview":
+     break;
+     case "#/commodities":
+     datasource.GetCommodities(commodities);
+     break;
+     case "#/counties":
+     datasource.GetCounties(counties);
+     break;
+     case "#/companies":
+     datasource.GetCompanies(companies);
+     break;
+     }
+     };
+     */
     
-    // init
-    datasource.GetState(state);
-    datasource.GetRegion(region);
-    datasource.GetCounty(county);
-    datasource.GetCommodity(commodity);
+    var dataToUse = ko.observable();
+    var templateToUse = ko.observable();
+    
+
+    var showView = function(vm) {
+        vm.GetData(function(data) {
+            document.title = vm.Title;
+            templateToUse(vm.tpl);
+            dataToUse(data);
+            $(".view").fadeIn();
+        });
+    };
+
+    var showSearchNoResults = function() {
+        $(".search-no-results").fadeIn();
+    };
 
     return {
-        SelectedCommodity: selectedCommodity,
-        SelectedRegion: selectedRegion,
-        SelectedCounty: selectedCounty,
-        SelectTab : selectTab,
-        state : state,
-        region : region,
-        county : county,
-        commodity : commodity,
-        commodities : commodities,
-        companies : companies,
-        counties : counties
+
+        ShowView : showView,
+
+        // Search controls
+        CommoditySearchTerm : ko.observable(),
+        CountySearchTerm : ko.observable(),
+        ShowSearchNoResults : showSearchNoResults,
+
+        // View template
+        templateToUse : templateToUse,
+        dataToUse : dataToUse,
+
+        // Models
+        //state : ko.observable(),
+        //region : ko.observable(),
+        //county : ko.observable(),
+        //commodity : ko.observable(),
+        //commodities : ko.observableArray([]),
+        //companies : ko.observableArray([]),
+        //counties : ko.observableArray([]),
+
+        // ViewModels
+        StateView : stateView,
+        RegionView : regionView,
+        CountyView : countyView,
+        CommodityView : commodityView
     };
 
 });

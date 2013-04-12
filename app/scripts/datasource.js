@@ -1,40 +1,42 @@
 define([], function() {"use strict";
 
-    var hasStateData = false;
-    var getState = function(myObservable) {
-        if (!hasStateData) {
+    var stateData;
+    var getState = function(callback) {
+        if (!stateData) {
             $.getJSON("../data/state.json", function(data) {
-                myObservable(data);
+                stateData = data;
+                callback(data);
             });
-            hasStateData = true;
         }
+        callback(stateData);
     };
-    
-    var hasRegionData = false;
-    var getRegion = function(myObservable) {
-        if (!hasRegionData) {
+
+    var regionData;
+    var getRegion = function(callback) {
+        if (!regionData) {
             $.getJSON("../data/region.json", function(data) {
-                myObservable(data);
+                regionData = data;
+                callback(data);
             });
-            hasRegionData = true;
         }
+        callback(regionData);
     };
-    
+
     var hasCountyData = false;
-    var getCounty = function(myObservable) {
+    var getCounty = function(callback) {
         if (!hasCountyData) {
             $.getJSON("../data/county.json", function(data) {
-                myObservable(data);
+                callback(data);
             });
             hasCountyData = true;
         }
     };
-    
+
     var hasCommodityData = false;
-    var getCommodity = function(myObservable) {
+    var getCommodity = function(callback) {
         if (!hasCommodityData) {
             $.getJSON("../data/commodity.json", function(data) {
-                myObservable(data);
+                callback(data);
             });
             hasCommodityData = true;
         }
