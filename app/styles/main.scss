@@ -1,170 +1,66 @@
+/*********************************/
+/* Framework and Fonts */
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,600,700,300,800);
 @import "compass_twitter_bootstrap_awesome";
 @import "compass_twitter_bootstrap_responsive";
+@import "gpa-round-icons";
 
 /*********************************/
-/* Variables */
-
-$dark-blue: #00284c;
-$blue: #006990;
-$bright-blue: #04a7ea;
-$light-blue: #88cbde;
-$orange: #f7971e;
-$gray: #96a0a9;
-$light-gray: #ccd2d7; 
+/* Components */
+@import "components/variables";
+@import "components/html";
+@import "components/header";
+@import "components/big-slogan";
+@import "components/search";
+@import "components/diagnostic-panel";
+@import "components/footer";
+@import "components/datagrid";
 
 /*********************************/
-/* Styles */
+/* Views */
+@import "views/splash";
+@import "views/2-col-container";
 
-h1, h2, h3, h4, h5, h6 {
-	margin-top: 0;
-	font-family: 'Open Sans', sans-serif;
-	font-weight: semi-bold;
-	color:           $dark-blue;
-}
-h1 {
-	text-transform: uppercase;
-	font-size: 32px;
-	letter-spacing: -1px;
-}
-table {h1, h2, h3, h4, h5, h6 {
-	margin-top: 0;
-	margin-bottom: 0;
-}
-}
-td.cell-numeric, th.cell-numeric {
-	text-align: right;
-}
-td.cell-border-left, th.cell-border-left {
-	border-left: solid 2px $tableBorder;
-}
-#SearchTools {
-	/*
-	 p {
-	 }
-	 i {
-	 color:  $gray;
-	 width: 20px;
-	 height: 20px;
-	 display: inline-block;
-	 text-align: center;
-	 padding: 4px;
-	 border-radius: 20px;
-	 background-color:  $grayLighter;
-	 }
-	 */
-	.btn {
-		padding: 4px 10px
-	}
-}
-.search-no-results {
-  display: none;
-}
-#LocationPicker {
-	display: none;
-	margin-top: 30px;
-	-moz-transition: width .5s ease;
-	-webkit-transition: width .5s ease;
-	width: 300px;.alert {
-	margin-top: 10px;
-}
-}
-#GPALogoBanner {
-	position: absolute;
-	top: -30px;
-	display: none;
-	right: 50px;
-	-moz-transition: width .5s ease;
-	-webkit-transition: width .5s ease;
-	width: 199px;
-}
-.view {
-  display: none;
-}
-.navbar-fixed-top {
-	position: static;
-	margin-bottom: 50px;
-}
-.content {
-	margin-bottom: 10px;
-}
-.navbar-inverse .navbar-inner {
-	background-color: $dark-blue;
-	/*background-image: -webkit-radial-gradient(top, mix($bright-blue, $dark-blue), $dark-blue);*/
-	@include background-image(radial-gradient(top center, mix($bright-blue, $dark-blue), $dark-blue 600px));
-}
-.navbar-inverse .brand {
-	color: #FFFFFF;
-}
-.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
-	background-color:           $dark-blue;
-}
-.subsection {
-	margin-top: 50px;
-	height: 250px;
-	background-color:         $light-gray;
-	padding-top: 30px;
-	border-bottom: solid 1px #FFFFFF;
-}
-.subsection .panel {
-	border-radius: 5px;
-	background-color: scale-lightness($light-gray, 10);
-	padding: 5px;
-	min-height: 200px;
-	color:         $gray;
-}
-#FooterContainer {
-	padding: 10px;
-	background-color: $dark-blue;
-	@include background-image(radial-gradient(bottom center, mix($blue, $dark-blue) 10px, $dark-blue 600px));
-}
-#FooterContainer div.smallFooter, #FooterContainer div.smallFooter a {
-	font-size: 10px;
-	color:         $gray;
-	text-align: center;
-}
-
-@keyframes myfirst
-{
-from {
-	background: red;
-}
-to {
-	background: yellow;
-}
-}
-
-/*****************************************************/
+/*********************************/
 /* Responsive */
+@media (min-width: 1700px){
+	@import "views/splash-1700";
+}
 
 /* Large desktop */
 @media (min-width: 1200px) {
+	@import "views/splash-1200";
+}
+
+@media (min-width: 980px) and (max-width: 1199px) {
+	@import "components/header-980-1199";
+	@import "views/splash-980-1199";
 }
 
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
-	.navbar-inverse .nav-collapse .nav > li > a:hover, .navbar-inverse .nav-collapse .nav > li > a:focus, .navbar-inverse .nav-collapse .dropdown-menu a:hover, .navbar-inverse .nav-collapse .dropdown-menu a:focus {
-		background-color:           $dark-blue;
-	}
-	input, textarea {
-		width: 160px;
-	}
-	#GPALogoBanner {
-		width: 174px;
-		top: -70px;
-		overflow: hidden;
-		height: 144px;
-	}
-
-	#LocationPicker {
-		width: 228px;
-	}
+	@import "components/header-768-979";
+	@import "components/search-768-979";
+	@import "views/splash-768-979";
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
+	@import "views/2-col-container-767";
+	@import "components/search-767";
+	@import "views/splash-767";
+}
+
+@media (max-width: 580px) {
+	@import "views/splash-580";
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+	@import "views/splash-480";
 }
+
+@media (max-width: 320px)  {
+	@import "views/splash-320";
+}
+

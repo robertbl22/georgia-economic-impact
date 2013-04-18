@@ -1,8 +1,10 @@
 {
 	"CountyID": 1,
 	"Name": "Chatham County",
+	"ShortName" : "Chatham",
 	"UrlKey": "chatham-county",
 	"RegionName": "Economic Region 12",
+	"RegionShortName" : "Region 12",
 	"RegionUrlKey": "region12",
 	"ImportTEU": 123,
 	"ImportSTONS": 345,

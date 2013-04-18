@@ -7,8 +7,10 @@ define([], function() {"use strict";
                 stateData = data;
                 callback(data);
             });
+        } else {
+            callback(stateData);
         }
-        callback(stateData);
+
     };
 
     var regionData;
@@ -18,63 +20,69 @@ define([], function() {"use strict";
                 regionData = data;
                 callback(data);
             });
+        } else {
+            callback(regionData);
         }
-        callback(regionData);
+
     };
 
-    var hasCountyData = false;
+    var countyData;
     var getCounty = function(callback) {
-        if (!hasCountyData) {
+        if (!countyData) {
             $.getJSON("../data/county.json", function(data) {
+                countyData = data;
                 callback(data);
             });
-            hasCountyData = true;
+        } else {
+            callback(countyData);
         }
     };
 
-    var hasCommodityData = false;
+    var commodityData;
     var getCommodity = function(callback) {
-        if (!hasCommodityData) {
+        if (!commodityData) {
             $.getJSON("../data/commodity.json", function(data) {
+                commodityData = data;
                 callback(data);
             });
-            hasCommodityData = true;
+        } else {
+            callback(commodityData);
         }
     };
 
-    var hasCommoditiesData = false;
-    var getCommodities = function(observableArray) {
-        if (!hasCommoditiesData) {
+    var commoditiesData;
+    var getCommodities = function(callback) {
+        if (!commoditiesData) {
             $.getJSON("data/commodities.json", function(data) {
-                observableArray(data);
-                //ko.utils.arrayPushAll(observableArray, data);
-                //observableArray.valueHasMutated();
+                commoditiesData = data;
+                callback(data);
             });
-            hasCommoditiesData = true;
+        } else {
+            callback(commoditiesData);
         }
     };
 
-    var hasCompaniesData = false;
-    var getCompanies = function(observableArray) {
-        if (!hasCompaniesData) {
+    var companiesData;
+    var getCompanies = function(callback) {
+        if (!companiesData) {
             $.getJSON("data/companies.json", function(data) {
-                observableArray(data);
-                //ko.utils.arrayPushAll(observableArray, data);
-                //observableArray.valueHasMutated();
+                companiesData = data;
+                callback(data);
             });
-            hasCompaniesData = true;
+        } else {
+            callback(companiesData);
         }
     };
 
-    var hasCountiesData = false;
-    var getCounties = function(observableArray) {
-        if (!hasCountiesData) {
+    var countiesData;
+    var getCounties = function(callback) {
+        if (!countiesData) {
             $.getJSON("data/counties.json", function(data) {
-                observableArray(data);
-                //ko.utils.arrayPushAll(observableArray, data);
-                //observableArray.valueHasMutated();
+                countiesData = data;
+                callback(data);
             });
-            hasCountiesData = true;
+        } else {
+            callback(countiesData);
         }
     };
 

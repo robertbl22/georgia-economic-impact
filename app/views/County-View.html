@@ -5,22 +5,22 @@
 				<a href="#/state">State of Georgia</a><span class="divider">/</span>
 			</li>
 			<li>
-				<a href="#/" data-bind="text: RegionName, attr: { href: '#/' + RegionUrlKey }"></a><span class="divider">/</span>
+				<a href="#/" data-bind="text: RegionShortName, attr: { href: '#/state/' + RegionUrlKey }"></a><span class="divider">/</span>
 			</li>
-			<li class="active" data-bind="text: Name"></li>
+			<li class="active" data-bind="text: ShortName"></li>
 		</ul>
 		<h1><i class="icon-map-marker"></i> <span data-bind="text: Name"></span></h1>
 	</div>
 </div>
 <ul class="nav nav-pills" id="TabSet">
 	<li class="active">
-		<a href="#/overview" data-toggle="tab" data-bind="click: $root.SelectTab"><i class="icon-bar-chart"></i> Overview</a>
+		<a href="#/" id="Overview" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/overview'}"><i class="icon-bar-chart"></i> Overview</a>
 	</li>
 	<li>
-		<a href="#/commodities" data-toggle="tab" data-bind="click: $root.SelectTab"><i class="icon-tag"></i> By Commodity <span class="badge badge-info" data-bind="text: TotalCommodities"></span></a>
+		<a href="#/" id="Commodities" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/commodities'}"><i class="icon-tag"></i> By Commodity <span class="badge badge-info" data-bind="text: TotalCommodities"></span></a>
 	</li>
 	<li>
-		<a href="#/companies" data-toggle="tab" data-bind="click: $root.SelectTab"><i class="icon-building"></i> By Company <span class="badge badge-info" data-bind="text: TotalCompanies"></span></a>
+		<a href="#/" id="Companies" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/companies'}"><i class="icon-building"></i> By Company <span class="badge badge-info" data-bind="text: TotalCompanies"></span></a>
 	</li>
 </ul>
 <div class="tab-content">

@@ -1,34 +1,34 @@
 define(["datasource"], function(datasource) {"use strict";
 
-    return {
-        Title : "The State of Georgia",
-        tpl : 'State-View',
-        GetData : function(callback) {
-            datasource.GetState(function(data) {
-                callback(data)
-            });
-        }
-        
-        /*
-        ,
+    var currentTabView = "";
+
+    var tabs = {
         Overview : {
-            Show : function(isVisible) {
-                //showStateOverview(isVisible || true);
-            }
+            tpl : 'State-Overview',
+            GetData : datasource.GetState
         },
-        Show : function(vm, isVisible) {
-
-            datasource.GetState(function(data) {
-
-                //document.title = 'The State of Georgia';
-                var observableData = ko.observable(data);
-                //vm.dataToUse(observableData);
-                //vm.templateToUse('State-View');
-                //$(".view").fadeIn();
-
-            });
+        Counties : {
+            tpl : 'County-GridView',
+            GetData : datasource.GetCounties
+        },
+        Commodities : {
+            tpl : 'Commodity-GridView',
+            GetData : datasource.GetCommodities
         }
-        */
+    }
+
+    return {
+        
+        Title : "The State of Georgia",
+        Tabs : tabs,
+        GetData : datasource.GetState,
+        tpl : 'State-View'
+        
+        //tplOverview : 'State-Overview',
+        //tplCounties : 'County-GridView',
+        //tplCommodity : 'Commodity-GridView',
+        //GetCommoditiesData : datasource.GetCommodities,
+        //GetCountiesData : datasource.GetCounties
     };
 
 });

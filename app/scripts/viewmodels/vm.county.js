@@ -1,12 +1,13 @@
-define(["datasource", "viewmodel"], function(datasource, vm) {"use strict";
+define(["datasource"], function(datasource) {"use strict";
+
+    var showTab = function(tabName) {
+        console.log("showTab running 2");
+    };
 
     return {
-        $el : $(".region-view"),
-        Show : function(isVisible) {
-            $(".view").fadeOut();
-            datasource.GetCounty(county);
-            $el.fadeIn();
-        }
-    }
+        Title : "Chatham County",
+        tpl : 'County-View',
+        GetData : datasource.GetCounty
+    };
 
-}); 
+});

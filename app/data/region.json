@@ -1,6 +1,7 @@
 {
 	"RegionID": 1,
 	"Name": "Economic Region 12",
+	"ShortName" : "Region 12",
 	"UrlKey": "region12",
 	"ImportTEU": 123,
 	"ImportSTONS": 345,

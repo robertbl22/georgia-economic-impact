@@ -1,0 +1,56 @@
+/*
+.splash-background {
+	height: 1000px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	z-index: -1;
+}
+*/
+.splash {
+	/*
+	background-image: url('../images/3DX_5148-two-longshoremen.jpg');
+	background-position: right bottom;
+	background-clip: border-box;
+	@include background-size(cover);
+	background-repeat: no-repeat;
+	*/
+	
+	position: relative;
+	overflow: hidden;
+	color: $white;
+	a { color: $white; }
+	
+	height: 1000px;
+	
+	.big-slogan {
+		color: $white;
+		margin-top: 60px;
+		margin-bottom: 20px;
+	}
+	h4 { 
+		color: $white; 
+		margin-bottom: 50px;
+	}	
+}
+.splash-background {
+	
+	width: 100%;  
+	height: auto;
+	position: absolute;
+	display: block;
+	z-index: -1;
+	border: dotted 1px red;
+	overflow: hidden;
+	
+	margin-bottom: 0;
+	bottom: 0;
+	margin-right: 0;
+	right: 0;
+	
+	img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
+}

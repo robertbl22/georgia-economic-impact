@@ -1,0 +1,69 @@
+<div class="container main-panel">
+	<div class="row visible-phone">
+		<div class="span12">
+			[TODO: GPA BANNER FOR PHONE]
+		</div>
+	</div>
+	<div class="row">
+		<div class="span12 big-slogan">
+			<strong>MORE</strong> IM<span class="P">P</span><span class="A">A</span><span class="C">C</span>T
+		</div>
+	</div>
+	<div class="row">
+		<!-- CONTENT PANE -->
+		<!-- <div class="span8 content pull-right view" data-bind="template: {name: templateToUse(), data: dataToUse()}"></div> -->
+		<div id="viewContainer" class="span8 content pull-right view"></div>
+		<!-- SEARCH AND STATE CONTROLS -->
+		<div class="span4 pull-left">
+			<form id="SearchTools" class="form-search">
+				<div style="margin-bottom: 10px;">
+					<div>
+						<label for="SearchCommodities"><i class="icon-tag"></i> Commodities:</label><a style="margin-left:10px;" href="#/state/commodities">see all</a>
+					</div>
+					<div class="input-append">
+						<input id="SearchCommodities" type="text" class="search-query" data-bind="value: CommoditySearchTerm" placeholder="Find a commodity" data-provide="typeahead" data-source="[&quot;ABRASIVES, MISC&quot;,&quot;ACETALDEHYDES-FORMALDEHYDE&quot;,&quot;ACETALS&quot;,&quot;Arkansas&quot;,&quot;California&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]" autocomplete="off">
+						<button class="btn" type="button">
+							Go
+						</button>
+					</div>
+				</div>
+				<div style="margin-bottom: 10px;">
+					<div>
+						<label for="SearchCounties"><i class="icon-map-marker"></i> Counties:</label><a style="margin-left:10px;" href="#/state/counties">see all</a>
+					</div>
+					<div class="input-append">
+						<input id="SearchCounties" type="text" class="search-query" data-bind="value: CountySearchTerm" placeholder="Find a county" data-provide="typeahead" data-source="[&quot;Chatham&quot;,&quot;Bibb&quot;,&quot;Bacon&quot;,&quot;Appling&quot;,&quot;Atkinson&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]" autocomplete="off">
+						<button class="btn" type="button">
+							Go
+						</button>
+					</div>
+				</div>
+				<span class="badge badge-info search-no-results">No results found.</span>
+				<!--
+				<div>
+				<i class="icon-map-marker"></i>
+				<input type="text" class="search-query" data-bind="value: CountySearchTerm" placeholder="Find a county" data-provide="typeahead" data-source="[&quot;Chatham&quot;,&quot;Bibb&quot;,&quot;Bacon&quot;,&quot;Appling&quot;,&quot;Atkinson&quot;,&quot;Colorado&quot;,&quot;Connecticut&quot;,&quot;Delaware&quot;,&quot;Florida&quot;,&quot;Georgia&quot;,&quot;Hawaii&quot;,&quot;Idaho&quot;,&quot;Illinois&quot;,&quot;Indiana&quot;,&quot;Iowa&quot;,&quot;Kansas&quot;,&quot;Kentucky&quot;,&quot;Louisiana&quot;,&quot;Maine&quot;,&quot;Maryland&quot;,&quot;Massachusetts&quot;,&quot;Michigan&quot;,&quot;Minnesota&quot;,&quot;Mississippi&quot;,&quot;Missouri&quot;,&quot;Montana&quot;,&quot;Nebraska&quot;,&quot;Nevada&quot;,&quot;New Hampshire&quot;,&quot;New Jersey&quot;,&quot;New Mexico&quot;,&quot;New York&quot;,&quot;North Dakota&quot;,&quot;North Carolina&quot;,&quot;Ohio&quot;,&quot;Oklahoma&quot;,&quot;Oregon&quot;,&quot;Pennsylvania&quot;,&quot;Rhode Island&quot;,&quot;South Carolina&quot;,&quot;South Dakota&quot;,&quot;Tennessee&quot;,&quot;Texas&quot;,&quot;Utah&quot;,&quot;Vermont&quot;,&quot;Virginia&quot;,&quot;Washington&quot;,&quot;West Virginia&quot;,&quot;Wisconsin&quot;,&quot;Wyoming&quot;]" autocomplete="off">
+				<div style="margin-left:45px;">
+				<a href="#/counties">See all counties</a>
+				</div>
+				</div>
+				-->
+			</form>
+			<div id="LocationPicker">
+				<a href="#/state/region12"><img src="images/map-georgia-regions.png" alt="Georgia" usemap="#/statemap" border="0"></a>
+				<map name="statemap">
+					<area shape="rect" coords="0,0,82,126" href="#/" alt="Sun">
+					<area shape="circle" coords="90,58,3" href="#/" alt="Mercury">
+					<area shape="circle" coords="124,58,8" href="#/" alt="Venus">
+				</map>
+				<div class="alert alert-info">
+					<button type="button" class="close" data-dismiss="alert">
+						&times;
+					</button>
+					Use the map to select a region and county.
+				</div>
+			</div>
+		</div>
+		<!-- // END: SEARCH AND STATE CONTROLS -->
+	</div>
+</div>

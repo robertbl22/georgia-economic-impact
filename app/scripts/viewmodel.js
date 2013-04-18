@@ -1,63 +1,129 @@
-define(["viewmodels/vm.state", "viewmodels/vm.region", "viewmodels/vm.county", "viewmodels/vm.commodity"], function(stateView, regionView, countyView, commodityView) {"use strict";
+define(["viewmodels/vm.search", "viewmodels/vm.state", "viewmodels/vm.region", "viewmodels/vm.county", "viewmodels/vm.commodity"], function(searchView, stateView, regionView, countyView, commodityView) {"use strict";
 
-    /*
-     var selectTab = function(context, e) {
-     switch (e.currentTarget.hash) {
-     case "#/overview":
-     break;
-     case "#/commodities":
-     datasource.GetCommodities(commodities);
-     break;
-     case "#/counties":
-     datasource.GetCounties(counties);
-     break;
-     case "#/companies":
-     datasource.GetCompanies(companies);
-     break;
-     }
-     };
-     */
-    
-    var dataToUse = ko.observable();
-    var templateToUse = ko.observable();
-    
+    ko.applyBindings(searchView, $("#SearchTools").get(0));
 
-    var showView = function(vm) {
-        vm.GetData(function(data) {
-            document.title = vm.Title;
-            templateToUse(vm.tpl);
-            dataToUse(data);
-            $(".view").fadeIn();
+    ko.observableArray.fn.selectedTab = function(propName, matchValue) {
+        return ko.computed(function() {
+            var allItems = this(), matchingItems = [];
+            for (var i = 0; i < allItems.length; i++) {
+                var current = allItems[i];
+                if (ko.utils.unwrapObservable(current[propName]) === matchValue)
+                    matchingItems.push(current);
+            }
+            return matchingItems;
+        }, this);
+    }
+
+    stateView.Show = showView;
+    stateView.ShowOverview = showOverview;
+    stateView.ShowCounties = showCounties;
+    stateView.ShowCommodities = showCommodities;
+
+    regionView.Show = showView;
+    regionView.ShowOverview = showOverview;
+
+    countyView.Show = showView;
+    commodityView.Show = showView;
+
+    var currentView;
+    function showView(callback) {
+        console.log("showView running");
+        var self = this;
+        if (currentView === self) {
+            console.log("currentView exists, do nothing");
+            if (callback) {
+                callback();
+            }
+            return self;
+        }
+        currentView = self;
+        self.GetData(function(data) {
+            document.title = self.Title;
+            $.get("views/" + self.tpl + ".html", function(template) {
+                var $vc = $("#viewContainer");
+                $vc.hide().html(template);
+                ko.applyBindings(data, $vc.get(0));
+                $vc.fadeIn();
+                if (callback) {
+                    callback();
+                }
+            });
         });
-    };
+    }
 
-    var showSearchNoResults = function() {
-        $(".search-no-results").fadeIn();
-    };
+    function showOverview() {
+        console.log("showOverView running");
+        var self = this;
+
+        self.Tabs.Overview.GetData(function(data) {
+            $.get("views/" + self.Tabs.Overview.tpl + ".html", function(template) {
+                var $tvc = $("#tabViewContainer");
+                $tvc.hide().html(template)
+                ko.applyBindings(data, $tvc.get(0));
+                $tvc.fadeIn();
+            });
+        });
+    }
+
+    function showETOverview() {
+        console.log("showOverView running");
+
+        var self = this;
+
+        self.Tabs.Overview.GetData(function(data) {
+            $.get("views/" + self.Tabs.Overview.tpl + ".html", function(template) {
+                var $tvc = $("#tabViewContainer");
+                $tvc.hide().html(template)
+                ko.applyBindings(data, $tvc.get(0));
+                $tvc.fadeIn();
+            });
+        });
+    }
+
+    function showCounties() {
+        console.log("showCounties running");
+        var self = this;
+
+        self.Tabs.Counties.GetData(function(data) {
+            $.get("views/" + self.Tabs.Counties.tpl + ".html", function(template) {
+                var $tvc = $("#tabViewContainer");
+                $tvc.hide().html(template)
+                ko.applyBindings(data, $tvc.get(0));
+                $tvc.fadeIn();
+            });
+        });
+    }
+
+    function showCommodities() {
+        console.log("showCommodities running");
+        var self = this;
+
+        self.Tabs.Commodities.GetData(function(data) {
+            $.get("views/" + self.Tabs.Commodities.tpl + ".html", function(template) {
+                var $tvc = $("#tabViewContainer");
+                $tvc.hide().html(template);
+                ko.applyBindings(data, $tvc.get(0));
+                $tvc.fadeIn();
+            });
+        });
+    }
+
+    // Mockup button behaviors
+
+    $($(".form-search button.btn")[0]).click(function(e) {
+        e.preventDefault();
+        document.location = "#/commodities/aluminum-foil";
+    });
+
+    $($(".form-search button.btn")[1]).click(function(e) {
+        e.preventDefault();
+        document.location = "#/state/region12/chatham-county";
+    });
 
     return {
 
-        ShowView : showView,
-
-        // Search controls
-        CommoditySearchTerm : ko.observable(),
-        CountySearchTerm : ko.observable(),
-        ShowSearchNoResults : showSearchNoResults,
-
-        // View template
-        templateToUse : templateToUse,
-        dataToUse : dataToUse,
-
-        // Models
-        //state : ko.observable(),
-        //region : ko.observable(),
-        //county : ko.observable(),
-        //commodity : ko.observable(),
-        //commodities : ko.observableArray([]),
-        //companies : ko.observableArray([]),
-        //counties : ko.observableArray([]),
-
         // ViewModels
+        SearchTools : searchView,
         StateView : stateView,
         RegionView : regionView,
         CountyView : countyView,

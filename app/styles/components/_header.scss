@@ -1,0 +1,53 @@
+.brand .gpa-ring-icon-economics {
+	color:  $white;
+	position: relative;
+	font-size: 26px;
+	text-shadow: none;
+	background-color: $orange;
+	@include border-radius(14px);
+	padding: 0;
+	line-height: 1px;
+}
+
+.brand .gpa-icon-disc {
+	color:   $orange;
+	position: relative;
+	font-size: 26px;
+	line-height: 18px;
+}
+.brand .gpa-icon-disc:after {
+	content: "\e025";
+	color:   $white;
+	position: absolute;
+	text-shadow: none;
+	top: 4px;
+	left: 0;
+}
+
+#GPALogoBanner {
+  position: absolute;
+  top: -45px;
+  display: none;
+  right: 50px;@include transition(top .5s ease);
+  width: 190px;
+  z-index: 999;
+  box-shadow: 0px 0px 12px rgba(50, 50, 50, 0.75);
+}
+
+.navbar-fixed-top {
+  margin-bottom: 0;
+}
+.navbar-inverse .navbar-inner {
+  background-color:  $dark-blue;
+  filter: none;@include background-image(none);
+  /*background-image: -webkit-radial-gradient(top, mix($bright-blue, $dark-blue), $dark-blue);*/
+  /* @include background-image(radial-gradient(top center, mix($bright-blue, $dark-blue), $dark-blue 600px));*/
+}
+.navbar-inverse .brand {
+  color: #FFFFFF;
+}
+.navbar-inverse .nav .active > a, .navbar-inverse .nav .active > a:hover, .navbar-inverse .nav .active > a:focus {
+  background-color:  $dark-blue;
+}
+
+

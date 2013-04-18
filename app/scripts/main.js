@@ -28,10 +28,9 @@ require(['viewmodel', 'router'], function(vm, router) {"use strict";
         test : window.JSON,
         nope : '//cdnjs.cloudflare.com/ajax/libs/json3/3.2.4/json3.min.js',
         complete : function() {
-            ko.applyBindings(vm);
             router.raise_errors = true;
             router.run();
         }
     }]);
-    
+
 });
