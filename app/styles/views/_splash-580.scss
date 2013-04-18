@@ -1,3 +1,11 @@
 .splash {
-	height: 500px;
+	min-height: 400px;
+	
+	.big-slogan {
+		font-size: 36pt;
+		line-height: 36pt;
+	}
+}
+.splash-background {
+	margin-top: -50px;
 }
