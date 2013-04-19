@@ -29,7 +29,7 @@
 
 /* Large desktop */
 @media (min-width: 1200px) {
-	@import "views/splash-1200";
+	@import "components/big-slogan-1200";
 }
 
 @media (min-width: 980px) and (max-width: 1199px) {
@@ -53,6 +53,7 @@
 
 @media (max-width: 580px) {
 	@import "views/splash-580";
+	@import "components/big-slogan-580";
 }
 
 /* Landscape phones and down */

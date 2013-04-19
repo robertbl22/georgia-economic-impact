@@ -8,10 +8,10 @@ require.config({
     }
 });
 
-require(['viewmodel', 'router'], function(vm, router) {"use strict";
+require(['routes/router'], function(router) {"use strict";
 
     $("#GPALogoBanner").delay(50).slideDown();
-    $("#LocationPicker").fadeIn("slow");
+    //$("#LocationPicker").fadeIn("slow");
 
     //infuser.defaults.templateSuffix = ".tmpl.html";
     infuser.defaults.templateUrl = "/views";

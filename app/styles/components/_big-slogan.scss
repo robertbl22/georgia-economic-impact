@@ -1,3 +1,12 @@
+.big-slogan a {
+	color: $dark-blue;
+	@include transition(color .5s ease);
+}
+.big-slogan a:hover {
+	color: $linkColor;
+	text-decoration: none;
+}
+
 .big-slogan {
 	font-family: 'Open Sans', sans-serif;
 	font-size: 50pt;
