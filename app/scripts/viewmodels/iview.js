@@ -1,75 +1,100 @@
 define(["datasource/datasource"], function(datasource) {"use strict";
 
-    /* Private members */
-    var showTab = function(tabset, tab, $viewContainer) {
-        console.log("showTab running");
-        tab.GetData(function(data) {
-            $.get("views/" + tab.tpl + ".html", function(template) {
-                var $tvc = $("#tabViewContainer");
-                $tvc.hide().html(template)
-                var el = $tvc.get(0);
-                ko.applyBindings(data, el);
-                $tvc.fadeIn();
-                tabset.CurrentTab = tab;
-                console.log("showTab finished");
-            });
-        });
-    };
-    
     /* Constructor */
     function IView() {
         var self = this;
+        self.viewElement = null;
 
         self.showOverview = function() {
             console.log("showOverview running");
-            showTab(self.Tabs, self.Tabs.Overview, self.$viewContainer);
+            self.showTab(self.Tabs.Overview);
         };
 
         self.showCounties = function() {
             console.log("showCounties running");
-            showTab(self.Tabs, self.Tabs.Counties, self.$viewContainer);
+            self.showTab(self.Tabs.Counties);
         };
 
         self.showCommodities = function() {
             console.log("showCommodities running");
-            showTab(self.Tabs, self.Tabs.Commodities, self.$viewContainer);
+            self.showTab(self.Tabs.Commodities);
         };
 
         self.showCompanies = function() {
             console.log("showCompanies running");
-            showTab(self.Tabs, self.Tabs.Companies, self.$viewContainer);
+            self.showTab(self.Tabs.Companies);
         };
-        
-        //self.$viewContainer = null;
 
         self.Show = function(callback) {
             console.log("Show running");
-            //var self = this;
-            /*
-             if (currentView !== "undefined" && currentView === self) {
-             console.log("currentView exists, do nothing");
-             if (callback) {
-             callback();
-             }
-             return self;
-             }
-             currentView = self;
-             */
+            document.title = self.Title;
+            self.LoadSingletonView(function() {
+                console.log("Show finished");
+                if (callback) {
+                    callback();
+                }
+            });
+
+        };
+
+        self.LoadSingletonView = function(Show_Callback) {
+            var $viewContainer = $("#viewContainer");
+            if (self.viewElement && self.viewElement.innerHTML != "") {
+                /*****************/
+                /* View exists   */
+                console.log("self.viewElement exists");
+                var el = $viewContainer.get(0).firstChild;
+                if (!el || el.id !== self.ViewElementId) {
+                    /********************/
+                    /* Not current view */
+                    console.log("self.viewElement not current view");
+                    $viewContainer.hide();
+                    //TODO: Ajax spinner
+                    $viewContainer.find("#tabViewContainer").empty();
+                    $viewContainer.html(self.viewElement);
+                    $viewContainer.fadeIn(Show_Callback);
+                } else {
+                    /*******************/
+                    /* Is current view */
+                    console.log("self.viewElement is current view");
+                    Show_Callback();
+                }
+            } else {
+                /***********************/
+                /* View does not exist */
+                $viewContainer.hide();
+                //TODO: Ajax spinner
+                $viewContainer.find("#tabViewContainer").empty();
+                self.LoadView($viewContainer, function(el) {
+                    self.viewElement = el;
+                    $viewContainer.fadeIn(Show_Callback)
+                });
+            }
+        };
+
+        self.LoadView = function($viewContainer, LoadSingletonView_Callback) {
             this.GetData(function(data) {
-                document.title = self.Title;
                 $.get("views/" + self.tpl + ".html", function(template) {
-                    var $vc = $("#viewContainer");
-                    $vc.hide().html(template);
-                    var el = $vc.get(0);
+                    $viewContainer.html(template);
+                    var el = $viewContainer.get(0).firstChild;
                     ko.applyBindings(data, el);
-                    $vc.fadeIn(function() {
-                        console.log("Show finished");
-                        //self.$viewContainer = $vc;
-                        //console.log(self.$viewContainer);
-                        if (callback) {
-                            callback();
-                        }
-                    });
+                    LoadSingletonView_Callback(el);
+                });
+            });
+        };
+
+        self.showTab = function(tab) {
+            console.log("showTab running");
+            var $tvc = $("#tabViewContainer");
+            $tvc.hide();
+            tab.GetData(function(data) {
+                $.get("views/" + tab.tpl + ".html", function(template) {
+                    $tvc.html(template);
+                    var el = $tvc.get(0);
+                    ko.applyBindings(data, el);
+                    $tvc.fadeIn();
+                    self.Tabs.CurrentTab = tab;
+                    console.log("showTab finished");
                 });
             });
         };

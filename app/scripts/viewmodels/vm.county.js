@@ -3,18 +3,25 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
     function CountyView() {
         var self = this;
         IView.call(self);
-        
-        self.Title = "Chatham County";
+
+        self.ViewElementId = "CountyView";
+        self.Title = "Untitled County";
         self.tpl = 'County-View';
         self.GetData = datasource.GetCounty;
         self.Tabs.Overview.tpl = 'County-Overview';
         self.Tabs.Overview.GetData = datasource.GetCounty;
-        
+
+        self.isTypeOf = function(obj) {
+            return ( obj instanceof CountyView);
+        }
+
         return (self);
     }
-    
+
     // Create inheritance
-    CountyView.prototype = Object.create(IView.prototype);
+    if (Object.create) {
+        CountyView.prototype = Object.create(IView.prototype);
+    }
     return (new CountyView());
 
 });

@@ -8,11 +8,24 @@ define(function() {"use strict";
     function ColContainerView() {
         console.log(this);
         var self = this;
+        
+        var $el;
+        
         self.Show = function(callback) {
             console.log("ColContainerView.Show running");
+            
+            if($("#ColContainerView").length){
+                console.log("#ColContainerView exists");
+                console.log($("#ColContainerView"));
+                if(callback){
+                    callback();
+                    return;
+                }
+            }
+            
             $.get("views/2-Col-Container.html", function(template) {
                 var $cc = $("#ContentContainer");
-                var el = $cc.get(0);
+                //var el = $cc.get(0);
                 $cc.hide().html(template);
                 ko.applyBindings(searchView, $("#SearchTools").get(0));
                 $cc.fadeIn(function() {
@@ -38,6 +51,7 @@ define(function() {"use strict";
                 });
             });
         };
+        
         return (self);
     };
 

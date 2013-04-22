@@ -8,14 +8,22 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
 
         /**************************************/
         /* Routes */
+       
+       self.get('#/', function(context) {
+            // #/
+            console.log(context.path);
+            context.redirect("#/intro");
+        });
 
         self.get(/^\/#\/intro\/{0,1}$/, function(context) {
             // #/intro
             console.log(context.path);
             self.CurrentPageExit = context.SplashPageExit;
+            /*
             console.log(context);
             console.log(this);
             console.log(self);
+            */
             console.log("context.CurrentPageExit " + context.CurrentPageExit)
             $("#ContentContainer").load("views/splash.html");
         });

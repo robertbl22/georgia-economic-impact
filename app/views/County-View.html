@@ -1,33 +1,29 @@
-<div class="row">
-	<div class="span6">
-		<ul class="breadcrumb">
-			<li>
-				<a href="#/state">State of Georgia</a><span class="divider">/</span>
-			</li>
-			<li>
-				<a href="#/" data-bind="text: RegionShortName, attr: { href: '#/state/' + RegionUrlKey }"></a><span class="divider">/</span>
-			</li>
-			<li class="active" data-bind="text: ShortName"></li>
-		</ul>
-		<h1><i class="icon-map-marker"></i> <span data-bind="text: Name"></span></h1>
+<div id="CountyView">
+	CountyView
+	<div class="row">
+		<div class="span6">
+			<ul class="breadcrumb">
+				<li>
+					<a href="#/state">State of Georgia</a><span class="divider">/</span>
+				</li>
+				<li>
+					<a href="#/" data-bind="text: RegionShortName, attr: { href: '#/state/' + RegionUrlKey }"></a><span class="divider">/</span>
+				</li>
+				<li class="active" data-bind="text: ShortName"></li>
+			</ul>
+			<h1><i class="icon-map-marker"></i>&nbsp;<span data-bind="text: Name"></span></h1>
+		</div>
 	</div>
+	<ul class="nav nav-pills" id="TabSet">
+		<li class="active">
+			<a href="#/" id="Overview" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/overview'}"><i class="icon-bar-chart"></i> Overview</a>
+		</li>
+		<li>
+			<a href="#/" id="Commodities" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/commodities'}"><i class="icon-tag"></i> By Commodity <span class="badge badge-info" data-bind="text: TotalCommodities"></span></a>
+		</li>
+		<li>
+			<a href="#/" id="Companies" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/companies'}"><i class="icon-building"></i> By Company <span class="badge badge-info" data-bind="text: TotalCompanies"></span></a>
+		</li>
+	</ul>
+	<div id="tabViewContainer"></div>
 </div>
-<ul class="nav nav-pills" id="TabSet">
-	<li class="active">
-		<a href="#/" id="Overview" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/overview'}"><i class="icon-bar-chart"></i> Overview</a>
-	</li>
-	<li>
-		<a href="#/" id="Commodities" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/commodities'}"><i class="icon-tag"></i> By Commodity <span class="badge badge-info" data-bind="text: TotalCommodities"></span></a>
-	</li>
-	<li>
-		<a href="#/" id="Companies" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/companies'}"><i class="icon-building"></i> By Company <span class="badge badge-info" data-bind="text: TotalCompanies"></span></a>
-	</li>
-</ul>
-<div id="tabViewContainer"></div>
-<!--
-<div class="tab-content">
-	<div class="tab-pane fade in active" id="overview" data-bind="template: {name: 'County-Overview', data: $data}"></div>
-	<div class="tab-pane fade" id="commodities" data-bind="template: {name: 'Commodity-GridView', data: $root.commodities}"></div>
-	<div class="tab-pane fade" id="companies" data-bind="template: {name: 'Company-GridView', data: $root.companies}"></div>
-</div>
--->

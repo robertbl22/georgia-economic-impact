@@ -4,11 +4,16 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         var self = this;
         IView.call(self);
 
-        self.Title = "ALUMINUM FOIL";
+        self.ViewElementId = "CommodityView";
+        self.Title = "UNTITLED COMMODITY";
         self.tpl = 'Commodity-View';
         self.GetData = datasource.GetCommodity;
         self.Tabs.Overview.tpl = 'Commodity-Overview';
         self.Tabs.Overview.GetData = datasource.GetCommodity;
+
+        self.isTypeOf = function(obj) {
+            return ( obj instanceof CommodityView);
+        }
 
         return (self);
     }
@@ -16,12 +21,14 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
     // Set default tab to Overview
     /*
     CommodityView.prototype.Show = function() {
-        IView.prototype.Show.call(this.Tabs.Overview.Show);
+    IView.prototype.Show.call(this.Tabs.Overview.Show);
     }
     */
-    
+
     // Create inheritance
-    CommodityView.prototype = Object.create(IView.prototype);
+    if (Object.create) {
+        CommodityView.prototype = Object.create(IView.prototype);
+    }
     return (new CommodityView());
 
 });
