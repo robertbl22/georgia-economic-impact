@@ -6,13 +6,13 @@
 		</div>
 	</div>
 	<ul class="nav nav-pills" id="TabSet">
-		<li class="active">
+		<li data-bind="css: Tabs.Overview.isSelected">
 			<a href="#/state/overview"><i class="icon-bar-chart"></i> Overview</a>
 		</li>
-		<li>
+		<li data-bind="css: Tabs.Counties.isSelected">
 			<a href="#/state/counties"><i class="icon-map-marker"></i> All Counties <span class="badge badge-info" data-bind="text: TotalCounties"></span></a>
 		</li>
-		<li>
+		<li data-bind="css: Tabs.Commodities.isSelected">
 			<a href="#/state/commodities"><i class="icon-tag"></i> All Commodities <span class="badge badge-info" data-bind="text: TotalCommodities"></span></a>
 		</li>
 	</ul>

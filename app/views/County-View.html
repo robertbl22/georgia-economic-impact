@@ -15,13 +15,13 @@
 		</div>
 	</div>
 	<ul class="nav nav-pills" id="TabSet">
-		<li class="active">
+		<li  data-bind="css: Tabs.Overview.isSelected">
 			<a href="#/" id="Overview" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/overview'}"><i class="icon-bar-chart"></i> Overview</a>
 		</li>
-		<li>
+		<li data-bind="css: Tabs.Commodities.isSelected">
 			<a href="#/" id="Commodities" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/commodities'}"><i class="icon-tag"></i> By Commodity <span class="badge badge-info" data-bind="text: TotalCommodities"></span></a>
 		</li>
-		<li>
+		<li data-bind="css: Tabs.Companies.isSelected">
 			<a href="#/" id="Companies" data-bind="attr: {href: '#/state/' + RegionUrlKey + '/' + UrlKey + '/companies'}"><i class="icon-building"></i> By Company <span class="badge badge-info" data-bind="text: TotalCompanies"></span></a>
 		</li>
 	</ul>

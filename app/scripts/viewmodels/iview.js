@@ -77,6 +77,7 @@ define(["datasource/datasource"], function(datasource) {"use strict";
                 $.get("views/" + self.tpl + ".html", function(template) {
                     $viewContainer.html(template);
                     var el = $viewContainer.get(0).firstChild;
+                    data.Tabs = self.Tabs;
                     ko.applyBindings(data, el);
                     LoadSingletonView_Callback(el);
                 });
@@ -84,6 +85,7 @@ define(["datasource/datasource"], function(datasource) {"use strict";
         };
 
         self.showTab = function(tab) {
+            setTabSelection(tab);
             console.log("showTab running");
             var $tvc = $("#tabViewContainer");
             $tvc.hide();
@@ -93,33 +95,43 @@ define(["datasource/datasource"], function(datasource) {"use strict";
                     var el = $tvc.get(0);
                     ko.applyBindings(data, el);
                     $tvc.fadeIn();
-                    self.Tabs.CurrentTab = tab;
                     console.log("showTab finished");
                 });
             });
         };
 
+        function setTabSelection(tab) {
+            self.Tabs.Overview.isSelected('');
+            self.Tabs.Counties.isSelected('');
+            self.Tabs.Commodities.isSelected('');
+            self.Tabs.Companies.isSelected('');
+            tab.isSelected('active');
+        };
+
         self.Tabs = {
-            CurrentTab : this.Overview,
             Overview : {
                 tpl : null,
                 GetData : null,
-                Show : self.showOverview
+                Show : self.showOverview,
+                isSelected : ko.observable()
             },
             Counties : {
                 tpl : 'County-GridView',
                 GetData : datasource.GetCounties,
-                Show : self.showCounties
+                Show : self.showCounties,
+                isSelected : ko.observable()
             },
             Commodities : {
                 tpl : 'Commodity-GridView',
                 GetData : datasource.GetCommodities,
-                Show : self.showCommodities
+                Show : self.showCommodities,
+                isSelected : ko.observable()
             },
             Companies : {
                 tpl : 'Company-GridView',
                 GetData : datasource.GetCompanies,
-                Show : self.showCompanies
+                Show : self.showCompanies,
+                isSelected : ko.observable()
             }
         }
 
