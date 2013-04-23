@@ -1,0 +1,67 @@
+<div id="RegionOverview">
+	RegionOverview
+	<div class="row">
+		<div class="span3">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2"><i class="icon-signin"></i> Total Import</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportTEU)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportSTONS)"></h4></td>
+					</tr>
+					<tr>
+						<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: ('$' + $.number(ImportEstValue))"></h4></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span3">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2"><i class="icon-signout"></i> Total Export</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportTEU)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportSTONS)"></h4></td>
+					</tr>
+					<tr>
+						<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: ('$' + $.number(ExportEstValue))"></h4></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span3">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2"><i class="icon-exchange"></i> Total Import + Export</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalTEU)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalSTONS)"></h4></td>
+					</tr>
+					<tr>
+						<td>Est. Value</td><td class="cell-numeric"><h4 data-bind="text: ('$' + $.number(TotalEstValue))"></h4></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+{
+	"CommodityId": 1,
+	"Name": "ALUMINUM FOIL",
+	"UrlKey": "aluminum-foil",
+	"ImportTEU": 123,
+	"ImportSTONS": 345,
+	"ImportEstValue": 456,
+	"ExportTEU": 678,
+	"ExportSTONS": 890,
+	"ExportEstValue": 1024,
+	"TotalTEU": 678,
+	"TotalSTONS": 890,
+	"TotalEstValue": 1024,
+	"TotalEmployment": 37319,
+	"TotalCounties": 321,
+	"TotalCompanies": 123
+}
