@@ -4,3 +4,7 @@ td.cell-numeric, th.cell-numeric {
 td.cell-border-left, th.cell-border-left {
 	border-left: solid 2px $tableBorder;
 }
+.table th {
+	background-color: $blue;
+	color: $white;
+}
