@@ -15,7 +15,8 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             context.redirect("#/intro");
         });
 
-        self.get(/^\/#\/intro\/{0,1}$/, function(context) {
+        self.get(/#\/intro\/{0,1}$/, function(context) {
+            // was anchored to root slash --> /^\/#\/intro\/{0,1}$/
             // #/intro
             console.log(context.path);
             self.CurrentPageExit = context.SplashPageExit;
@@ -28,13 +29,13 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             $("#ContentContainer").load("views/splash.html");
         });
 
-        self.get(/^\/#\/state\/{0,1}$/, function(context) {
+        self.get(/#\/state\/{0,1}$/, function(context) {
             // #/state
             console.log(context.path);
             context.redirect("#/state/overview");
         });
 
-        self.get(/^\/#\/state\/overview$/, function(context) {
+        self.get(/#\/state\/overview$/, function(context) {
             // #/state/overview
             console.log(context.path);
             context.Exit(function() {
@@ -44,7 +45,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             });
         });
 
-        self.get(/^\/#\/state\/counties$/, function(context) {
+        self.get(/#\/state\/counties$/, function(context) {
             // #/state/counties
             console.log(context.path);
             context.Exit(function() {
@@ -54,7 +55,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             });
         });
 
-        self.get(/^\/#\/state\/commodities$/, function(context) {
+        self.get(/#\/state\/commodities$/, function(context) {
             // #/state/commodities
             console.log(context.path);
             context.Exit(function() {
@@ -64,7 +65,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             });
         });
 
-        self.get(/^\/#\/state\/(region\d{1,2})\/{0,1}$/, function(context) {
+        self.get(/#\/state\/(region\d{1,2})\/{0,1}$/, function(context) {
             // #/state/region##
             console.log(context.path);
             var regionUrlKey = this.params['splat'];
@@ -74,7 +75,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             });
         });
 
-        self.get(/^\/#\/state\/region\d{1,2}\/([^\/]*)\/{0,1}(.*)$/, function(context) {
+        self.get(/#\/state\/region\d{1,2}\/([^\/]*)\/{0,1}(.*)$/, function(context) {
             // #/state/region##/county-name/tab-name
             console.log(context.path);
             var countyUrlKey = this.params['splat'];
@@ -98,7 +99,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             }
         });
 
-        self.get(/^\/#\/commodities\/([^\/]*)\/{0,1}(.*)$/, function(context) {
+        self.get(/#\/commodities\/([^\/]*)\/{0,1}(.*)$/, function(context) {
             // #/commodities/commodity-name/tab-name
             console.log(context.path);
             var commodityUrlKey = this.params['splat'];
