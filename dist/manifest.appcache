@@ -7,7 +7,7 @@
 # context.CurrentPageExit null (undefined, #undefined)
 CACHE MANIFEST
 
-# Time: Tue Apr 23 2013 18:48:38 GMT-0400 (Eastern Daylight Time)
+# Time: Tue Apr 23 2013 21:36:08 GMT-0400 (Eastern Daylight Time)
 # This manifest was created by confess.js, http://github.com/jamesgpearce/confess
 #
 # Retrieved URL: http://localhost:3501/#/intro
@@ -28,11 +28,11 @@ CACHE MANIFEST
 #  configFile: c:\Users\Robert Blaske\AppData\Roaming\npm\node_modules\yeoman\lib\support\confess.json
 
 CACHE:
-../images/3DX_5148-two-longshoremen.jpg
 http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js
 http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js
 http://cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js
 http://www.google-analytics.com/ga.js
+images/3DX_5148-two-longshoremen.jpg
 images/gpa-tag-logo.png
 scripts/amd-app.js
 scripts/plugins.js

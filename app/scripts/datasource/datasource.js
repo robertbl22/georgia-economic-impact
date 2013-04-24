@@ -3,7 +3,7 @@ define([], function() {"use strict";
     var stateData;
     var getState = function(callback) {
         if (!stateData) {
-            $.getJSON("../data/state.json", function(data) {
+            $.getJSON("data/state.json", function(data) {
                 stateData = data;
                 callback(data);
             });
@@ -16,7 +16,7 @@ define([], function() {"use strict";
     var regionData;
     var getRegion = function(callback) {
         if (!regionData) {
-            $.getJSON("../data/region.json", function(data) {
+            $.getJSON("data/region.json", function(data) {
                 regionData = data;
                 callback(data);
             });
@@ -29,7 +29,7 @@ define([], function() {"use strict";
     var countyData;
     var getCounty = function(callback) {
         if (!countyData) {
-            $.getJSON("../data/county.json", function(data) {
+            $.getJSON("data/county.json", function(data) {
                 countyData = data;
                 callback(data);
             });
@@ -41,7 +41,7 @@ define([], function() {"use strict";
     var commodityData;
     var getCommodity = function(callback) {
         if (!commodityData) {
-            $.getJSON("../data/commodity.json", function(data) {
+            $.getJSON("data/commodity.json", function(data) {
                 commodityData = data;
                 callback(data);
             });
