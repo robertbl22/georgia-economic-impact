@@ -1,99 +1,136 @@
 define([], function() {"use strict";
 
-    var stateData;
-    var getState = function(callback) {
-        if (!stateData) {
-            $.getJSON("data/state.json", function(data) {
-                stateData = data;
-                callback(data);
-            });
-        } else {
-            callback(stateData);
-        }
+    /***********************************/
+    /* STATE */
 
-    };
-
-    var regionData;
-    var getRegion = function(callback) {
-        if (!regionData) {
-            $.getJSON("data/region.json", function(data) {
-                regionData = data;
-                callback(data);
-            });
-        } else {
-            callback(regionData);
-        }
-
-    };
-
-    var countyData;
-    var getCounty = function(callback) {
-        if (!countyData) {
-            $.getJSON("data/county.json", function(data) {
-                countyData = data;
-                callback(data);
-            });
-        } else {
-            callback(countyData);
+    var State = {
+        stateData : null,
+        countiesData : null,
+        commoditiesData : null,
+        companiesData : null,
+        GetState : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetState";
+            AjaxPost(url, '{}', this.stateData, callback);
+        },
+        GetCounties : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCounties";
+            AjaxPost(url, "{}", this.countiesData, callback);
+        },
+        GetCommodities : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCommodities";
+            var pageIndex = '{"PageIndex":0}';
+            AjaxPost(url, pageIndex, this.commoditiesData, callback);
+        },
+        GetCompanies : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCompanies";
+            var pageIndex = '{"PageIndex":0}';
+            AjaxPost(url, pageIndex, this.companiesData, callback);
         }
     };
 
-    var commodityData;
-    var getCommodity = function(callback) {
-        if (!commodityData) {
-            $.getJSON("data/commodity.json", function(data) {
-                commodityData = data;
-                callback(data);
-            });
-        } else {
-            callback(commodityData);
+    /***********************************/
+    /* REGION */
+
+    var Region = {
+        regionData : null,
+        GetRegion : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetRegion";
+            //TODO: get urlkey from url
+            var urlKey = '{"RegionUrlKey" : "region1"}';
+            AjaxPost(url, urlKey, this.regionData, callback);
         }
     };
 
-    var commoditiesData;
-    var getCommodities = function(callback) {
-        if (!commoditiesData) {
-            $.getJSON("data/commodities.json", function(data) {
-                commoditiesData = data;
-                callback(data);
-            });
-        } else {
-            callback(commoditiesData);
+    /***********************************/
+    /* COUNTIES */
+
+    var County = {
+        countyData : null,
+        companiesData : null,
+        commoditiesData : null,
+        GetCounty : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCounty";
+            //TODO: get urlkey from url
+            var urlKey = '{"CountyUrlKey" : "chatham-county"}';
+            AjaxPost(url, urlKey, this.countyData, callback);
+        },
+        GetCommodities : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesByCounty";
+            //TODO: get urlkey from url
+            var urlKey = '{"CountyUrlKey" : "chatham-county"}';
+            AjaxPost(url, urlKey, this.commoditiesData, callback);
+        },
+        GetCompanies : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCounty";
+            //TODO: get urlkey from url
+            var urlKey = '{"CountyUrlKey" : "chatham-county"}';
+            AjaxPost(url, urlKey, this.companiesData, callback);
         }
     };
 
-    var companiesData;
-    var getCompanies = function(callback) {
-        if (!companiesData) {
-            $.getJSON("data/companies.json", function(data) {
-                companiesData = data;
-                callback(data);
-            });
-        } else {
-            callback(companiesData);
+    /***********************************/
+    /* COMMODITIES */
+
+    var Commodity = {
+        commodityData : null,
+        companiesData : null,
+        countiesData : null,
+        GetCommodity : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommodity";
+            //TODO: get urlkey from url
+            var urlKey = '{"CommodityUrlKey" : "silver-bars"}';
+            AjaxPost(url, urlKey, this.commodityData, callback);
+        },
+        GetCounties : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCountiesByCommodity";
+            //TODO: get urlkey from url
+            var urlKey = '{"CommodityUrlKey" : "silver-bars"}';
+            AjaxPost(url, urlKey, this.countiesData, callback);
+        },
+        GetCompanies : function(callback) {
+            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCommodity";
+            //TODO: get urlkey from url
+            var urlKey = '{"CommodityUrlKey" : "silver-bars"}';
+            AjaxPost(url, urlKey, this.companiesData, callback);
         }
     };
 
-    var countiesData;
-    var getCounties = function(callback) {
-        if (!countiesData) {
-            $.getJSON("data/counties.json", function(data) {
-                countiesData = data;
-                callback(data);
-            });
-        } else {
-            callback(countiesData);
-        }
-    };
+    /***********************************/
+    /* Public interface */
 
     return {
-        GetState : getState,
-        GetRegion : getRegion,
-        GetCounty : getCounty,
-        GetCommodity : getCommodity,
-        GetCommodities : getCommodities,
-        GetCounties : getCounties,
-        GetCompanies : getCompanies
+        State : State,
+        Region : Region,
+        County : County,
+        Commodity : Commodity
     };
+
+    /***********************************/
+    /* Helper methods */
+
+    function AjaxPost(url, data, datacache, callback) {
+        if (!datacache) {
+            $.ajax({
+                type : "POST",
+                url : "http://localhost" + url,
+                data : data,
+                contentType : "application/json; charset=utf-8",
+                dataType : "json",
+                success : function(msg) {
+                    var data = JSON.parse(msg.d);
+                    console.log(data);
+                    datacache = data;
+                    callback(data);
+                },
+                error : function(msg) {
+                    console.log("Error! " + msg);
+                    console.log(msg)
+                    //TODO: Handle ajax error condition
+                }
+            });
+        } else {
+            callback(datacache);
+        }
+    }
 
 });

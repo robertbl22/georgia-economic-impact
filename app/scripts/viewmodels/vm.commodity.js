@@ -7,9 +7,11 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         self.ViewElementId = "CommodityView";
         self.Title = "UNTITLED COMMODITY";
         self.tpl = 'Commodity-View';
-        self.GetData = datasource.GetCommodity;
+        self.GetData = datasource.Commodity.GetCommodity;
         self.Tabs.Overview.tpl = 'Commodity-Overview';
-        self.Tabs.Overview.GetData = datasource.GetCommodity;
+        self.Tabs.Overview.GetData = datasource.Commodity.GetCommodity;
+        self.Tabs.Companies.GetData = datasource.Commodity.GetCompanies;
+        self.Tabs.Counties.GetData = datasource.Commodity.GetCounties;
 
         self.isTypeOf = function(obj) {
             return ( obj instanceof CommodityView);

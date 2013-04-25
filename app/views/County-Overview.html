@@ -10,7 +10,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportTEU)"></h4></td>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportTEUs)"></h4></td>
 					</tr>
 					<tr>
 						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportSTONS)"></h4></td>
@@ -30,7 +30,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportTEU)"></h4></td>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportTEUs)"></h4></td>
 					</tr>
 					<tr>
 						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportSTONS)"></h4></td>
@@ -52,7 +52,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalTEU)"></h4></td>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalTEUs)"></h4></td>
 					</tr>
 					<tr>
 						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalSTONS)"></h4></td>
@@ -65,7 +65,7 @@
 		</div>
 		<div class="span3">
 			<div class="well alert-info" style="text-align: center">
-				<h1><i class="icon-group"></i></h1><h5>Economic Impact on Employment</h5><h3 data-bind="text: $.number(TotalEmployment)"></h3>
+				<h1><i class="icon-group"></i></h1><h5>Economic Impact on <span data-bind="text: Name"></span>&rsquo;s Employment</h5><h3 data-bind="text: $.number(TotalEmployment)"></h3>
 			</div>
 		</div>
 	</div>

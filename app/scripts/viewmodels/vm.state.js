@@ -7,9 +7,12 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         self.ViewElementId = "StateView";
         self.Title = "The State of Georgia";
         self.tpl = 'State-View';
-        self.GetData = datasource.GetState;
+        self.GetData = datasource.State.GetState;
         self.Tabs.Overview.tpl = 'State-Overview';
-        self.Tabs.Overview.GetData = datasource.GetState;
+        self.Tabs.Overview.GetData = datasource.State.GetState;
+        self.Tabs.Counties.GetData = datasource.State.GetCounties;
+        self.Tabs.Commodities.GetData = datasource.State.GetCommodities;
+        self.Tabs.Companies.GetData = datasource.State.GetCompanies;
 
         self.isTypeOf = function(obj) {
             return ( obj instanceof StateView);

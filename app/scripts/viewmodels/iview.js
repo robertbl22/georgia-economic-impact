@@ -117,19 +117,19 @@ define(["datasource/datasource"], function(datasource) {"use strict";
             },
             Counties : {
                 tpl : 'County-GridView',
-                GetData : datasource.GetCounties,
+                GetData : null,
                 Show : self.showCounties,
                 isSelected : ko.observable()
             },
             Commodities : {
                 tpl : 'Commodity-GridView',
-                GetData : datasource.GetCommodities,
+                GetData : null,
                 Show : self.showCommodities,
                 isSelected : ko.observable()
             },
             Companies : {
                 tpl : 'Company-GridView',
-                GetData : datasource.GetCompanies,
+                GetData : null,
                 Show : self.showCompanies,
                 isSelected : ko.observable()
             }

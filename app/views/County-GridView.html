@@ -19,10 +19,10 @@
 		<tbody data-bind="foreach: $data">
 			<tr>
 				<td><a data-bind="text: Name, attr: {href: ('#/state/' + RegionUrlKey + '/' + UrlKey)}"></a></td>
-				<td data-bind="text: $.number(ImportTEU)" class="cell-numeric cell-border-left"></td>
+				<td data-bind="text: $.number(ImportTEUs)" class="cell-numeric cell-border-left"></td>
 				<td data-bind="text: $.number(ImportSTONS)" class="cell-numeric"></td>
 				<td data-bind="text: ('$' + $.number(ImportEstValue))" class="cell-numeric"></td>
-				<td data-bind="text: $.number(ExportTEU)" class="cell-numeric cell-border-left"></td>
+				<td data-bind="text: $.number(ExportTEUs)" class="cell-numeric cell-border-left"></td>
 				<td data-bind="text: $.number(ExportSTONS)" class="cell-numeric"></td>
 				<td data-bind="text: ('$' + $.number(ExportEstValue))" class="cell-numeric"></td>
 			</tr>

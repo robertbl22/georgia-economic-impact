@@ -7,9 +7,12 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
         self.use(PageExit);
 
         /**************************************/
-        /* Routes */
+        /* Routing Rules */
        
-       self.get('#/', function(context) {
+       /**************************************/
+        /* INTRO */
+
+        self.get('#/', function(context) {
             // #/
             console.log(context.path);
             context.redirect("#/intro");
@@ -21,13 +24,16 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             console.log(context.path);
             self.CurrentPageExit = context.SplashPageExit;
             /*
-            console.log(context);
-            console.log(this);
-            console.log(self);
-            */
+             console.log(context);
+             console.log(this);
+             console.log(self);
+             */
             console.log("context.CurrentPageExit " + context.CurrentPageExit)
             $("#ContentContainer").load("views/splash.html");
         });
+
+        /**************************************/
+        /* STATE */
 
         self.get(/#\/state\/{0,1}$/, function(context) {
             // #/state
@@ -65,6 +71,9 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             });
         });
 
+        /**************************************/
+        /* REGIONS */
+
         self.get(/#\/state\/(region\d{1,2})\/{0,1}$/, function(context) {
             // #/state/region##
             console.log(context.path);
@@ -74,6 +83,9 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
                 vm.RegionView.Show(vm.RegionView.Tabs.Overview.Show)
             });
         });
+        
+        /**************************************/
+        /* COUNTIES */
 
         self.get(/#\/state\/region\d{1,2}\/([^\/]*)\/{0,1}(.*)$/, function(context) {
             // #/state/region##/county-name/tab-name
@@ -98,6 +110,9 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
                     });
             }
         });
+        
+        /**************************************/
+        /* COMMODITIES */
 
         self.get(/#\/commodities\/([^\/]*)\/{0,1}(.*)$/, function(context) {
             // #/commodities/commodity-name/tab-name
@@ -123,6 +138,9 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
                     });
             }
         });
+        
+        /**************************************/
+        /* DEFAULT (MUST BE THE LAST RULE) */
 
         self.get('', function(context) {
             // Default route
