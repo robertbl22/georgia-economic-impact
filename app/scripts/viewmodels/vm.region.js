@@ -7,9 +7,9 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         self.ViewType = "RegionView";
         self.IdKey = 'RegionUrlKey';
         self.Title = "Untitled Region";
-        self.tpl = 'Region-View';
+        self.tpl = 'view-containers/Region-View';
         self.GetData = datasource.Region.GetRegion;
-        self.Tabs.Overview.tpl = 'Region-Overview';
+        self.Tabs.Overview.tpl = 'tab-overviews/Region-Overview';
         self.Tabs.Overview.GetData = datasource.Region.GetRegion;
 
         self.viewElement

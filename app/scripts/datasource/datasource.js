@@ -63,6 +63,10 @@ define([], function() {"use strict";
         GetCompanies : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCounty";
             AjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
+        },
+        Search : function(searchterm, Callback) {
+            if (Callback)
+                Callback("region1", searchterm);
         }
     };
 
@@ -87,6 +91,10 @@ define([], function() {"use strict";
         GetCompanies : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCommodity";
             AjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
+        },
+        Search : function(searchterm, Callback) {
+            if (Callback)
+                Callback(searchterm);
         }
     };
 
@@ -121,7 +129,7 @@ define([], function() {"use strict";
                         event.LoadedData = data;
                         $.event.trigger(event);
                     }
-                    
+
                     console.log("AjaxPost has notified listeners");
 
                     callback(data);

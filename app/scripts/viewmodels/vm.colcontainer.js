@@ -1,58 +1,51 @@
-define(function() {"use strict";
-
-    var searchView = {
-        CommoditySearchTerm : ko.observable(),
-        CountySearchTerm : ko.observable()
-    };
+define(["ui-controls/searchcontrols", "ui-controls/statemapcontrol"], function(SearchControls, StateMapControl) {"use strict";
 
     function ColContainerView() {
-        console.log(this);
         var self = this;
-        
-        var $el;
-        
+        self.isSearchControlsLoaded = false;
+        self.isStateMapControlLoaded = false;
+        var $parentContainer;
+
         self.Show = function(callback) {
             console.log("ColContainerView.Show running");
-            
-            if($("#ColContainerView").length){
+
+            if ($("#ColContainerView").length) {
                 console.log("#ColContainerView exists");
                 console.log($("#ColContainerView"));
-                if(callback){
+                if (callback) {
                     callback();
                     return;
                 }
             }
-            
-            $.get("views/2-Col-Container.html", function(template) {
-                var $cc = $("#ContentContainer");
-                //var el = $cc.get(0);
-                $cc.hide().html(template);
-                ko.applyBindings(searchView, $("#SearchTools").get(0));
-                $cc.fadeIn(function() {
-                    console.log("ColContainerView.Show finished");
-                    // Mockup button behaviors
-                    $("#SearchTools .btn:eq(0)").click(function(e) {
-                        console.log("button 1 clicked");
-                        e.preventDefault();
-                        document.location = "#/commodities/aluminum-foil";
-                    });
-                    $("#SearchTools .btn:eq(1)").click(function(e) {
-                        console.log("button 2 clicked");
-                        e.preventDefault();
-                        document.location = "#/state/region12/chatham-county";
-                    });
-                    
-                    var $stateMapControl = $("#StateMapControl");
-                    $stateMapControl.addClass("small").fadeIn().removeClass("small");
 
-                    if (callback) {
-                        callback();
+            $.get("views/view-containers/ColContainerView.html", function(template) {
+                $parentContainer = $("#ContentContainer");
+                $parentContainer.hide().html(template);
+                var $scc = $parentContainer.find("#SearchControlContainer");
+
+                $parentContainer.bind("ui_controls_loaded", function(e, source) {
+                    console.log("ui_controls_loaded!");
+                    if (source == "SearchControls")
+                        self.isSearchControlsLoaded = true;
+                    if (source == "StateMapControl")
+                        self.isStateMapControlLoaded = true;
+                    if (self.isSearchControlsLoaded && self.isStateMapControlLoaded) {
+                        console.log("showing #ContentContainer");
+                        $parentContainer.fadeIn();
+                        if (callback) {
+                            callback();
+                        }
                     }
                 });
+                
+                SearchControls.Show($scc);
+                StateMapControl.Show($scc);
             });
         };
-        
-        return (self);
+
+        return {
+            Show : self.Show
+        };
     };
 
     return (new ColContainerView());

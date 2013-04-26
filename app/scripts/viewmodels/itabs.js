@@ -1,4 +1,4 @@
-define(["components/pageddataset"], function(PagedDataset) {"use strict";
+define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
 
     /* Constructor */
     function ITabs(parent) {
@@ -86,7 +86,7 @@ define(["components/pageddataset"], function(PagedDataset) {"use strict";
         };
 
         self.Counties = {
-            tpl : 'County-GridView',
+            tpl : 'tab-gridviews/County-GridView',
             GetData : null,
             Show : self.showCounties,
             isSelected : ko.observable(),
@@ -94,7 +94,7 @@ define(["components/pageddataset"], function(PagedDataset) {"use strict";
         };
 
         self.Commodities = {
-            tpl : 'Commodity-GridView',
+            tpl : 'tab-gridviews/Commodity-GridView',
             GetData : null,
             Show : self.showCommodities,
             isSelected : ko.observable(),
@@ -102,7 +102,7 @@ define(["components/pageddataset"], function(PagedDataset) {"use strict";
         };
 
         self.Companies = {
-            tpl : 'Company-GridView',
+            tpl : 'tab-gridviews/Company-GridView',
             GetData : null,
             Show : self.showCompanies,
             isSelected : ko.observable(),

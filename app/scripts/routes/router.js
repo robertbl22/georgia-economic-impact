@@ -36,7 +36,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             context.redirect("#/state/overview");
         });
 
-        self.get(/#\/state\/overview$/, function(context) {
+        self.get(/#\/state\/overview\/{0,1}$/, function(context) {
             // #/state/overview
             console.log(context.path);
             context.Exit(function() {
@@ -49,7 +49,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             });
         });
 
-        self.get(/#\/state\/counties$/, function(context) {
+        self.get(/#\/state\/counties\/{0,1}$/, function(context) {
             // #/state/counties
             console.log(context.path);
             context.Exit(function() {
@@ -64,7 +64,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             });
         });
 
-        self.get(/#\/state\/commodities$/, function(context) {
+        self.get(/#\/state\/commodities\/{0,1}$/, function(context) {
             // #/state/commodities
             console.log(context.path);
             context.Exit(function() {
@@ -143,6 +143,12 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
 
         /**************************************/
         /* COMMODITIES */
+
+        self.get(/#\/commodities\/{0,1}$/, function(context) {
+            // #/commodities/
+            console.log(context.path);
+            context.redirect("#/state");
+        });
 
         self.get(/#\/commodities\/([^\/]*)\/{0,1}(.*)$/, function(context) {
             // #/commodities/commodity-name/tab-name
