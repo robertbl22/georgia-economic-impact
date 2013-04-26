@@ -1,0 +1,15 @@
+<div class="pagination pagination-centered" data-bind="visible: $root.hasPages()">
+	<ul>
+		<li data-bind="css: { disabled: $root.isFirstPage() }">
+			<a data-bind="click : $root.pageBack">&laquo;</a>
+		</li>
+		<!--  ko foreach: $data.pages -->
+		<li data-bind="css: { active: $root.isCurrentPage($index()) }">
+			<a data-bind="text: $index() + 1, click: $root.setPageIndex"></a>
+		</li>
+		<!-- /ko -->
+		<li data-bind="css: { disabled: $root.isLastPage() }">
+			<a data-bind="click : $root.pageForward">&raquo;</a>
+		</li>
+	</ul>
+</div>

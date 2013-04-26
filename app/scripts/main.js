@@ -11,7 +11,7 @@ require.config({
 require(['routes/router'], function(router) {"use strict";
 
     $("#GPALogoBanner").delay(50).slideDown();
-    //$("#LocationPicker").fadeIn("slow");
+    //$("#StateMapControl").fadeIn("slow");
 
     //infuser.defaults.templateSuffix = ".tmpl.html";
     infuser.defaults.templateUrl = "/views";

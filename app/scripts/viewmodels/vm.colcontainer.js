@@ -42,8 +42,8 @@ define(function() {"use strict";
                         document.location = "#/state/region12/chatham-county";
                     });
                     
-                    var $picker = $("#LocationPicker");
-                    $picker.addClass("small").fadeIn().removeClass("small");
+                    var $stateMapControl = $("#StateMapControl");
+                    $stateMapControl.addClass("small").fadeIn().removeClass("small");
 
                     if (callback) {
                         callback();

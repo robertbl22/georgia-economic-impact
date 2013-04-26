@@ -1,4 +1,4 @@
-define(["viewmodels/pageddataset"], function(PagedDataset) {"use strict";
+define(["components/pageddataset"], function(PagedDataset) {"use strict";
 
     /* Constructor */
     function ITabs(parent) {
