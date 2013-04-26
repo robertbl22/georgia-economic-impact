@@ -11,7 +11,8 @@
 @import "components/html";
 @import "components/header";
 @import "components/big-slogan";
-@import "components/search";
+@import "components/searchcontrols";
+@import "components/statemapcontrol";
 @import "components/diagnostic-panel";
 @import "components/footer";
 @import "components/datagrid";
@@ -40,14 +41,15 @@
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
 	@import "components/header-768-979";
-	@import "components/search-768-979";
+	@import "components/searchcontrols-768-979";
+	@import "components/statemapcontrol-768-979";
 	@import "views/splash-768-979";
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
 	@import "views/2-col-container-767";
-	@import "components/search-767";
+	@import "components/statemapcontrol-767";
 	@import "views/splash-767";
 }
 
