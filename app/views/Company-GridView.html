@@ -1,5 +1,19 @@
 <div id="CompanyGridView">
-	CompanyGridView
+	<div class="pagination pagination-centered" data-bind="visible: $root.hasPages()">
+		<ul>
+			<li data-bind="css: { disabled: $root.isFirstPage() }">
+				<a data-bind="click : $root.pageBack">&laquo;</a>
+			</li>
+			<!--  ko foreach: $data.pages -->
+			<li data-bind="css: { active: $root.isCurrentPage($index()) }">
+				<a data-bind="text: $index() + 1, click: $root.setPageIndex"></a>
+			</li>
+			<!-- /ko -->
+			<li data-bind="css: { disabled: $root.isLastPage() }">
+				<a data-bind="click : $root.pageForward">&raquo;</a>
+			</li>
+		</ul>
+	</div>
 	<table class="table table-bordered table-striped table-condensed" title="Company import and export">
 		<thead>
 			<tr>
@@ -16,7 +30,7 @@
 				<th>Est.&nbsp;Value</th>
 			</tr>
 		</thead>
-		<tbody data-bind="foreach: $data">
+		<tbody data-bind="foreach: $data.dataset">
 			<tr>
 				<td data-bind="text: Name"></td>
 				<td data-bind="text: $.number(ImportTEUs)" class="cell-numeric cell-border-left"></td>
@@ -27,5 +41,25 @@
 				<td data-bind="text: ('$' + $.number(ExportEstValue))" class="cell-numeric"></td>
 			</tr>
 		</tbody>
+		<tbody data-bind="visible: $root.dataset().length === 0">
+			<tr>
+				<td colspan="7"><div class="well-small">No records to display</div></td>
+			</tr>
+		</tbody>
 	</table>
+	<div class="pagination pagination-centered" data-bind="visible: $root.hasPages()">
+		<ul>
+			<li data-bind="css: { disabled: $root.isFirstPage() }">
+				<a data-bind="click : $root.pageBack">&laquo;</a>
+			</li>
+			<!--  ko foreach: $data.pages -->
+			<li data-bind="css: { active: $root.isCurrentPage($index()) }">
+				<a data-bind="text: $index() + 1, click: $root.setPageIndex"></a>
+			</li>
+			<!-- /ko -->
+			<li data-bind="css: { disabled: $root.isLastPage() }">
+				<a data-bind="click : $root.pageForward">&raquo;</a>
+			</li>
+		</ul>
+	</div>
 </div>

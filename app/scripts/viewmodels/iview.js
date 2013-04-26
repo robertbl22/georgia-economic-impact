@@ -1,37 +1,28 @@
-define(["datasource/datasource"], function(datasource) {"use strict";
+define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs) {"use strict";
 
     /* Constructor */
     function IView() {
         var self = this;
+
+        self.ViewType = "IView";
+        self.IdKey = '';
         self.viewElement = null;
+        self.CurrentViewID = "";
+        self.GetData = null;
+        self.UrlKeys = {};
+        self.Tabs = new ITabs(self);
 
-        self.showOverview = function() {
-            console.log("showOverview running");
-            self.showTab(self.Tabs.Overview);
-        };
+        /**************************************/
+        /* Display logic */
 
-        self.showCounties = function() {
-            console.log("showCounties running");
-            self.showTab(self.Tabs.Counties);
-        };
-
-        self.showCommodities = function() {
-            console.log("showCommodities running");
-            self.showTab(self.Tabs.Commodities);
-        };
-
-        self.showCompanies = function() {
-            console.log("showCompanies running");
-            self.showTab(self.Tabs.Companies);
-        };
-
-        self.Show = function(callback) {
+        self.Show = function(params) {
             console.log("Show running");
             document.title = self.Title;
+            self.UrlKeys = params.UrlKeys;
             self.LoadSingletonView(function() {
                 console.log("Show finished");
-                if (callback) {
-                    callback();
+                if (params.Callback) {
+                    params.Callback();
                 }
             });
 
@@ -39,33 +30,45 @@ define(["datasource/datasource"], function(datasource) {"use strict";
 
         self.LoadSingletonView = function(Show_Callback) {
             var $viewContainer = $("#viewContainer");
-            if (self.viewElement && self.viewElement.innerHTML != "") {
-                /*****************/
-                /* View exists   */
-                console.log("self.viewElement exists");
+            console.log("LoadSingletonView running");
+
+            /***************************************************/
+            /* Is view cached? Is it the one that we want? */
+            if (self.viewElement && self.viewElement.innerHTML != "" && self.viewElement.ViewId === self.UrlKeys[self.IdKey]) {
+                console.log("A view is cached, and is the one we want.")
+                // Get the current view from the DOM
                 var el = $viewContainer.get(0).firstChild;
-                if (!el || el.id !== self.ViewElementId) {
-                    /********************/
-                    /* Not current view */
-                    console.log("self.viewElement not current view");
+
+                // Are they the same?
+                if (el && el.id === self.ViewType) {
+
+                    /********************************/
+                    /* This is the current view     */
+                    console.log("This view is already the current view.");
+                    Show_Callback();
+
+                } else {
+
+                    /******************************************/
+                    /* Not current view, make it the current */
+                    console.log("Not current view, make it the current");
                     $viewContainer.hide();
                     //TODO: Ajax spinner
                     $viewContainer.find("#tabViewContainer").empty();
                     $viewContainer.html(self.viewElement);
                     $viewContainer.fadeIn(Show_Callback);
-                } else {
-                    /*******************/
-                    /* Is current view */
-                    console.log("self.viewElement is current view");
-                    Show_Callback();
+
                 }
             } else {
-                /***********************/
-                /* View does not exist */
+
+                /***********************************/
+                /* View is not cached. Create it. */
                 $viewContainer.hide();
                 //TODO: Ajax spinner
                 $viewContainer.find("#tabViewContainer").empty();
                 self.LoadView($viewContainer, function(el) {
+                    el.ViewClassName = self.constructor.name;
+                    el.ViewId = self.UrlKeys[self.IdKey];
                     self.viewElement = el;
                     $viewContainer.fadeIn(Show_Callback)
                 });
@@ -73,68 +76,22 @@ define(["datasource/datasource"], function(datasource) {"use strict";
         };
 
         self.LoadView = function($viewContainer, LoadSingletonView_Callback) {
-            this.GetData(function(data) {
-                $.get("views/" + self.tpl + ".html", function(template) {
-                    $viewContainer.html(template);
-                    var el = $viewContainer.get(0).firstChild;
-                    data.Tabs = self.Tabs;
-                    ko.applyBindings(data, el);
-                    LoadSingletonView_Callback(el);
-                });
+            this.GetData({
+                "UrlKeys" : self.UrlKeys,
+                "Callback" : function(data) {
+                    $.get("views/" + self.tpl + ".html", function(template) {
+                        $viewContainer.html(template);
+                        var el = $viewContainer.get(0).firstChild;
+                        data.Tabs = self.Tabs;
+                        ko.applyBindings(data, el);
+                        LoadSingletonView_Callback(el);
+                    });
+                }
             });
         };
 
-        self.showTab = function(tab) {
-            setTabSelection(tab);
-            console.log("showTab running");
-            var $tvc = $("#tabViewContainer");
-            $tvc.hide();
-            tab.GetData(function(data) {
-                $.get("views/" + tab.tpl + ".html", function(template) {
-                    $tvc.html(template);
-                    var el = $tvc.get(0);
-                    ko.applyBindings(data, el);
-                    $tvc.fadeIn();
-                    console.log("showTab finished");
-                });
-            });
-        };
-
-        function setTabSelection(tab) {
-            self.Tabs.Overview.isSelected('');
-            self.Tabs.Counties.isSelected('');
-            self.Tabs.Commodities.isSelected('');
-            self.Tabs.Companies.isSelected('');
-            tab.isSelected('active');
-        };
-
-        self.Tabs = {
-            Overview : {
-                tpl : null,
-                GetData : null,
-                Show : self.showOverview,
-                isSelected : ko.observable()
-            },
-            Counties : {
-                tpl : 'County-GridView',
-                GetData : null,
-                Show : self.showCounties,
-                isSelected : ko.observable()
-            },
-            Commodities : {
-                tpl : 'Commodity-GridView',
-                GetData : null,
-                Show : self.showCommodities,
-                isSelected : ko.observable()
-            },
-            Companies : {
-                tpl : 'Company-GridView',
-                GetData : null,
-                Show : self.showCompanies,
-                isSelected : ko.observable()
-            }
-        }
-
+        /**************************************/
+        /* Public interface */
         return {
             Title : "Untitled View",
             tpl : "",

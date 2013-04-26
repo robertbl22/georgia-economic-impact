@@ -1,5 +1,7 @@
 define([], function() {"use strict";
 
+    var self = this;
+
     /***********************************/
     /* STATE */
 
@@ -8,23 +10,24 @@ define([], function() {"use strict";
         countiesData : null,
         commoditiesData : null,
         companiesData : null,
-        GetState : function(callback) {
+        GetState : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetState";
-            AjaxPost(url, '{}', this.stateData, callback);
+            var event = {
+                type : "state_data_loaded"
+            }
+            AjaxPost(url, params.UrlKeys, this.stateData, params.Callback, event);
         },
-        GetCounties : function(callback) {
+        GetCounties : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCounties";
-            AjaxPost(url, "{}", this.countiesData, callback);
+            AjaxPost(url, params.UrlKeys, this.countiesData, params.Callback);
         },
-        GetCommodities : function(callback) {
+        GetCommodities : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCommodities";
-            var pageIndex = '{"PageIndex":0}';
-            AjaxPost(url, pageIndex, this.commoditiesData, callback);
+            AjaxPost(url, params.UrlKeys, this.commoditiesData, params.Callback);
         },
-        GetCompanies : function(callback) {
+        GetCompanies : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCompanies";
-            var pageIndex = '{"PageIndex":0}';
-            AjaxPost(url, pageIndex, this.companiesData, callback);
+            AjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
         }
     };
 
@@ -33,11 +36,9 @@ define([], function() {"use strict";
 
     var Region = {
         regionData : null,
-        GetRegion : function(callback) {
+        GetRegion : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetRegion";
-            //TODO: get urlkey from url
-            var urlKey = '{"RegionUrlKey" : "region1"}';
-            AjaxPost(url, urlKey, this.regionData, callback);
+            AjaxPost(url, params.UrlKeys, this.regionData, params.Callback);
         }
     };
 
@@ -48,23 +49,20 @@ define([], function() {"use strict";
         countyData : null,
         companiesData : null,
         commoditiesData : null,
-        GetCounty : function(callback) {
+        GetCounty : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCounty";
-            //TODO: get urlkey from url
-            var urlKey = '{"CountyUrlKey" : "chatham-county"}';
-            AjaxPost(url, urlKey, this.countyData, callback);
+            var event = {
+                type : "county_data_loaded"
+            }
+            AjaxPost(url, params.UrlKeys, this.countyData, params.Callback, event);
         },
-        GetCommodities : function(callback) {
+        GetCommodities : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesByCounty";
-            //TODO: get urlkey from url
-            var urlKey = '{"CountyUrlKey" : "chatham-county"}';
-            AjaxPost(url, urlKey, this.commoditiesData, callback);
+            AjaxPost(url, params.UrlKeys, this.commoditiesData, params.Callback);
         },
-        GetCompanies : function(callback) {
+        GetCompanies : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCounty";
-            //TODO: get urlkey from url
-            var urlKey = '{"CountyUrlKey" : "chatham-county"}';
-            AjaxPost(url, urlKey, this.companiesData, callback);
+            AjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
         }
     };
 
@@ -75,23 +73,20 @@ define([], function() {"use strict";
         commodityData : null,
         companiesData : null,
         countiesData : null,
-        GetCommodity : function(callback) {
+        GetCommodity : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommodity";
-            //TODO: get urlkey from url
-            var urlKey = '{"CommodityUrlKey" : "silver-bars"}';
-            AjaxPost(url, urlKey, this.commodityData, callback);
+            var event = {
+                type : "commodity_data_loaded"
+            }
+            AjaxPost(url, params.UrlKeys, this.commodityData, params.Callback, event);
         },
-        GetCounties : function(callback) {
+        GetCounties : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCountiesByCommodity";
-            //TODO: get urlkey from url
-            var urlKey = '{"CommodityUrlKey" : "silver-bars"}';
-            AjaxPost(url, urlKey, this.countiesData, callback);
+            AjaxPost(url, params.UrlKeys, this.countiesData, params.Callback);
         },
-        GetCompanies : function(callback) {
+        GetCompanies : function(params) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCommodity";
-            //TODO: get urlkey from url
-            var urlKey = '{"CommodityUrlKey" : "silver-bars"}';
-            AjaxPost(url, urlKey, this.companiesData, callback);
+            AjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
         }
     };
 
@@ -108,18 +103,27 @@ define([], function() {"use strict";
     /***********************************/
     /* Helper methods */
 
-    function AjaxPost(url, data, datacache, callback) {
+    function AjaxPost(url, postData, datacache, callback, event) {
+        console.log($.serializeJSON(postData));
         if (!datacache) {
             $.ajax({
                 type : "POST",
                 url : "http://localhost" + url,
-                data : data,
+                data : $.serializeJSON(postData),
                 contentType : "application/json; charset=utf-8",
                 dataType : "json",
                 success : function(msg) {
                     var data = JSON.parse(msg.d);
-                    console.log(data);
+                    console.log("AjaxPost was successful!");
                     datacache = data;
+
+                    if (event) {
+                        event.LoadedData = data;
+                        $.event.trigger(event);
+                    }
+                    
+                    console.log("AjaxPost has notified listeners");
+
                     callback(data);
                 },
                 error : function(msg) {
@@ -134,3 +138,4 @@ define([], function() {"use strict";
     }
 
 });
+

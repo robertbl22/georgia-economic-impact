@@ -4,7 +4,8 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         var self = this;
         IView.call(self);
 
-        self.ViewElementId = "RegionView";
+        self.ViewType = "RegionView";
+        self.IdKey = 'RegionUrlKey';
         self.Title = "Untitled Region";
         self.tpl = 'Region-View';
         self.GetData = datasource.Region.GetRegion;
@@ -13,9 +14,9 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
 
         self.viewElement
 
-        self.isTypeOf = function(obj) {
+        /*self.isTypeOf = function(obj) {
             return ( obj instanceof RegionView);
-        }
+        }*/
 
         return (self);
     }

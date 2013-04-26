@@ -4,7 +4,8 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         var self = this;
         IView.call(self);
 
-        self.ViewElementId = "CommodityView";
+        self.ViewType = "CommodityView";
+        self.IdKey = 'CommodityUrlKey';
         self.Title = "UNTITLED COMMODITY";
         self.tpl = 'Commodity-View';
         self.GetData = datasource.Commodity.GetCommodity;
@@ -12,20 +13,20 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         self.Tabs.Overview.GetData = datasource.Commodity.GetCommodity;
         self.Tabs.Companies.GetData = datasource.Commodity.GetCompanies;
         self.Tabs.Counties.GetData = datasource.Commodity.GetCounties;
+        
+        $(document).on("commodity_data_loaded", function(e) {
+            console.log("commodity_data_loaded fired!");
+            console.log(e.LoadedData);
+            self.Tabs.Counties.RecordCount = e.LoadedData.TotalCounties;
+            self.Tabs.Companies.RecordCount = e.LoadedData.TotalCompanies;
+        });
 
-        self.isTypeOf = function(obj) {
+        /*self.isTypeOf = function(obj) {
             return ( obj instanceof CommodityView);
-        }
+        }*/
 
         return (self);
     }
-
-    // Set default tab to Overview
-    /*
-    CommodityView.prototype.Show = function() {
-    IView.prototype.Show.call(this.Tabs.Overview.Show);
-    }
-    */
 
     // Create inheritance
     if (Object.create) {
