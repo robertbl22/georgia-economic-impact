@@ -8,7 +8,7 @@ define([], function() {"use strict";
         //var width = $('.big-slogan').width();
 
         var cb1 = function() {
-            $("#SearchTools").fadeOut(cb2);
+            $("#SearchControl").fadeOut(cb2);
         };
         var cb2 = function() {
             $(".splash h4").slideUp(cb3);
@@ -97,7 +97,7 @@ define([], function() {"use strict";
             //var width = $('.big-slogan').width();
 
             var cb1 = function() {
-                $("#SearchTools").fadeOut(cb2);
+                $("#SearchControl").fadeOut(cb2);
             };
             var cb2 = function() {
                 $(".splash h4").slideUp(cb3);

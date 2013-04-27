@@ -1,11 +1,11 @@
-define(["ui-controls/searchcontrols"], function(SearchControls) {"use strict";
+define(["ui-controls/searchcontrol"], function(SearchControl) {"use strict";
 
     /* Constructor */
     function IContainer() {
         var self = this;
         self.ViewType = "IContainer";
 
-        self.SearchControls = new SearchControls();
+        self.SearchControl = new SearchControl();
 
         /**************************************/
         /* Display logic */
@@ -26,7 +26,8 @@ define(["ui-controls/searchcontrols"], function(SearchControls) {"use strict";
                 }
             }
             return false;
-        }
+        };
+        
         /**************************************/
         /* Public interface */
         return {

@@ -11,16 +11,19 @@
 @import "components/html";
 @import "components/header";
 @import "components/big-slogan";
-@import "components/searchcontrols";
-@import "components/statemapcontrol";
-@import "components/diagnostic-panel";
 @import "components/footer";
-@import "components/datagrid";
+
+/*********************************/
+/* UI-Controls */
+@import "ui-controls/diagnostic-panel";
+@import "ui-controls/searchcontrol";
+@import "ui-controls/statemapcontrol";
+@import "ui-controls/datagrid";
 
 /*********************************/
 /* Views */
 @import "views/splash";
-@import "views/colcontainerview";
+@import "views/twocolumnview";
 
 /*********************************/
 /* Responsive */
@@ -41,15 +44,15 @@
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
 	@import "components/header-768-979";
-	@import "components/searchcontrols-768-979";
-	@import "components/statemapcontrol-768-979";
+	@import "ui-controls/searchcontrol-768-979";
+	@import "ui-controls/statemapcontrol-768-979";
 	@import "views/splash-768-979";
 }
 
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-	@import "views/colcontainerview-767";
-	@import "components/statemapcontrol-767";
+	@import "views/twocolumnview-767";
+	@import "ui-controls/statemapcontrol-767";
 	@import "views/splash-767";
 }
 

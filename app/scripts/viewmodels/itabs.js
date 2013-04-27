@@ -11,12 +11,12 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
         self.showTab = function(tab) {
             setTabSelection(tab);
             console.log("showTab running");
-            var $tvc = $("#tabViewContainer");
+            var $tvc = $("#TabViewContainer");
             $tvc.hide();
             tab.GetData({
                 "UrlKeys" : self.parent.UrlKeys,
                 "Callback" : function(data) {
-                    $.get("views/" + tab.tpl + ".html", function(template) {
+                    $.get("templates/" + tab.tpl + ".html", function(template) {
                         $tvc.html(template);
                         var el = $tvc.get(0);
                         ko.applyBindings(data, el);
@@ -30,9 +30,9 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
         self.showPagedTab = function(tab) {
             setTabSelection(tab);
             console.log("showTabPagedDataset running");
-            var $tvc = $("#tabViewContainer");
+            var $tvc = $("#TabViewContainer");
             $tvc.hide();
-            $.get("views/" + tab.tpl + ".html", function(template) {
+            $.get("templates/" + tab.tpl + ".html", function(template) {
                 $tvc.html(template);
                 var el = $tvc.get(0);
                 var pageSize = 100;
@@ -86,7 +86,7 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
         };
 
         self.Counties = {
-            tpl : 'tab-gridviews/County-GridView',
+            tpl : 'tab-gridviews/CountyGridView',
             GetData : null,
             Show : self.showCounties,
             isSelected : ko.observable(),
@@ -94,7 +94,7 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
         };
 
         self.Commodities = {
-            tpl : 'tab-gridviews/Commodity-GridView',
+            tpl : 'tab-gridviews/CommodityGridView',
             GetData : null,
             Show : self.showCommodities,
             isSelected : ko.observable(),
@@ -102,7 +102,7 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
         };
 
         self.Companies = {
-            tpl : 'tab-gridviews/Company-GridView',
+            tpl : 'tab-gridviews/CompanyGridView',
             GetData : null,
             Show : self.showCompanies,
             isSelected : ko.observable(),

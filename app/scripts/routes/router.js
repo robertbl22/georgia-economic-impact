@@ -40,7 +40,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
             // #/state/overview
             console.log(context.path);
             context.Exit(function() {
-                vm.ColContainerView.Show(function() {
+                vm.TwoColumnView.Show(function() {
                     vm.StateView.Show({
                         "UrlKeys" : {},
                         "Callback" : vm.StateView.Tabs.Overview.Show
@@ -53,7 +53,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
             // #/state/counties
             console.log(context.path);
             context.Exit(function() {
-                vm.ColContainerView.Show(function() {
+                vm.TwoColumnView.Show(function() {
                     vm.StateView.Show({
                         "UrlKeys" : {
                             "PageIndex" : 0
@@ -68,7 +68,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
             // #/state/commodities
             console.log(context.path);
             context.Exit(function() {
-                vm.ColContainerView.Show(function() {
+                vm.TwoColumnView.Show(function() {
                     vm.StateView.Show({
                         "UrlKeys" : {
                             "PageIndex" : 0
@@ -87,7 +87,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
             console.log(context.path);
             var regionUrlKey = this.params['splat'][0];
             console.log(regionUrlKey);
-            vm.ColContainerView.Show(function() {
+            vm.TwoColumnView.Show(function() {
                 vm.RegionView.Show({
                     "UrlKeys" : {
                         "RegionUrlKey" : regionUrlKey
@@ -108,7 +108,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
 
             switch(this.params.splat[1]) {
                 case "commodities":
-                    vm.ColContainerView.Show(function() {
+                    vm.TwoColumnView.Show(function() {
                         vm.CountyView.Show({
                             "UrlKeys" : {
                                 "CountyUrlKey" : countyUrlKey,
@@ -119,7 +119,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
                     });
                     break;
                 case "companies":
-                    vm.ColContainerView.Show(function() {
+                    vm.TwoColumnView.Show(function() {
                         vm.CountyView.Show({
                             "UrlKeys" : {
                                 "CountyUrlKey" : countyUrlKey,
@@ -130,7 +130,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
                     });
                     break;
                 default :
-                    vm.ColContainerView.Show(function() {
+                    vm.TwoColumnView.Show(function() {
                         vm.CountyView.Show({
                             "UrlKeys" : {
                                 "CountyUrlKey" : countyUrlKey
@@ -159,7 +159,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
 
             switch(this.params.splat[1]) {
                 case "counties":
-                    vm.ColContainerView.Show(function() {
+                    vm.TwoColumnView.Show(function() {
                         vm.CommodityView.Show({
                             "UrlKeys" : {
                                 "CommodityUrlKey" : commodityUrlKey,
@@ -170,7 +170,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
                     });
                     break;
                 case "companies":
-                    vm.ColContainerView.Show(function() {
+                    vm.TwoColumnView.Show(function() {
                         vm.CommodityView.Show({
                             "UrlKeys" : {
                                 "CommodityUrlKey" : commodityUrlKey,
@@ -181,7 +181,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
                     });
                     break;
                 default :
-                    vm.ColContainerView.Show(function() {
+                    vm.TwoColumnView.Show(function() {
                         vm.CommodityView.Show({
                             "UrlKeys" : {
                                 "CommodityUrlKey" : commodityUrlKey

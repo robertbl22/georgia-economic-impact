@@ -7,9 +7,9 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         self.ViewType = "CommodityView";
         self.IdKey = 'CommodityUrlKey';
         self.Title = "UNTITLED COMMODITY";
-        self.tpl = 'view-containers/Commodity-View';
+        self.tpl = 'views/CommodityView';
         self.GetData = datasource.Commodity.GetCommodity;
-        self.Tabs.Overview.tpl = 'tab-overviews/Commodity-Overview';
+        self.Tabs.Overview.tpl = 'tab-overviews/CommodityOverview';
         self.Tabs.Overview.GetData = datasource.Commodity.GetCommodity;
         self.Tabs.Companies.GetData = datasource.Commodity.GetCompanies;
         self.Tabs.Counties.GetData = datasource.Commodity.GetCounties;

@@ -16,11 +16,11 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
         /* Display logic */
 
         self.Show = function(params) {
-            console.log("Show running");
+            console.log(self.ViewType + ".Show() running");
             document.title = self.Title;
             self.UrlKeys = params.UrlKeys;
             self.LoadSingletonView(function() {
-                console.log("Show finished");
+                console.log(self.ViewType + ".Show() finished");
                 if (params.Callback) {
                     params.Callback();
                 }
@@ -29,8 +29,8 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
         };
 
         self.LoadSingletonView = function(Show_Callback) {
-            var $viewContainer = $("#viewContainer");
-            console.log("LoadSingletonView running");
+            var $viewContainer = $("#ViewContainer");
+            console.log(self.ViewType + ".LoadSingletonView() running");
 
             /***************************************************/
             /* Is view cached? Is it the one that we want? */
@@ -54,7 +54,7 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
                     console.log("Not current view, make it the current");
                     $viewContainer.hide();
                     //TODO: Ajax spinner
-                    $viewContainer.find("#tabViewContainer").empty();
+                    $viewContainer.find("#TabViewContainer").empty();
                     $viewContainer.html(self.viewElement);
                     $viewContainer.fadeIn(Show_Callback);
 
@@ -65,7 +65,7 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
                 /* View is not cached. Create it. */
                 $viewContainer.hide();
                 //TODO: Ajax spinner
-                $viewContainer.find("#tabViewContainer").empty();
+                $viewContainer.find("#TabViewContainer").empty();
                 self.LoadView($viewContainer, function(el) {
                     el.ViewClassName = self.constructor.name;
                     el.ViewId = self.UrlKeys[self.IdKey];
@@ -79,7 +79,7 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
             this.GetData({
                 "UrlKeys" : self.UrlKeys,
                 "Callback" : function(data) {
-                    $.get("views/" + self.tpl + ".html", function(template) {
+                    $.get("templates/" + self.tpl + ".html", function(template) {
                         $viewContainer.html(template);
                         var el = $viewContainer.get(0).firstChild;
                         data.Tabs = self.Tabs;

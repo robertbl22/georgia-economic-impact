@@ -7,9 +7,9 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         self.ViewType = "StateView";
         self.IdKey = '';
         self.Title = "The State of Georgia";
-        self.tpl = 'view-containers/State-View';
+        self.tpl = 'views/StateView';
         self.GetData = datasource.State.GetState;
-        self.Tabs.Overview.tpl = 'tab-overviews/State-Overview';
+        self.Tabs.Overview.tpl = 'tab-overviews/StateOverview';
         self.Tabs.Overview.GetData = datasource.State.GetState;
         self.Tabs.Counties.GetData = datasource.State.GetCounties;
         self.Tabs.Commodities.GetData = datasource.State.GetCommodities;

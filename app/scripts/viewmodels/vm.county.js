@@ -7,9 +7,9 @@ define(["viewmodels/IView", "datasource/datasource"], function(IView, datasource
         self.ViewType = "CountyView";
         self.IdKey = 'CountyUrlKey';
         self.Title = "Untitled County";
-        self.tpl = 'view-containers/County-View';
+        self.tpl = 'views/CountyView';
         self.GetData = datasource.County.GetCounty;
-        self.Tabs.Overview.tpl = 'tab-overviews/County-Overview';
+        self.Tabs.Overview.tpl = 'tab-overviews/CountyOverview';
         self.Tabs.Overview.GetData = datasource.County.GetCounty;
         self.Tabs.Companies.GetData = datasource.County.GetCompanies;
         self.Tabs.Commodities.GetData = datasource.County.GetCommodities;

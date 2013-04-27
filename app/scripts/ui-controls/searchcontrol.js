@@ -1,7 +1,7 @@
 define(["datasource/datasource"], function(datasource) {"use strict";
 
     /* Constructor */
-    function SearchControls() {
+    function SearchControl() {
 
         var self = this;
 
@@ -58,21 +58,22 @@ define(["datasource/datasource"], function(datasource) {"use strict";
             });
         });
 
-        self.Show = function($parentElement) {
-            $.get("views/ui-controls/SearchControls.html", function(tpl) {
-                console.log("Loaded SearchControls.html");
-                self.RenderTemplate($parentElement, tpl);
+        self.Show = function($eventTarget, $parentElement) {
+            $.get("templates/ui-controls/SearchControl.html", function(tpl) {
+                console.log("Loaded SearchControl.html");
+                self.RenderTemplate($eventTarget, $parentElement, tpl);
                 $("#btnSearchCommodities").click(self.Commodities_ClickHandler);
                 $("#btnSearchCounties").click(self.Counties_ClickHandler);
             });
         };
 
-        self.RenderTemplate = function($parentElement, tpl) {
+        self.RenderTemplate = function($eventTarget, $parentElement, tpl) {
             $parentElement.prepend(tpl);
-            var searchTools = $parentElement.find("#SearchTools").get(0);
-            ko.applyBindings(self, searchTools);
-            $parentElement.trigger("ui_controls_loaded", "SearchControls");
-        }
+            var searchControl = $parentElement.find("#SearchControl").get(0);
+            ko.applyBindings(self, searchControl);
+            console.log("SearchControl triggering ui_controls_loaded");
+            $eventTarget.trigger("ui_controls_loaded", "SearchControl");
+        };
 
         self.Commodities_ClickHandler = function(e) {
             e.preventDefault();
@@ -115,7 +116,7 @@ define(["datasource/datasource"], function(datasource) {"use strict";
 
     }
 
-    //return (new SearchControls());
-    return (SearchControls)
+    //return (new SearchControl());
+    return (SearchControl)
 
 });

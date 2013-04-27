@@ -5,26 +5,32 @@ define(['viewmodels/icontainer'], function(IContainer) {"use strict";
         IContainer.call(self);
         self.ViewType = "SplashView";
 
-        self.isSearchControlsLoaded = false;
+        self.isSearchControlLoaded = false;
 
         self.Render = function(callback) {
-            $.get("views/view-containers/Splash-View.html", function(template) {
-                var $parentContainer = $("#ContentContainer");
-                $parentContainer.hide().html(template);
-                var $scc = $parentContainer.find("#SearchControlContainer");
-                self.DisplayParentContainer($parentContainer, callback);
-                self.SearchControls.Show($scc);
+            $.get("templates/views/SplashView.html", function(template) {
+                
+                // Containers
+                var $parentContentContainer = $("#ContentContainer");
+                $parentContentContainer.hide().html(template);
+                var $eventTarget = $parentContentContainer.find("#" + self.ViewType);
+                var $controlContainer = $parentContentContainer.find("#ControlContainer");
+                
+                // Render
+                self.DisplayParentContainer($eventTarget, $parentContentContainer, callback);
+                self.SearchControl.Show($eventTarget, $controlContainer);
             });
         };
 
-        self.DisplayParentContainer = function($parentContainer, callback) {
-            $parentContainer.bind("ui_controls_loaded", function(e, source) {
+        self.DisplayParentContainer = function($eventTarget, $parentContainer, callback) {
+            $eventTarget.bind("ui_controls_loaded", function(e, source) {
                 console.log("ui_controls_loaded!");
-                if (source == "SearchControls")
-                    self.isSearchControlsLoaded = true;
-                if (self.isSearchControlsLoaded) {
+                if (source == "SearchControl")
+                    self.isSearchControlLoaded = true;
+                if (self.isSearchControlLoaded) {
                     console.log("showing #ContentContainer");
                     $parentContainer.fadeIn();
+                    //$parentContainer.trigger("shown");
                     if (callback) {
                         callback();
                     }
