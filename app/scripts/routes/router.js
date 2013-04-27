@@ -1,4 +1,4 @@
-define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit) {"use strict";
+define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use strict";
 
     return $.sammy(function() {
 
@@ -10,7 +10,7 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
         /* Routing Rules */
 
         /**************************************/
-        /* INTRO */
+        /* SPLASH INTRO */
 
         self.get('#/', function(context) {
             // #/
@@ -23,8 +23,8 @@ define(["viewmodels/viewmodel", "routes/router.pageexit"], function(vm, PageExit
             // #/intro
             console.log(context.path);
             self.CurrentPageExit = context.SplashPageExit;
-            console.log("context.CurrentPageExit " + context.CurrentPageExit)
-            $("#ContentContainer").load("views/splash.html");
+            console.log(vm);
+            vm.SplashView.Show();
         });
 
         /**************************************/

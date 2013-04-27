@@ -1,5 +1,6 @@
 define([], function() {"use strict";
 
+/*
     var SplashPageExit = function(callback) {
         console.log("about to animate");
 
@@ -28,6 +29,7 @@ define([], function() {"use strict";
 
         console.log("animation done");
     };
+    */
 
     // Private variable
     /*

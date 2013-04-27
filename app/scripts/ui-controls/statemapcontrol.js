@@ -25,6 +25,7 @@ define([], function() {"use strict";
 
     }
 
-    return (new StateMapControl());
+    //return (new StateMapControl());
+    return (StateMapControl)
 
 });
