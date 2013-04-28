@@ -1,10 +1,23 @@
-define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use strict";
+define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExit) {"use strict";
 
     return $.sammy(function() {
 
         var self = this;
         //self.currentExit = null;
         self.use(PageExit);
+
+        $(vm.Entities.StateView.Tabs.Overview).bind("beforeshow", vm.Entities.StateView.Show);
+        $(vm.Entities.StateView).bind("beforeshow", vm.Layouts.TwoColumnView.Show);
+        
+        $(vm.Entities.RegionView.Tabs.Overview).bind("beforeshow", vm.Entities.RegionView.Show);
+        $(vm.Entities.RegionView).bind("beforeshow", vm.Layouts.TwoColumnView.Show);
+        
+        $(vm.Entities.CommodityView.Tabs.Overview).bind("beforeshow", vm.Entities.CommodityView.Show);
+        $(vm.Entities.CommodityView).bind("beforeshow", vm.Layouts.TwoColumnView.Show);
+        
+        $(vm.Entities.CountyView.Tabs.Overview).bind("beforeshow", vm.Entities.CountyView.Show);
+        $(vm.Entities.CountyView).bind("beforeshow", vm.Layouts.TwoColumnView.Show);
+        
 
         /**************************************/
         /* Routing Rules */
@@ -14,17 +27,16 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
 
         self.get('#/', function(context) {
             // #/
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             context.redirect("#/intro");
         });
 
         self.get(/#\/intro\/{0,1}$/, function(context) {
             // NOTE: was anchored to root slash --> /^\/#\/intro\/{0,1}$/
             // #/intro
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             self.CurrentPageExit = context.SplashPageExit;
-            console.log(vm);
-            vm.SplashView.Show();
+            vm.Layouts.SplashView.Show();
         });
 
         /**************************************/
@@ -32,50 +44,54 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
 
         self.get(/#\/state\/{0,1}$/, function(context) {
             // #/state
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             context.redirect("#/state/overview");
         });
 
         self.get(/#\/state\/overview\/{0,1}$/, function(context) {
             // #/state/overview
-            console.log(context.path);
-            context.Exit(function() {
-                vm.TwoColumnView.Show(function() {
-                    vm.StateView.Show({
-                        "UrlKeys" : {},
-                        "Callback" : vm.StateView.Tabs.Overview.Show
-                    })
-                });
-            });
+            console.log("[Router] context.path = " + context.path);
+            //context.Exit(function() {
+                var params = {
+                    "UrlKeys" : {},
+                    "Callback" : null
+                }
+                //vm.Layouts.TwoColumnView.Show();
+                //$(vm.Layouts.TwoColumnView).bind("shown", params, vm.Entities.StateView.Show);
+                console.log("[Router] raising StateView shown event");
+                vm.Entities.StateView.Tabs.Overview.Show();
+            //});
         });
 
         self.get(/#\/state\/counties\/{0,1}$/, function(context) {
             // #/state/counties
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             context.Exit(function() {
-                vm.TwoColumnView.Show(function() {
-                    vm.StateView.Show({
-                        "UrlKeys" : {
-                            "PageIndex" : 0
-                        },
-                        "Callback" : vm.StateView.Tabs.Counties.Show
-                    })
-                });
+                var params = {
+                    "UrlKeys" : {
+                        "PageIndex" : 0
+                    },
+                    "Callback" : null
+                }
+                //vm.Layouts.TwoColumnView.Show();
+                //$(vm.Layouts.TwoColumnView).bind("shown", params, vm.Entities.StateView.Show);
+                vm.Entities.StateView.Tabs.CountiesGridView.Show();
             });
         });
 
         self.get(/#\/state\/commodities\/{0,1}$/, function(context) {
             // #/state/commodities
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             context.Exit(function() {
-                vm.TwoColumnView.Show(function() {
-                    vm.StateView.Show({
-                        "UrlKeys" : {
-                            "PageIndex" : 0
-                        },
-                        "Callback" : vm.StateView.Tabs.Commodities.Show
-                    })
-                });
+                var params = {
+                    "UrlKeys" : {
+                        "PageIndex" : 0
+                    },
+                    "Callback" : null
+                }
+                //vm.Layouts.TwoColumnView.Show();
+                //$(vm.Layouts.TwoColumnView).bind("shown", params, vm.Entities.StateView.Show);
+                vm.Entities.StateView.Tabs.CommoditiesGridView.Show();
             });
         });
 
@@ -84,17 +100,18 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
 
         self.get(/#\/state\/(region\d{1,2})\/{0,1}$/, function(context) {
             // #/state/region##
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             var regionUrlKey = this.params['splat'][0];
-            console.log(regionUrlKey);
-            vm.TwoColumnView.Show(function() {
-                vm.RegionView.Show({
-                    "UrlKeys" : {
-                        "RegionUrlKey" : regionUrlKey
-                    },
-                    "Callback" : vm.RegionView.Tabs.Overview.Show
-                })
-            });
+            console.log("[Router] regionUrlKey = " + regionUrlKey);
+            var params = {
+                "UrlKeys" : {
+                    "RegionUrlKey" : regionUrlKey
+                },
+                "Callback" : null
+            }
+            //vm.Layouts.TwoColumnView.Show();
+            //$(vm.Layouts.TwoColumnView).bind("shown", params, vm.Entities.RegionView.Show);
+            vm.Entities.RegionView.Tabs.Overview.Show();
         });
 
         /**************************************/
@@ -102,42 +119,29 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
 
         self.get(/#\/state\/region\d{1,2}\/([^\/]*)\/{0,1}(.*)$/, function(context) {
             // #/state/region##/county-name/tab-name
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             var countyUrlKey = this.params['splat'][0];
-            console.log(countyUrlKey);
+            console.log("[Router] regionUrlKey = " + countyUrlKey);
+
+            var params = {
+                "UrlKeys" : {
+                    "CountyUrlKey" : countyUrlKey,
+                    "PageIndex" : 0
+                },
+                "Callback" : null
+            }
+            //vm.Layouts.TwoColumnView.Show();
+            //$(vm.Layouts.TwoColumnView).bind("shown", params, vm.Entities.CountyView.Show);
 
             switch(this.params.splat[1]) {
                 case "commodities":
-                    vm.TwoColumnView.Show(function() {
-                        vm.CountyView.Show({
-                            "UrlKeys" : {
-                                "CountyUrlKey" : countyUrlKey,
-                                "PageIndex" : 0
-                            },
-                            "Callback" : vm.CountyView.Tabs.Commodities.Show
-                        });
-                    });
+                    vm.Entities.CountyView.Tabs.CommoditiesGridView.Show();
                     break;
                 case "companies":
-                    vm.TwoColumnView.Show(function() {
-                        vm.CountyView.Show({
-                            "UrlKeys" : {
-                                "CountyUrlKey" : countyUrlKey,
-                                "PageIndex" : 0
-                            },
-                            "Callback" : vm.CountyView.Tabs.Companies.Show
-                        });
-                    });
+                    vm.Entities.CountyView.Tabs.CompaniesGridView.Show();
                     break;
                 default :
-                    vm.TwoColumnView.Show(function() {
-                        vm.CountyView.Show({
-                            "UrlKeys" : {
-                                "CountyUrlKey" : countyUrlKey
-                            },
-                            "Callback" : vm.CountyView.Tabs.Overview.Show
-                        });
-                    });
+                    vm.Entities.CountyView.Tabs.Overview.Show();
             }
         });
 
@@ -146,49 +150,34 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
 
         self.get(/#\/commodities\/{0,1}$/, function(context) {
             // #/commodities/
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             context.redirect("#/state");
         });
 
         self.get(/#\/commodities\/([^\/]*)\/{0,1}(.*)$/, function(context) {
             // #/commodities/commodity-name/tab-name
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             var commodityUrlKey = this.params['splat'][0];
-            console.log(commodityUrlKey);
-            //vm.CommodityView.Show();
+            console.log("[Router] regionUrlKey = " + commodityUrlKey);
+            var params = {
+                "UrlKeys" : {
+                    "CommodityUrlKey" : commodityUrlKey,
+                    "PageIndex" : 0
+                },
+                "Callback" : null
+            }
+            //vm.Layouts.TwoColumnView.Show();
+            //$(vm.Layouts.TwoColumnView).bind("shown", params, vm.Entities.CommodityView.Show);
 
             switch(this.params.splat[1]) {
                 case "counties":
-                    vm.TwoColumnView.Show(function() {
-                        vm.CommodityView.Show({
-                            "UrlKeys" : {
-                                "CommodityUrlKey" : commodityUrlKey,
-                                "PageIndex" : 0
-                            },
-                            "Callback" : vm.CommodityView.Tabs.Counties.Show
-                        });
-                    });
+                    vm.Entities.CommodityView.Tabs.CountiesGridView.Show();
                     break;
                 case "companies":
-                    vm.TwoColumnView.Show(function() {
-                        vm.CommodityView.Show({
-                            "UrlKeys" : {
-                                "CommodityUrlKey" : commodityUrlKey,
-                                "PageIndex" : 0
-                            },
-                            "Callback" : vm.CommodityView.Tabs.Companies.Show
-                        });
-                    });
+                    vm.Entities.CommodityView.Tabs.CompaniesGridView.Show();
                     break;
                 default :
-                    vm.TwoColumnView.Show(function() {
-                        vm.CommodityView.Show({
-                            "UrlKeys" : {
-                                "CommodityUrlKey" : commodityUrlKey
-                            },
-                            "Callback" : vm.CommodityView.Tabs.Overview.Show
-                        });
-                    });
+                    vm.Entities.CommodityView.Tabs.Overview.Show();
             }
         });
 
@@ -197,7 +186,7 @@ define(["viewmodels/vm", "routes/router.pageexit"], function(vm, PageExit) {"use
 
         self.get('', function(context) {
             // Default route
-            console.log(context.path);
+            console.log("[Router] context.path = " + context.path);
             context.redirect("#/intro");
         });
 

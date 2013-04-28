@@ -1,83 +1,95 @@
-define(["datasource/datasource"], function(datasource) {"use strict";
+define(["viewmodels/usercontrols/iusercontrol", "datasource/datasource"], function(IUserControl, datasource) {"use strict";
 
     /* Constructor */
     function SearchControl() {
-
         var self = this;
+        IUserControl.call(self);
 
-        self.CommoditySearchTerm = ko.observable();
-        self.CountySearchTerm = ko.observable();
+        self.model = {
+            CommoditySearchTerm : ko.observable(),
+            CountySearchTerm : ko.observable(),
+            CommodityTypeahead : ko.observableArray(),
+            CountyTypeahead : ko.observableArray()
+        }
 
-        self.CommodityTypeahead = ko.observableArray();
-        self.CountyTypeahead = ko.observableArray();
+        /**************************************/
+        /* Private Properties  */
+
+        self.ViewType = "SearchControl";
+        self.ParentContainerID = "#SearchControlContainer";
+
+        /**************************************/
+        /* Private Methods  */
+
+        // Implements interface
+        self.Render = function() {
+            $.get("templates/ui-controls/SearchControl.html", function(template) {
+                self.$ParentContainer.html(template);
+                var el = self.$ParentContainer.find("#SearchControl").get(0);
+                ko.applyBindings(self.model, el);
+                $(self).trigger("rendered");
+                $("#btnSearchCommodities").click(self.Commodities_ClickHandler);
+                $("#btnSearchCounties").click(self.Counties_ClickHandler);
+            });
+        };
+
+        /**************************************/
+        /* Typeahead behaviors          */
+        /* with KnockoutJS Observables  */
 
         // Throttle typeahead activity
-        self.throttledCommoditySearchTerm = ko.computed(function() {
-            return self.CommoditySearchTerm();
+        self.model.throttledCommoditySearchTerm = ko.computed(function() {
+            return self.model.CommoditySearchTerm();
         }).extend({
             throttle : 500
         });
 
-        self.throttledCountySearchTerm = ko.computed(function() {
-            return self.CountySearchTerm();
+        self.model.throttledCountySearchTerm = ko.computed(function() {
+            return self.model.CountySearchTerm();
         }).extend({
             throttle : 500
         });
 
         // Watch the user as they type
-        self.CommoditySearchTerm.subscribe(function(currValue) {
+        self.model.CommoditySearchTerm.subscribe(function(currValue) {
 
             console.log("The commodity search term is " + currValue);
-            self.CommodityTypeahead.removeAll();
+            self.model.CommodityTypeahead.removeAll();
             datasource.Commodity.GetTypeahead(currValue, function(results) {
 
                 console.log("adding typeahead results");
                 console.log(results);
                 for (var i = 0, j = results.length; i < j; i++) {
                     console.log("adding '" + (results[i]).Name + "'");
-                    self.CommodityTypeahead.push((results[i]).Name);
+                    self.model.CommodityTypeahead.push((results[i]).Name);
                 };
 
             });
         });
 
         // Watch the user as they type
-        self.CountySearchTerm.subscribe(function(currValue) {
+        self.model.CountySearchTerm.subscribe(function(currValue) {
 
             console.log("The county search term is " + currValue);
-            self.CountyTypeahead.removeAll();
+            self.model.CountyTypeahead.removeAll();
             datasource.County.GetTypeahead(currValue, function(results) {
 
                 console.log("adding typeahead results");
                 console.log(results);
                 for (var i = 0, j = results.length; i < j; i++) {
                     console.log("adding '" + (results[i]).Name + "'");
-                    self.CountyTypeahead.push((results[i]).Name);
+                    self.model.CountyTypeahead.push((results[i]).Name);
                 };
 
             });
         });
 
-        self.Show = function($eventTarget, $parentElement) {
-            $.get("templates/ui-controls/SearchControl.html", function(tpl) {
-                console.log("Loaded SearchControl.html");
-                self.RenderTemplate($eventTarget, $parentElement, tpl);
-                $("#btnSearchCommodities").click(self.Commodities_ClickHandler);
-                $("#btnSearchCounties").click(self.Counties_ClickHandler);
-            });
-        };
-
-        self.RenderTemplate = function($eventTarget, $parentElement, tpl) {
-            $parentElement.prepend(tpl);
-            var searchControl = $parentElement.find("#SearchControl").get(0);
-            ko.applyBindings(self, searchControl);
-            console.log("SearchControl triggering ui_controls_loaded");
-            $eventTarget.trigger("ui_controls_loaded", "SearchControl");
-        };
+        /**************************************/
+        /* Event Handlers  */
 
         self.Commodities_ClickHandler = function(e) {
             e.preventDefault();
-            var searchterm = self.CommoditySearchTerm();
+            var searchterm = self.model.CommoditySearchTerm();
             datasource.Commodity.GetSearchPreview(searchterm, function(data) {
                 console.log(data);
                 if (data.length <= 1) {
@@ -93,7 +105,7 @@ define(["datasource/datasource"], function(datasource) {"use strict";
 
         self.Counties_ClickHandler = function(e) {
             e.preventDefault();
-            var searchterm = self.CountySearchTerm();
+            var searchterm = self.model.CountySearchTerm();
             datasource.County.GetSearchPreview(searchterm, function(data) {
                 console.log(data);
                 if (data.length <= 1) {
@@ -107,16 +119,13 @@ define(["datasource/datasource"], function(datasource) {"use strict";
             });
         };
 
-        // Public interface
-        return {
-            CommoditySearchTerm : self.CommoditySearchTerm,
-            CountySearchTerm : self.CountySearchTerm,
-            Show : self.Show
-        }
-
+        return (self);
     }
 
-    //return (new SearchControl());
+    // Create inheritance
+    if (Object.create) {
+        SearchControl.prototype = Object.create(IUserControl.prototype);
+    }
     return (SearchControl)
 
 });
