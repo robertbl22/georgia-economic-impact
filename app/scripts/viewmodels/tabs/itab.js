@@ -1,16 +1,21 @@
-define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
+define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use strict";
 
     /* Constructor */
-    function ITabs(parent) {
+    function ITab(parent) {
         var self = this;
+        
+        /*************************************/
+        /* Private Properties */
+
+        self.ViewType = "ITab";
         self.parent = parent;
 
         /***********************************/
-        /* Display logic */
+        /* Public Methods */
 
         self.showTab = function(tab) {
             setTabSelection(tab);
-            console.log("showTab running");
+            console.log("[" + self.ViewType + "] showTab running");
             var $tvc = $("#TabViewContainer");
             $tvc.hide();
             tab.GetData({
@@ -21,7 +26,7 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
                         var el = $tvc.get(0);
                         ko.applyBindings(data, el);
                         $tvc.fadeIn();
-                        console.log("showTab finished");
+                        console.log("[" + self.ViewType + "] showTab finished");
                     });
                 }
             });
@@ -29,20 +34,23 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
 
         self.showPagedTab = function(tab) {
             setTabSelection(tab);
-            console.log("showTabPagedDataset running");
+            console.log("[" + self.ViewType + "] showTabPagedDataset running");
             var $tvc = $("#TabViewContainer");
             $tvc.hide();
             $.get("templates/" + tab.tpl + ".html", function(template) {
                 $tvc.html(template);
                 var el = $tvc.get(0);
                 var pageSize = 100;
-                self.pagedDataset = new PagedDataset();
+                self.pagedDataset = new UserControls.PagedDataset();
                 self.pagedDataset.init(self.parent.UrlKeys, tab, tab.RecordCount, pageSize);
                 ko.applyBindings(self.pagedDataset, el);
                 $tvc.fadeIn();
-                console.log("showTab finished");
+                console.log("[" + self.ViewType + "] showTab finished");
             });
         };
+
+        /*************************************/
+        /* Private Methods */
 
         function setTabSelection(tab) {
             self.Overview.isSelected('');
@@ -56,22 +64,22 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
         /* Pairing methods with tabs */
 
         self.showOverview = function() {
-            console.log("showOverview running");
+            console.log("[" + self.ViewType + "] showOverview running");
             self.showTab(self.Overview);
         };
 
         self.showCounties = function() {
-            console.log("showCounties running");
+            console.log("[" + self.ViewType + "] showCounties running");
             self.showPagedTab(self.Counties);
         };
 
         self.showCommodities = function() {
-            console.log("showCommodities running");
+            console.log("[" + self.ViewType + "] showCommodities running");
             self.showPagedTab(self.Commodities);
         };
 
         self.showCompanies = function() {
-            console.log("showCompanies running");
+            console.log("[" + self.ViewType + "] showCompanies running");
             self.showPagedTab(self.Companies);
         };
 
@@ -120,6 +128,6 @@ define(["ui-controls/pageddataset"], function(PagedDataset) {"use strict";
 
     }
 
-    return (ITabs);
+    return (ITab);
 
 });

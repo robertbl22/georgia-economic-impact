@@ -1,26 +1,30 @@
-define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs) {"use strict";
+define(["datasource/datasource", "viewmodels/tabs/tabs"], function(datasource, Tabs) {"use strict";
 
     /* Constructor */
-    function IView() {
+    function IEntity() {
         var self = this;
 
-        self.ViewType = "IView";
+        /*************************************/
+        /* Private Properties */
+
+        self.ViewType = "IEntity";
         self.IdKey = '';
         self.viewElement = null;
         self.CurrentViewID = "";
         self.GetData = null;
         self.UrlKeys = {};
-        self.Tabs = new ITabs(self);
+        self.Tabs = new Tabs.Tabs(self);
+        self.datasource = datasource;
 
         /**************************************/
-        /* Display logic */
+        /* Public Methods */
 
         self.Show = function(params) {
-            console.log(self.ViewType + ".Show() running");
+            console.log("[" + self.ViewType + "] .Show() running");
             document.title = self.Title;
             self.UrlKeys = params.UrlKeys;
             self.LoadSingletonView(function() {
-                console.log(self.ViewType + ".Show() finished");
+                console.log("[" + self.ViewType + "] .Show() finished");
                 if (params.Callback) {
                     params.Callback();
                 }
@@ -28,14 +32,17 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
 
         };
 
+        /*************************************/
+        /* Private Methods */
+
         self.LoadSingletonView = function(Show_Callback) {
             var $viewContainer = $("#ViewContainer");
-            console.log(self.ViewType + ".LoadSingletonView() running");
+            console.log("[" + self.ViewType + "] .LoadSingletonView() running");
 
             /***************************************************/
             /* Is view cached? Is it the one that we want? */
             if (self.viewElement && self.viewElement.innerHTML != "" && self.viewElement.ViewId === self.UrlKeys[self.IdKey]) {
-                console.log("A view is cached, and is the one we want.")
+                console.log("[" + self.ViewType + "] A view is cached, and is the one we want.")
                 // Get the current view from the DOM
                 var el = $viewContainer.get(0).firstChild;
 
@@ -44,14 +51,14 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
 
                     /********************************/
                     /* This is the current view     */
-                    console.log("This view is already the current view.");
+                    console.log("[" + self.ViewType + "] This view is already the current view.");
                     Show_Callback();
 
                 } else {
 
                     /******************************************/
                     /* Not current view, make it the current */
-                    console.log("Not current view, make it the current");
+                    console.log("[" + self.ViewType + "] Not current view, make it the current");
                     $viewContainer.hide();
                     //TODO: Ajax spinner
                     $viewContainer.find("#TabViewContainer").empty();
@@ -92,6 +99,7 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
 
         /**************************************/
         /* Public interface */
+       
         return {
             Title : "Untitled View",
             tpl : "",
@@ -101,6 +109,6 @@ define(["datasource/datasource", "viewmodels/itabs"], function(datasource, ITabs
         };
     }
 
-    return (IView);
+    return (IEntity);
 
 });

@@ -1,6 +1,5 @@
 define([], function() {"use strict";
 
-    var self = this;
 
     /***********************************/
     /* STATE */
@@ -140,7 +139,7 @@ define([], function() {"use strict";
     /* Helper methods */
 
     function CachedAjaxPost(url, postData, datacache, callback, event) {
-        console.log($.serializeJSON(postData));
+        console.log("[datasource] $.serializeJSON(postData) = " + $.serializeJSON(postData));
         if (!datacache) {
             var _decoratedCallback = function(data) {
                 datacache = data;
@@ -161,7 +160,7 @@ define([], function() {"use strict";
             dataType : "json",
             success : function(msg) {
                 var data = JSON.parse(msg.d);
-                console.log("AjaxPost was successful!");
+                console.log("[datasource] AjaxPost was successful!");
                 //datacache = data;
 
                 if (event) {
@@ -169,13 +168,12 @@ define([], function() {"use strict";
                     $.event.trigger(event);
                 }
 
-                console.log("AjaxPost has notified listeners");
+                console.log("[" + self.ViewType + "] AjaxPost has notified listeners");
 
                 callback(data);
             },
             error : function(msg) {
-                console.log("Error! " + msg);
-                console.log(msg)
+                console.log("[datasource] Error! '" + msg + "'");
                 //TODO: Handle ajax error condition
             }
         });

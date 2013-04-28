@@ -3107,27 +3107,27 @@ function Teamcity(runner) {
   var stats = this.stats;
 
   runner.on('start', function() {
-    console.log("##teamcity[testSuiteStarted name='mocha.suite']");
+    console.log("[" + self.ViewType + "] ##teamcity[testSuiteStarted name='mocha.suite']");
   });
 
   runner.on('test', function(test) {
-    console.log("##teamcity[testStarted name='" + escape(test.fullTitle()) + "']");
+    console.log("[" + self.ViewType + "] ##teamcity[testStarted name='" + escape(test.fullTitle()) + "']");
   });
 
   runner.on('fail', function(test, err) {
-    console.log("##teamcity[testFailed name='" + escape(test.fullTitle()) + "' message='" + escape(err.message) + "']");
+    console.log("[" + self.ViewType + "] ##teamcity[testFailed name='" + escape(test.fullTitle()) + "' message='" + escape(err.message) + "']");
   });
 
   runner.on('pending', function(test) {
-    console.log("##teamcity[testIgnored name='" + escape(test.fullTitle()) + "' message='pending']");
+    console.log("[" + self.ViewType + "] ##teamcity[testIgnored name='" + escape(test.fullTitle()) + "' message='pending']");
   });
 
   runner.on('test end', function(test) {
-    console.log("##teamcity[testFinished name='" + escape(test.fullTitle()) + "' duration='" + test.duration + "']");
+    console.log("[" + self.ViewType + "] ##teamcity[testFinished name='" + escape(test.fullTitle()) + "' duration='" + test.duration + "']");
   });
 
   runner.on('end', function() {
-    console.log("##teamcity[testSuiteFinished name='mocha.suite' duration='" + stats.duration + "']");
+    console.log("[" + self.ViewType + "] ##teamcity[testSuiteFinished name='mocha.suite' duration='" + stats.duration + "']");
   });
 }
 

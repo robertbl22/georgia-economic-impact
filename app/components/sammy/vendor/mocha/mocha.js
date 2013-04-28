@@ -2671,27 +2671,27 @@ function Teamcity(runner) {
   var stats = this.stats;
 
   runner.on('start', function() {
-    console.log("##teamcity[testSuiteStarted name='mocha.suite']");
+    console.log("[" + self.ViewType + "] ##teamcity[testSuiteStarted name='mocha.suite']");
   });
 
   runner.on('test', function(test) {
-    console.log("##teamcity[testStarted name='%s']", escape(test.fullTitle()));
+    console.log("[" + self.ViewType + "] ##teamcity[testStarted name='%s']", escape(test.fullTitle()));
   });
 
   runner.on('fail', function(test, err) {
-    console.log("##teamcity[testFailed name='%s' message='%s']", escape(test.fullTitle()), escape(err.message));
+    console.log("[" + self.ViewType + "] ##teamcity[testFailed name='%s' message='%s']", escape(test.fullTitle()), escape(err.message));
   });
 
   runner.on('pending', function(test) {
-    console.log("##teamcity[testIgnored name='%s' message='pending']", escape(test.fullTitle()));
+    console.log("[" + self.ViewType + "] ##teamcity[testIgnored name='%s' message='pending']", escape(test.fullTitle()));
   });
 
   runner.on('test end', function(test) {
-    console.log("##teamcity[testFinished name='%s' duration='%s']", escape(test.fullTitle()), test.duration);
+    console.log("[" + self.ViewType + "] ##teamcity[testFinished name='%s' duration='%s']", escape(test.fullTitle()), test.duration);
   });
 
   runner.on('end', function() {
-    console.log("##teamcity[testSuiteFinished name='mocha.suite' duration='%s']", stats.duration);
+    console.log("[" + self.ViewType + "] ##teamcity[testSuiteFinished name='mocha.suite' duration='%s']", stats.duration);
   });
 }
 

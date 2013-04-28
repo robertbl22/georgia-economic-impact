@@ -1,13 +1,19 @@
-define(["viewmodels/icontainer", "ui-controls/statemapcontrol"], function(IContainer, StateMapControl) {"use strict";
+define(["viewmodels/layouts/ilayout"], function(ILayout) {"use strict";
 
     function TwoColumnView() {
         var self = this;
-        IContainer.call(self);
-        self.ViewType = "TwoColumnView";
+        ILayout.call(self);
+        
+        /*************************************/
+        /* Private Properties */
 
+        self.ViewType = "TwoColumnView";
         self.isSearchControlLoaded = false;
         self.isStateMapControlLoaded = false;
         self.StateMapControl = null;
+
+        /*************************************/
+        /* Private Methods */
 
         self.Render = function(callback) {
             $.get("templates/views/TwoColumnView.html", function(template) {
@@ -21,20 +27,20 @@ define(["viewmodels/icontainer", "ui-controls/statemapcontrol"], function(IConta
                 // Render
                 self.DisplayParentContainer($eventTarget, $parentContentContainer, callback);
                 self.SearchControl.Show($eventTarget, $controlContainer);
-                self.StateMapControl = new StateMapControl();
+                self.StateMapControl = new self.UserControls.StateMapControl();
                 self.StateMapControl.Show($eventTarget, $controlContainer);
             });
         }
 
         self.DisplayParentContainer = function($eventTarget, $parentContainer, callback) {
             $eventTarget.bind("ui_controls_loaded", function(e, source) {
-                console.log(self.ViewType + " ui_controls_loaded!");
+                console.log("[" + self.ViewType + "] ui_controls_loaded!");
                 if (source == "SearchControl")
                     self.isSearchControlLoaded = true;
                 if (source == "StateMapControl")
                     self.isStateMapControlLoaded = true;
                 if (self.isSearchControlLoaded && self.isStateMapControlLoaded) {
-                    console.log(self.ViewType + " showing #ContentContainer");
+                    console.log("[" + self.ViewType + "] showing #ContentContainer");
                     $parentContainer.fadeIn();
                     //$parentContainer.trigger("shown");
                     if (callback) {
@@ -49,7 +55,7 @@ define(["viewmodels/icontainer", "ui-controls/statemapcontrol"], function(IConta
 
     // Create inheritance
     if (Object.create) {
-        TwoColumnView.prototype = Object.create(IContainer.prototype);
+        TwoColumnView.prototype = Object.create(ILayout.prototype);
     }
     return (new TwoColumnView());
 

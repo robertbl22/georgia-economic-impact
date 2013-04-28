@@ -567,7 +567,7 @@ JSSpec.Logger.prototype.onRunnerEnd = function() {
 		successCount = totalCount - failCount - errorCount,
 		durationSeconds = document.getElementById("total_elapsed").innerHTML,
 		message = durationSeconds + " seconds, " + totalCount + " examples (" + successCount + " succeeded, " + failCount + " failed, " + errorCount + " errored)";
-	console.log("Finished: " + message);
+	console.log("[" + self.ViewType + "] Finished: " + message);
 };
 
 JSSpec.Logger.prototype.blinkTitle = function(times, title1, title2) {
@@ -650,7 +650,7 @@ JSSpec.Logger.prototype.onExampleEnd = function(example) {
 		name: example.name,
 		exception: example.exception && { message: example.exception.message, file: example.exception.fileName, line: example.exception.lineNumber }
 	}
-	console.log("Result: " + JSON.stringify(logResult));
+	console.log("[" + self.ViewType + "] Result: " + JSON.stringify(logResult));
 };
 
 /**

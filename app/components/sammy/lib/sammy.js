@@ -839,7 +839,7 @@ $.extend(Sammy.DefaultLocationProxy.prototype , {
     //    next();
     // });
     // app.onComplete(function(){
-    //     console.log("Running finally")
+    //     console.log("[" + self.ViewType + "] Running finally")
     // });
     //
     // If you go to '/chain', you will get the following messages:

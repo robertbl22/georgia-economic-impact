@@ -1,24 +1,32 @@
-define(["ui-controls/searchcontrol"], function(SearchControl) {"use strict";
+define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use strict";
 
     /* Constructor */
-    function IContainer() {
+    function ILayout() {
         var self = this;
-        self.ViewType = "IContainer";
+        self.ViewType = "ILayout";
 
-        self.SearchControl = new SearchControl();
+        /*************************************/
+        /* Private Properties */
+
+        self.UserControls = UserControls;
+        self.SearchControl = new self.UserControls.SearchControl();
 
         /**************************************/
-        /* Display logic */
+        /* Public Methods */
+       
         self.Show = function(callback) {
-            console.log(self.ViewType + ".Show running");
+            console.log("[" + self.ViewType + "] .Show() running");
             if (!self.IsInView(callback)) {
                 self.Render(callback);
             }
         };
 
+        /*************************************/
+        /* Private Methods */
+
         self.IsInView = function(callback) {
             if ($("#" + self.ViewType).length) {
-                console.log(self.ViewType + " exists");
+                console.log("[" + self.ViewType + "] exists ---vvv");
                 console.log($(self.ViewType));
                 if (callback) {
                     callback();
@@ -35,6 +43,6 @@ define(["ui-controls/searchcontrol"], function(SearchControl) {"use strict";
         };
     }
 
-    return (IContainer);
+    return (ILayout);
 
 });

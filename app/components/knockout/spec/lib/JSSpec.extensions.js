@@ -49,7 +49,7 @@ JSSpec.DSL.Subject.prototype.should_have_selected_values = function (expectedVal
 
 JSSpec.addScriptReference = function(scriptUrl) {
     if (window.console)
-        console.log("Loading " + scriptUrl + "...");
+        console.log("[" + self.ViewType + "] Loading " + scriptUrl + "...");
     document.write("<scr" + "ipt type='text/javascript' src='" + scriptUrl + "'></sc" + "ript>");
 };
 
