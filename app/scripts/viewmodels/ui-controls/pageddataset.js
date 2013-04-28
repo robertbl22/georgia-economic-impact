@@ -7,25 +7,39 @@ define([], function() {"use strict";
     /* Constructor */
     function PagedDataset() {
         var self = this;
+        
+        
+        /*************************************/
+        /* Private Properties */
 
+        self.ViewType = "PagedDataset";
         self.dataset = ko.observableArray();
         self.pages = ko.observableArray();
         self.pageIndex = ko.observable(0);
         self.UrlKeys;
         self.tab;
 
+        /*************************************/
+        /* Constructor */
+
         self.init = function(UrlKeys, tab, totalRecords, pageSize) {
-            console.log("PagedDataset.init()")
-            console.log(UrlKeys);
+            console.log("[" + self.ViewType + "] .init() running");
+            console.log("[" + self.ViewType + "] UrlKeys = " + UrlKeys);
+            
             self.UrlKeys = UrlKeys;
             self.tab = tab;
             self.pages(createPagesArray(totalRecords, pageSize));
             self.loadData();
+            console.log("[" + self.ViewType + "] .init() finished");
         };
         
+        /*************************************/
+        /* Private Methods */
+
         function createPagesArray(totalRecords, pageSize) {
             var pageCount = Math.ceil(totalRecords / pageSize);
-            console.log(pageCount)
+            console.log("[" + self.ViewType + "] pageCount = " + pageCount);
+            
             var pgs = new Array(pageCount);
             for (var i = 0, j = pgs.length; i < j; i++) {
                 pgs[i] = i;
@@ -60,21 +74,22 @@ define([], function() {"use strict";
         };
 
         self.setPageIndex = function(idx) {
-            console.log("setPageIndex running");
-            console.log(idx)
+            console.log("[" + self.ViewType + "] .setPageIndex() running");
             self.pageIndex(idx);
             self.UrlKeys.PageIndex = idx;
             self.loadData();
+            console.log("[" + self.ViewType + "] .setPageIndex() finished");
         };
 
         self.loadData = function() {
-            console.log("PagedDataset.loadData running")
-            console.log(self.UrlKeys);
+            console.log("[" + self.ViewType + "] .loadData() running");
+            console.log("[" + self.ViewType + "] self.UrlKeys = " + self.UrlKeys);
+            
             self.tab.GetData({
                 "UrlKeys" : self.UrlKeys,
                 "Callback" : function(data) {
                     self.dataset(data);
-                    console.log("PagedDataset.loadData finished")
+                    console.log("[" + self.ViewType + "] .loadData() finished")
                 }
             });
         };
