@@ -70,17 +70,17 @@ define([], function() {"use strict";
         },
         GetTypeahead : function(searchterm, callback) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCountiesTypeahead";
-            var payload = {
+            var postData = {
                 'SearchTerm' : searchterm
             };
-            AjaxPost(url, payload, callback, null);
+            AjaxPost(url, postData, callback, null);
         },
         GetSearchPreview : function(searchterm, callback) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCountiesSearchPreview";
-            var payload = {
+            var postData = {
                 'SearchTerm' : searchterm
             };
-            AjaxPost(url, payload, callback, null);
+            AjaxPost(url, postData, callback, null);
         }
     };
 
@@ -112,17 +112,17 @@ define([], function() {"use strict";
         },
         GetTypeahead : function(searchterm, callback) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesTypeahead";
-            var payload = {
+            var postData = {
                 'SearchTerm' : searchterm
             };
-            AjaxPost(url, payload, callback, null);
+            AjaxPost(url, postData, callback, null);
         },
         GetSearchPreview : function(searchterm, callback) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesSearchPreview";
-            var payload = {
+            var postData = {
                 'SearchTerm' : searchterm
             };
-            AjaxPost(url, payload, callback, null);
+            AjaxPost(url, postData, callback, null);
         }
     };
 
@@ -139,31 +139,29 @@ define([], function() {"use strict";
     /***********************************/
     /* Helper methods */
 
-    function CachedAjaxPost(url, payload, datacache, callback, event) {
-        console.log("[datasource] .CachedAjaxPost running");
-        //console.log("[datasource] $.serializeJSON(payload) = (see next line)");
-        //console.log($.serializeJSON(payload));
+    function CachedAjaxPost(url, postData, datacache, callback, event) {
+        console.log($.serializeJSON(postData));
         if (!datacache) {
             var _decoratedCallback = function(data) {
                 datacache = data;
                 callback(data);
             };
-            AjaxPost(url, payload, _decoratedCallback, event);
+            AjaxPost(url, postData, _decoratedCallback, event);
         } else {
             callback(datacache);
         }
     }
 
-    function AjaxPost(url, payload, callback, event) {
+    function AjaxPost(url, postData, callback, event) {
         $.ajax({
             type : "POST",
             url : "http://localhost" + url,
-            data : $.serializeJSON(payload),
+            data : $.serializeJSON(postData),
             contentType : "application/json; charset=utf-8",
             dataType : "json",
             success : function(msg) {
                 var data = JSON.parse(msg.d);
-                console.log("[datasource] AjaxPost success!");
+                console.log("AjaxPost was successful!");
                 //datacache = data;
 
                 if (event) {
@@ -171,12 +169,12 @@ define([], function() {"use strict";
                     $.event.trigger(event);
                 }
 
-                console.log("[datasource] AjaxPost notified listeners");
+                console.log("AjaxPost has notified listeners");
 
                 callback(data);
             },
             error : function(msg) {
-                console.log("[datasource] AjaxPost error! " + msg);
+                console.log("Error! " + msg);
                 console.log(msg)
                 //TODO: Handle ajax error condition
             }

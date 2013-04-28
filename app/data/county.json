@@ -1,0 +1,21 @@
+{
+	"CountyID": 1,
+	"Name": "Chatham County",
+	"ShortName" : "Chatham",
+	"UrlKey": "chatham-county",
+	"RegionName": "Economic Region 12",
+	"RegionShortName" : "Region 12",
+	"RegionUrlKey": "region12",
+	"ImportTEUs": 123,
+	"ImportSTONS": 345,
+	"ImportEstValue": 456,
+	"ExportTEUs": 678,
+	"ExportSTONS": 890,
+	"ExportEstValue": 1024,
+	"TotalTEUs": 678,
+	"TotalSTONS": 890,
+	"TotalEstValue": 1024,
+	"TotalEmployment": 37319,
+	"TotalCommodities": 321,
+	"TotalCompanies": 123
+}

@@ -66,24 +66,32 @@ define([], function() {"use strict";
      */
 
     var PageExit = function(app) {
-        console.log("[PageExit] PageExit() running");
-        
+        console.log("PageExit running");
+        //n.Application
+        console.log(this);
+        //n.Application
+        console.log(app);
+
         var exit = function(callback) {
-            console.log("[PageExit] exit() running");
+            console.log("exit running");
+            //context_prototype <-- __proto__.Exit
+            console.log(this);
+            //n.Application
+            console.log(app);
             if (app.CurrentPageExit != null) {
-                console.log("[PageExit] CurrentPageExit exists");
+                console.log("CurrentPageExit exists");
                 var tmp = app.CurrentPageExit;
                 app.CurrentPageExit = null;
                 tmp(callback);
-                console.log("[PageExit] CurrentPageExit =" + this.CurrentPageExit);
+                console.log(this.CurrentPageExit);
             } else {
-                console.log("[PageExit] CurrentPageExit does not exist");
+                console.log("CurrentPageExit does not exist");
                 callback();
             }
         };
 
         var SplashPageExit = function(callback) {
-            console.log("[PageExit] about to animate");
+            console.log("about to animate");
 
             //var left = $('.big-slogan').offset().left;
             //var width = $('.big-slogan').width();
@@ -108,7 +116,7 @@ define([], function() {"use strict";
 
             cb1();
 
-            console.log("[PageExit] animation done");
+            console.log("animation done");
         };
         
         var currentPageExit = null;
