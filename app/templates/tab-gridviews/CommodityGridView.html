@@ -19,11 +19,11 @@
 		<tbody data-bind="foreach: $data.dataset">
 			<tr>
 				<td><a data-bind="text: Name, attr: {href: ('#/commodities/' + UrlKey)}"></a></td>
-				<td data-bind="text: $.number(ImportTEUs)" class="cell-numeric cell-border-left"></td>
-				<td data-bind="text: $.number(ImportSTONS)" class="cell-numeric"></td>
+				<td data-bind="text: $.number(ImportTEUs, 1)" class="cell-numeric cell-border-left"></td>
+				<td data-bind="text: $.number(ImportSTONS, 1)" class="cell-numeric"></td>
 				<td data-bind="text: ('$' + $.number(ImportEstValue))" class="cell-numeric"></td>
-				<td data-bind="text: $.number(ExportTEUs)" class="cell-numeric cell-border-left"></td>
-				<td data-bind="text: $.number(ExportSTONS)" class="cell-numeric"></td>
+				<td data-bind="text: $.number(ExportTEUs, 1)" class="cell-numeric cell-border-left"></td>
+				<td data-bind="text: $.number(ExportSTONS, 1)" class="cell-numeric"></td>
 				<td data-bind="text: ('$' + $.number(ExportEstValue))" class="cell-numeric"></td>
 			</tr>
 		</tbody>
