@@ -13,7 +13,7 @@ require(['routes/router'], function(router) {"use strict";
     $("#GPALogoBanner").delay(50).slideDown();
     
     //infuser.defaults.templateSuffix = ".tmpl.html";
-    infuser.defaults.templateUrl = "/views";
+    infuser.defaults.templateUrl = "/templates";
 
     Modernizr.load([{
         test : Modernizr.input.placeholder,

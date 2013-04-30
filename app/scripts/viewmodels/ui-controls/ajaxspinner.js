@@ -12,9 +12,6 @@ define([], function() {"use strict";
         self.$el = null;
 
         /*************************************/
-        /* Event Handlers */
-
-        /*************************************/
         /* Public Methods */
 
         self.Mask = function($el) {
@@ -29,20 +26,10 @@ define([], function() {"use strict";
             $spinner.offset(offset);
             $spinner.width(width);
             
-            console.log("." + $el.find(self.CssClass).length)
             if ($el.find("." + self.CssClass).length === 0) {
                 self.$el.prepend($spinner);
             }
         };
-
-        //self.Unmask = function($el) {
-        //console.log("[" + self.ViewType + "] Unmask()");
-        //if (self.$el && self.$el.parent('.' + self.CssClass).length) {
-        //self.$Spinner.remove();
-        //self.$el.unwrap();
-        //self.$Wrapper.remove();
-        //}
-        //};
 
         /*************************************/
         /* Private Methods */
