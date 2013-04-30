@@ -1,4 +1,4 @@
-define(["viewmodels/entities/entities.state", "viewmodels/entities/entities.region", "viewmodels/entities/entities.county", "viewmodels/entities/entities.commodity"], function(StateView, RegionView, CountyView, CommodityView) {"use strict";
+define(["viewmodels/entities/stateview", "viewmodels/entities/regionview", "viewmodels/entities/countyview", "viewmodels/entities/commodityview"], function(StateView, RegionView, CountyView, CommodityView) {"use strict";
 
     /************************/
     /* Public interface */

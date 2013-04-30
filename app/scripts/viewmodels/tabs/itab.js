@@ -3,12 +3,13 @@ define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use str
     /* Constructor */
     function ITab(parent) {
         var self = this;
-        
+
         /*************************************/
         /* Private Properties */
 
         self.ViewType = "ITab";
         self.parent = parent;
+        var AjaxSpinner = new UserControls.AjaxSpinner();
 
         /***********************************/
         /* Public Methods */
@@ -16,16 +17,18 @@ define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use str
         self.showTab = function(tab) {
             setTabSelection(tab);
             console.log("[" + self.ViewType + "] showTab running");
-            var $tvc = $("#TabViewContainer");
-            $tvc.hide();
+            var $ParentContainer = $("#TabViewContainer");
+            AjaxSpinner.Mask($ParentContainer);
+            //$ParentContainer.hide();
             tab.GetData({
                 "UrlKeys" : self.parent.UrlKeys,
                 "Callback" : function(data) {
                     $.get("templates/" + tab.tpl + ".html", function(template) {
-                        $tvc.html(template);
-                        var el = $tvc.get(0);
+                        $ParentContainer.html(template);
+                        var el = $ParentContainer.get(0);
                         ko.applyBindings(data, el);
-                        $tvc.fadeIn();
+                        //AjaxSpinner.Unmask($ParentContainer);
+                        $ParentContainer.hide().fadeIn();
                         console.log("[" + self.ViewType + "] showTab finished");
                     });
                 }
@@ -35,16 +38,18 @@ define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use str
         self.showPagedTab = function(tab) {
             setTabSelection(tab);
             console.log("[" + self.ViewType + "] showTabPagedDataset running");
-            var $tvc = $("#TabViewContainer");
-            $tvc.hide();
+            var $ParentContainer = $("#TabViewContainer");
+            AjaxSpinner.Mask($ParentContainer);
+            //$ParentContainer.hide();
             $.get("templates/" + tab.tpl + ".html", function(template) {
-                $tvc.html(template);
-                var el = $tvc.get(0);
+                $ParentContainer.html(template);
+                var el = $ParentContainer.get(0);
                 var pageSize = 100;
                 self.pagedDataset = new UserControls.PagedDataset();
                 self.pagedDataset.init(self.parent.UrlKeys, tab, tab.RecordCount, pageSize);
                 ko.applyBindings(self.pagedDataset, el);
-                $tvc.fadeIn();
+                //AjaxSpinner.Unmask($ParentContainer);
+                $ParentContainer.hide().fadeIn();
                 console.log("[" + self.ViewType + "] showTab finished");
             });
         };

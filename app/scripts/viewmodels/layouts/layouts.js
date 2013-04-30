@@ -1,4 +1,4 @@
-define(["viewmodels/layouts/layouts.splash", "viewmodels/layouts/layouts.colcontainer"], function(splashView, twoColumnView) {"use strict";
+define(["viewmodels/layouts/splashview", "viewmodels/layouts/twocolumnview"], function(splashView, twoColumnView) {"use strict";
 
     /************************/
     /* Public interface */

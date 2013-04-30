@@ -76,7 +76,7 @@ define([], function() {"use strict";
         };
 
         self.RenderTemplate = function($eventTarget, $parentElement, tpl) {
-            $parentElement.append(tpl);
+            $parentElement.html(tpl);
             var stateMapControl = $parentElement.find(self.StateMapControlID).get(0);
             ko.applyBindings(self, stateMapControl);
             console.log("[" + self.ViewType + "] StateMapControl triggering ui_controls_loaded");

@@ -1,4 +1,4 @@
-define(["viewmodels/ui-controls/pageddataset", "viewmodels/ui-controls/searchcontrol", "viewmodels/ui-controls/statemapcontrol"], function(PagedDataset, SearchControl, StateMapControl) {"use strict";
+define(["viewmodels/ui-controls/pageddataset", "viewmodels/ui-controls/searchcontrol", "viewmodels/ui-controls/statemapcontrol", "viewmodels/ui-controls/ajaxspinner"], function(PagedDataset, SearchControl, StateMapControl, AjaxSpinner) {"use strict";
 
     /************************/
     /* Public interface */
@@ -6,7 +6,8 @@ define(["viewmodels/ui-controls/pageddataset", "viewmodels/ui-controls/searchcon
     return {
         PagedDataset : PagedDataset,
         SearchControl : SearchControl,
-        StateMapControl : StateMapControl
+        StateMapControl : StateMapControl,
+        AjaxSpinner : AjaxSpinner
     };
 
 });

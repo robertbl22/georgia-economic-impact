@@ -8,9 +8,13 @@ define(["viewmodels/layouts/ilayout"], function(ILayout) {"use strict";
         /* Private Properties */
 
         self.ViewType = "TwoColumnView";
+        self.ParentContainerID = "#ContentContainer";
+        self.SearchControlContainerID = "#SearchControlContainer";
+        self.StateMapControlContainerID = "#StateMapControlContainer";
         self.isSearchControlLoaded = false;
         self.isStateMapControlLoaded = false;
-        self.StateMapControl = null;
+        self.StateMapControl = new self.UserControls.StateMapControl();
+        var $self = $(self);
 
         /*************************************/
         /* Private Methods */
@@ -18,31 +22,32 @@ define(["viewmodels/layouts/ilayout"], function(ILayout) {"use strict";
         self.Render = function(callback) {
             $.get("templates/views/TwoColumnView.html", function(template) {
                 
-                // Containers
-                var $parentContentContainer = $("#ContentContainer");
-                $parentContentContainer.hide().html(template);
-                var $eventTarget = $parentContentContainer.find("#" + self.ViewType);
-                var $controlContainer = $parentContentContainer.find("#ControlContainer");
+                // This view
+                var $ParentContainer = $(self.ParentContainerID);
+                $ParentContainer.hide().html(template);
                 
-                // Render
-                self.DisplayParentContainer($eventTarget, $parentContentContainer, callback);
-                self.SearchControl.Show($eventTarget, $controlContainer);
-                self.StateMapControl = new self.UserControls.StateMapControl();
-                self.StateMapControl.Show($eventTarget, $controlContainer);
+                // Find user control containers
+                var $SearchControlContainer = $ParentContainer.find(self.SearchControlContainerID);
+                var $StateMapControlContainer = $ParentContainer.find(self.StateMapControlContainerID);
+                self.DisplayParentContainer($self, $ParentContainer, callback);
+                
+                // Show user controls
+                self.SearchControl.Show($self, $SearchControlContainer);
+                self.StateMapControl.Show($self, $StateMapControlContainer);
             });
         }
 
-        self.DisplayParentContainer = function($eventTarget, $parentContainer, callback) {
-            $eventTarget.bind("ui_controls_loaded", function(e, source) {
+        self.DisplayParentContainer = function($self, $ParentContainer, callback) {
+            $self.bind("ui_controls_loaded", function(e, source) {
                 console.log("[" + self.ViewType + "] ui_controls_loaded!");
                 if (source == "SearchControl")
                     self.isSearchControlLoaded = true;
                 if (source == "StateMapControl")
                     self.isStateMapControlLoaded = true;
                 if (self.isSearchControlLoaded && self.isStateMapControlLoaded) {
-                    console.log("[" + self.ViewType + "] showing #ContentContainer");
-                    $parentContainer.fadeIn();
-                    //$parentContainer.trigger("shown");
+                    console.log("[" + self.ViewType + "] showing " + self.ParentContainerID);
+                    $ParentContainer.fadeIn();
+                    //$ParentContainer.trigger("shown");
                     if (callback) {
                         callback();
                     }

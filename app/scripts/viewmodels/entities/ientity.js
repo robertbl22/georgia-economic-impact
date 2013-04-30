@@ -1,4 +1,4 @@
-define(["datasource/datasource", "viewmodels/tabs/tabs"], function(datasource, Tabs) {"use strict";
+define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls/usercontrols"], function(datasource, Tabs, UserControls) {"use strict";
 
     /* Constructor */
     function IEntity() {
@@ -15,6 +15,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs"], function(datasource, T
         self.UrlKeys = {};
         self.Tabs = new Tabs.Tabs(self);
         self.datasource = datasource;
+        self.AjaxSpinner = new UserControls.AjaxSpinner();;
 
         /**************************************/
         /* Public Methods */
@@ -36,7 +37,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs"], function(datasource, T
         /* Private Methods */
 
         self.LoadSingletonView = function(Show_Callback) {
-            var $viewContainer = $("#ViewContainer");
+            var $ParentContainer = $("#ViewContainer");
             console.log("[" + self.ViewType + "] .LoadSingletonView() running");
 
             /***************************************************/
@@ -44,7 +45,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs"], function(datasource, T
             if (self.viewElement && self.viewElement.innerHTML != "" && self.viewElement.ViewId === self.UrlKeys[self.IdKey]) {
                 console.log("[" + self.ViewType + "] A view is cached, and is the one we want.")
                 // Get the current view from the DOM
-                var el = $viewContainer.get(0).firstChild;
+                var el = $ParentContainer.get(0).firstChild;
 
                 // Are they the same?
                 if (el && el.id === self.ViewType) {
@@ -59,38 +60,38 @@ define(["datasource/datasource", "viewmodels/tabs/tabs"], function(datasource, T
                     /******************************************/
                     /* Not current view, make it the current */
                     console.log("[" + self.ViewType + "] Not current view, make it the current");
-                    $viewContainer.hide();
-                    //TODO: Ajax spinner
-                    $viewContainer.find("#TabViewContainer").empty();
-                    $viewContainer.html(self.viewElement);
-                    $viewContainer.fadeIn(Show_Callback);
+                    $ParentContainer.hide();
+                    $ParentContainer.find("#TabViewContainer").empty();
+                    $ParentContainer.html(self.viewElement);
+                    $ParentContainer.hide().fadeIn(Show_Callback);
 
                 }
             } else {
 
                 /***********************************/
                 /* View is not cached. Create it. */
-                $viewContainer.hide();
-                //TODO: Ajax spinner
-                $viewContainer.find("#TabViewContainer").empty();
-                self.LoadView($viewContainer, function(el) {
+                self.AjaxSpinner.Mask($ParentContainer);
+                //$ParentContainer.hide();
+                //$ParentContainer.find("#TabViewContainer").empty();
+                self.LoadView($ParentContainer, function(el) {
                     el.ViewClassName = self.constructor.name;
                     el.ViewId = self.UrlKeys[self.IdKey];
                     self.viewElement = el;
-                    $viewContainer.fadeIn(Show_Callback)
+                    $ParentContainer.hide().fadeIn(Show_Callback)
                 });
             }
         };
 
-        self.LoadView = function($viewContainer, LoadSingletonView_Callback) {
+        self.LoadView = function($ParentContainer, LoadSingletonView_Callback) {
             this.GetData({
                 "UrlKeys" : self.UrlKeys,
                 "Callback" : function(data) {
                     $.get("templates/" + self.tpl + ".html", function(template) {
-                        $viewContainer.html(template);
-                        var el = $viewContainer.get(0).firstChild;
+                        $ParentContainer.html(template);
+                        var el = $ParentContainer.get(0).firstChild;
                         data.Tabs = self.Tabs;
                         ko.applyBindings(data, el);
+                        //self.AjaxSpinner.Unmask($ParentContainer);
                         LoadSingletonView_Callback(el);
                     });
                 }

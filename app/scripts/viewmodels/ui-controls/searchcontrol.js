@@ -80,7 +80,7 @@ define(["datasource/datasource"], function(datasource) {"use strict";
         /* Private Methods */
 
         self.RenderTemplate = function($eventTarget, $parentElement, tpl) {
-            $parentElement.prepend(tpl);
+            $parentElement.html(tpl);
             var searchControl = $parentElement.find("#SearchControl").get(0);
             ko.applyBindings(self, searchControl);
             console.log("[" + self.ViewType + "] SearchControl triggering ui_controls_loaded");
