@@ -34,11 +34,13 @@
 /* Large desktop */
 @media (min-width: 1200px) {
 	@import "components/big-slogan-1200";
+	@import "ui-controls/statemapcontrol-1200";
 }
 
 @media (min-width: 980px) and (max-width: 1199px) {
 	@import "components/header-980-1199";
 	@import "views/splash-980-1199";
+	@import "ui-controls/statemapcontrol-980-1199";
 }
 
 /* Portrait tablet to landscape and desktop */
