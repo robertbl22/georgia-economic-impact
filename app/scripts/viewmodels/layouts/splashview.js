@@ -3,7 +3,7 @@ define(['viewmodels/layouts/ilayout'], function(ILayout) {"use strict";
     function SplashView() {
         var self = this;
         ILayout.call(self);
-        
+
         /*************************************/
         /* Private Properties */
 
@@ -15,13 +15,13 @@ define(['viewmodels/layouts/ilayout'], function(ILayout) {"use strict";
 
         self.Render = function(callback) {
             $.get("templates/views/SplashView.html", function(template) {
-                
+
                 // Containers
                 var $parentContentContainer = $("#ContentContainer");
                 $parentContentContainer.hide().html(template);
                 var $eventTarget = $parentContentContainer.find("#" + self.ViewType);
                 var $controlContainer = $parentContentContainer.find("#ControlContainer");
-                
+
                 // Render
                 self.DisplayParentContainer($eventTarget, $parentContentContainer, callback);
                 self.SearchControl.Show($eventTarget, $controlContainer);
@@ -36,6 +36,11 @@ define(['viewmodels/layouts/ilayout'], function(ILayout) {"use strict";
                 if (self.isSearchControlLoaded) {
                     console.log("[" + self.ViewType + "] showing #ContentContainer");
                     $parentContainer.fadeIn();
+
+                    $("button.btn-primary").click(function() {
+                        document.location = "#/state/overview";
+                    });
+                    
                     //$parentContainer.trigger("shown");
                     if (callback) {
                         callback();

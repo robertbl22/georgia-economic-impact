@@ -17,8 +17,21 @@
 	
 	h4 { 
 		color: $white; 
-		margin-bottom: 50px;
+		/*margin-bottom: 50px;*/
 	}	
+	
+	h5 {
+		color: $white;
+		font-weight: normal;
+	}
+	
+	button.btn-primary {
+		margin: 20px 0 10px 0;
+	}
+	
+	.container {
+		margin-top: 20px;
+	}
 }
 
 .splash-background {

@@ -92,10 +92,10 @@ define([], function() {"use strict";
             //var width = $('.big-slogan').width();
 
             var cb1 = function() {
-                $("#SearchControl").fadeOut(cb2);
+                $(".search-tools").fadeOut(cb2);
             };
             var cb2 = function() {
-                $(".splash h4").slideUp(cb3);
+                $(".big-message").slideUp(cb3);
             };
             var cb3 = function() {
                 $(".big-slogan").css({
