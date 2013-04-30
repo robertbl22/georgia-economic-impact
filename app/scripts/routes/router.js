@@ -25,6 +25,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
             console.log("[" + self.ViewType + "] context.path = " + context.path);
             self.CurrentPageExit = context.SplashPageExit;
             vm.Layouts.SplashView.Show();
+            // Google Analytics Event Tracking
+            _gaq.push(['_trackEvent', 'Introduction', 'view', context.path]);
         });
 
         /**************************************/
@@ -47,6 +49,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                     })
                 });
             });
+            // Google Analytics Event Tracking
+            _gaq.push(['_trackEvent', 'State Overview', 'view', context.path]);
         });
 
         self.get(/#\/state\/counties\/{0,1}$/, function(context) {
@@ -62,6 +66,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                     })
                 });
             });
+            // Google Analytics Event Tracking
+            _gaq.push(['_trackEvent', 'All Counties', 'view', context.path]);
         });
 
         self.get(/#\/state\/commodities\/{0,1}$/, function(context) {
@@ -77,6 +83,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                     })
                 });
             });
+            // Google Analytics Event Tracking
+            _gaq.push(['_trackEvent', 'All Commodities', 'view', context.path]);
         });
 
         /**************************************/
@@ -95,6 +103,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                     "Callback" : vm.Entities.RegionView.Tabs.Overview.Show
                 })
             });
+            // Google Analytics Event Tracking
+            _gaq.push(['_trackEvent', 'Region Overview', 'view', context.path]);
         });
 
         /**************************************/
@@ -117,6 +127,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                             "Callback" : vm.Entities.CountyView.Tabs.Commodities.Show
                         });
                     });
+                    // Google Analytics Event Tracking
+                    _gaq.push(['_trackEvent', 'County Commodities', 'view', context.path]);
                     break;
                 case "companies":
                     vm.Layouts.TwoColumnView.Show(function() {
@@ -128,6 +140,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                             "Callback" : vm.Entities.CountyView.Tabs.Companies.Show
                         });
                     });
+                    // Google Analytics Event Tracking
+                    _gaq.push(['_trackEvent', 'County Companies', 'view', context.path]);
                     break;
                 default :
                     vm.Layouts.TwoColumnView.Show(function() {
@@ -138,6 +152,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                             "Callback" : vm.Entities.CountyView.Tabs.Overview.Show
                         });
                     });
+                    // Google Analytics Event Tracking
+                    _gaq.push(['_trackEvent', 'County Overview', 'view', context.path]);
             }
         });
 
@@ -168,6 +184,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                             "Callback" : vm.Entities.CommodityView.Tabs.Counties.Show
                         });
                     });
+                    // Google Analytics Event Tracking
+                    _gaq.push(['_trackEvent', 'Commodity Counties', 'view', context.path]);
                     break;
                 case "companies":
                     vm.Layouts.TwoColumnView.Show(function() {
@@ -179,6 +197,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                             "Callback" : vm.Entities.CommodityView.Tabs.Companies.Show
                         });
                     });
+                    // Google Analytics Event Tracking
+                    _gaq.push(['_trackEvent', 'Commodity Companies', 'view', context.path]);
                     break;
                 default :
                     vm.Layouts.TwoColumnView.Show(function() {
@@ -189,6 +209,8 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
                             "Callback" : vm.Entities.CommodityView.Tabs.Overview.Show
                         });
                     });
+                    // Google Analytics Event Tracking
+                    _gaq.push(['_trackEvent', 'Commodity Overview', 'view', context.path]);
             }
         });
 
