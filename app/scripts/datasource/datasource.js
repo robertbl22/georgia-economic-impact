@@ -1,6 +1,5 @@
 define([], function() {"use strict";
 
-
     /***********************************/
     /* STATE */
 
@@ -72,14 +71,18 @@ define([], function() {"use strict";
             var postData = {
                 'SearchTerm' : searchterm
             };
-            AjaxPost(url, postData, callback, null);
+            if ($.trim(searchterm) != "") {
+                AjaxPost(url, postData, callback, null);
+            }
         },
         GetSearchPreview : function(searchterm, callback) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCountiesSearchPreview";
             var postData = {
                 'SearchTerm' : searchterm
             };
-            AjaxPost(url, postData, callback, null);
+            if ($.trim(searchterm) != "") {
+                AjaxPost(url, postData, callback, null);
+            }
         }
     };
 
@@ -114,14 +117,18 @@ define([], function() {"use strict";
             var postData = {
                 'SearchTerm' : searchterm
             };
-            AjaxPost(url, postData, callback, null);
+            if ($.trim(searchterm) != "") {
+                AjaxPost(url, postData, callback, null);
+            }
         },
         GetSearchPreview : function(searchterm, callback) {
             var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesSearchPreview";
             var postData = {
                 'SearchTerm' : searchterm
             };
-            AjaxPost(url, postData, callback, null);
+            if ($.trim(searchterm) != "") {
+                AjaxPost(url, postData, callback, null);
+            }
         }
     };
 
