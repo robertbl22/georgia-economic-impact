@@ -67,24 +67,25 @@ define(["datasource/datasource"], function(datasource) {"use strict";
         /*************************************/
         /* Public Methods */
 
-        self.Show = function($eventTarget, $parentElement) {
+        self.Show = function($ParentContainer) {
             $.get("templates/ui-controls/SearchControl.html", function(tpl) {
                 console.log("[" + self.ViewType + "] Loaded SearchControl.html");
-                self.RenderTemplate($eventTarget, $parentElement, tpl);
-                $("#btnSearchCommodities").click(self.Commodities_ClickHandler);
-                $("#btnSearchCounties").click(self.Counties_ClickHandler);
+                self.RenderTemplate($ParentContainer, tpl);
             });
         };
 
         /*************************************/
         /* Private Methods */
 
-        self.RenderTemplate = function($eventTarget, $parentElement, tpl) {
-            $parentElement.html(tpl);
-            var searchControl = $parentElement.find("#SearchControl").get(0);
+        self.RenderTemplate = function($ParentContainer, tpl) {
+            console.log("[" + self.ViewType + "] RenderTemplate() running");
+            $ParentContainer.hide().html(tpl);
+            var searchControl = $ParentContainer.find("#SearchControl").get(0);
             ko.applyBindings(self, searchControl);
-            console.log("[" + self.ViewType + "] SearchControl triggering ui_controls_loaded");
-            $eventTarget.trigger("ui_controls_loaded", "SearchControl");
+            $("#btnSearchCommodities").click(self.Commodities_ClickHandler);
+            $("#btnSearchCounties").click(self.Counties_ClickHandler);
+            $ParentContainer.fadeIn();
+            console.log("[" + self.ViewType + "] RenderTemplate() finished");
         };
 
         self.Commodities_ClickHandler = function(e) {
@@ -128,7 +129,6 @@ define(["datasource/datasource"], function(datasource) {"use strict";
 
     }
 
-    //return (new SearchControl());
     return (SearchControl)
 
 });

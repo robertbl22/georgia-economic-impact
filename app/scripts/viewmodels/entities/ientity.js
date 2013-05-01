@@ -20,14 +20,14 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
         /**************************************/
         /* Public Methods */
 
-        self.Show = function(params) {
+        self.Show = function(Router_params) {
             console.log("[" + self.ViewType + "] .Show() running");
             document.title = self.Title;
-            self.UrlKeys = params.UrlKeys;
+            self.UrlKeys = Router_params.UrlKeys;
             self.LoadSingletonView(function() {
                 console.log("[" + self.ViewType + "] .Show() finished");
-                if (params.Callback) {
-                    params.Callback();
+                if (Router_params.Callback) {
+                    Router_params.Callback();
                 }
             });
 
@@ -36,7 +36,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
         /*************************************/
         /* Private Methods */
 
-        self.LoadSingletonView = function(Show_Callback) {
+        self.LoadSingletonView = function(self_Show_Callback) {
             var $ParentContainer = $("#ViewContainer");
             console.log("[" + self.ViewType + "] .LoadSingletonView() running");
 
@@ -53,7 +53,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
                     /********************************/
                     /* This is the current view     */
                     console.log("[" + self.ViewType + "] This view is already the current view.");
-                    Show_Callback();
+                    self_Show_Callback();
 
                 } else {
 
@@ -63,7 +63,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
                     $ParentContainer.hide();
                     $ParentContainer.find("#TabViewContainer").empty();
                     $ParentContainer.html(self.viewElement);
-                    $ParentContainer.hide().fadeIn(Show_Callback);
+                    $ParentContainer.hide().fadeIn(self_Show_Callback);
 
                 }
             } else {
@@ -77,12 +77,12 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
                     el.ViewClassName = self.constructor.name;
                     el.ViewId = self.UrlKeys[self.IdKey];
                     self.viewElement = el;
-                    $ParentContainer.hide().fadeIn(Show_Callback)
+                    $ParentContainer.hide().fadeIn(self_Show_Callback)
                 });
             }
         };
 
-        self.LoadView = function($ParentContainer, LoadSingletonView_Callback) {
+        self.LoadView = function($ParentContainer, self_LoadSingletonView_Callback) {
             this.GetData({
                 "UrlKeys" : self.UrlKeys,
                 "Callback" : function(data) {
@@ -92,7 +92,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
                         data.Tabs = self.Tabs;
                         ko.applyBindings(data, el);
                         //self.AjaxSpinner.Unmask($ParentContainer);
-                        LoadSingletonView_Callback(el);
+                        self_LoadSingletonView_Callback(el);
                     });
                 }
             });

@@ -33,10 +33,10 @@ define([], function() {"use strict";
         /*************************************/
         /* Public Methods */
 
-        self.Show = function($eventTarget, $parentElement) {
+        self.Show = function($ParentContainer) {
             $.get("templates/ui-controls/StateMapControl.html", function(tpl) {
                 console.log("[" + self.ViewType + "] Loaded StateMapControl.html");
-                self.RenderTemplate($eventTarget, $parentElement, tpl);
+                self.RenderTemplate($ParentContainer, tpl);
             });
         };
 
@@ -52,16 +52,13 @@ define([], function() {"use strict";
             });
         };
 
-        function playLoadAnimation(img) {
-            //$(this).addClass("small").fadeIn().removeClass('small');
-            //$(this).mapster(self.MapsterOptions);
+        function playLoadAnimation($img) {
             var smallWidth = Math.floor(getMapWidth() * .9);
-            //$(this).width(smallWidth);
-            img.width(smallWidth);
-            img.animate({
+            $img.width(smallWidth);
+            $img.animate({
                 width : getMapWidth()
             }, 500, function() {
-                img.mapster(self.MapsterOptions);
+                $img.mapster(self.MapsterOptions);
             });
         };
 
@@ -75,18 +72,19 @@ define([], function() {"use strict";
             return newWidth;
         };
 
-        self.RenderTemplate = function($eventTarget, $parentElement, tpl) {
-            $parentElement.html(tpl);
-            var stateMapControl = $parentElement.find(self.StateMapControlID).get(0);
+        self.RenderTemplate = function($ParentContainer, tpl, iLayout_Callback) {
+            $ParentContainer.html(tpl);
+            var stateMapControl = $ParentContainer.find(self.StateMapControlID).get(0);
             ko.applyBindings(self, stateMapControl);
-            console.log("[" + self.ViewType + "] StateMapControl triggering ui_controls_loaded");
 
             $(self.StateMapImageID).load(function() {
                 console.log("[" + self.ViewType + "] RenderTemplate() #StateMapImg loaded");
                 playLoadAnimation($(this));
             });
 
-            $eventTarget.trigger("ui_controls_loaded", self.ViewType);
+            if (iLayout_Callback) {
+                iLayout_Callback();
+            }
         };
 
         /* Public interface */
@@ -96,7 +94,6 @@ define([], function() {"use strict";
 
     }
 
-    //return (new StateMapControl());
     return (StateMapControl)
 
 });

@@ -13,29 +13,30 @@ define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use str
 
         /**************************************/
         /* Public Methods */
-       
-        self.Show = function(callback) {
+
+        self.Show = function(Router_Callback) {
             console.log("[" + self.ViewType + "] .Show() running");
-            if (!self.IsInView(callback)) {
-                self.Render(callback);
+            if (!self.IsInView()) {
+                self.Render(Router_Callback);
+            } else {
+                if (Router_Callback) {
+                    Router_Callback();
+                }
             }
         };
 
         /*************************************/
         /* Private Methods */
 
-        self.IsInView = function(callback) {
+        self.IsInView = function() {
             if ($("#" + self.ViewType).length) {
                 console.log("[" + self.ViewType + "] exists ---vvv");
                 console.log($(self.ViewType));
-                if (callback) {
-                    callback();
-                    return true;
-                }
+                return true;
             }
             return false;
         };
-        
+
         /**************************************/
         /* Public interface */
         return {
