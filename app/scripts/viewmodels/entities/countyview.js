@@ -9,7 +9,7 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
 
         self.ViewType = "CountyView";
         self.IdKey = 'CountyUrlKey';
-        self.Title = "Untitled County";
+        self.Title = "";
         self.tpl = 'views/CountyView';
         self.GetData = self.datasource.County.GetCounty;
         

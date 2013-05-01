@@ -8,6 +8,7 @@ define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use str
         /*************************************/
         /* Private Properties */
 
+        self.Title = "State of Georgia Economic Impact";
         self.UserControls = UserControls;
         self.SearchControl = new self.UserControls.SearchControl();
 
@@ -15,6 +16,7 @@ define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use str
         /* Public Methods */
 
         self.Show = function(Router_Callback) {
+            
             console.log("[" + self.ViewType + "] .Show() running");
             if (!self.IsInView()) {
                 self.Render(Router_Callback);

@@ -16,6 +16,7 @@ define(['viewmodels/layouts/ilayout'], function(ILayout) {"use strict";
         /* Private Methods */
 
         self.Render = function(Router_Callback) {
+            document.title = self.Title;
             $.get("templates/views/SplashView.html", function(template) {
 
                 // Containers

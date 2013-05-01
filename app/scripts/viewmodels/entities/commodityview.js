@@ -9,7 +9,7 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
 
         self.ViewType = "CommodityView";
         self.IdKey = 'CommodityUrlKey';
-        self.Title = "UNTITLED COMMODITY";
+        self.Title = "";
         self.tpl = 'views/CommodityView';
         self.GetData = self.datasource.Commodity.GetCommodity;
         

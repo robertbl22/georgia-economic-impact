@@ -15,14 +15,14 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
         self.UrlKeys = {};
         self.Tabs = new Tabs.Tabs(self);
         self.datasource = datasource;
-        self.AjaxSpinner = new UserControls.AjaxSpinner();;
+        self.Title = "";
+        self.AjaxSpinner = new UserControls.AjaxSpinner();
 
         /**************************************/
         /* Public Methods */
 
         self.Show = function(Router_params) {
             console.log("[" + self.ViewType + "] .Show() running");
-            document.title = self.Title;
             self.UrlKeys = Router_params.UrlKeys;
             self.LoadSingletonView(function() {
                 console.log("[" + self.ViewType + "] .Show() finished");
@@ -64,7 +64,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
                     $ParentContainer.find("#TabViewContainer").empty();
                     $ParentContainer.html(self.viewElement);
                     $ParentContainer.hide().fadeIn(self_Show_Callback);
-
+                    document.title = self.Title;
                 }
             } else {
 
@@ -90,6 +90,10 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
                         $ParentContainer.html(template);
                         var el = $ParentContainer.get(0).firstChild;
                         data.Tabs = self.Tabs;
+                        if (data.Name && data.Name != "") {
+                            document.title = data.Name;
+                            self.Title = data.Name;
+                        }
                         ko.applyBindings(data, el);
                         //self.AjaxSpinner.Unmask($ParentContainer);
                         self_LoadSingletonView_Callback(el);
@@ -100,7 +104,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
 
         /**************************************/
         /* Public interface */
-       
+
         return {
             Title : "Untitled View",
             tpl : "",

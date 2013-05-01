@@ -9,7 +9,7 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
 
         self.ViewType = "RegionView";
         self.IdKey = 'RegionUrlKey';
-        self.Title = "Untitled Region";
+        self.Title = "";
         self.tpl = 'views/RegionView';
         self.GetData = self.datasource.Region.GetRegion;
         
