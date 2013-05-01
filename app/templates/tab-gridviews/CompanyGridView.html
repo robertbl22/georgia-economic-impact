@@ -27,7 +27,7 @@
 				<td data-bind="text: ('$' + $.number(ExportEstValue))" class="cell-numeric"></td>
 			</tr>
 		</tbody>
-		<tbody data-bind="visible: $root.dataset().length === 0">
+		<tbody data-bind="visible: $root.pages().length < 1">
 			<tr>
 				<td colspan="7"><div class="well-small">No records to display</div></td>
 			</tr>
