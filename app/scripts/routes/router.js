@@ -6,6 +6,7 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
         //self.currentExit = null;
         self.use(PageExit);
         self.ViewType = "Router";
+        self.HomePath = "/economicimpact-temp/"
 
         /**************************************/
         /* Routing Rules */
@@ -15,6 +16,7 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
 
         self.get('#/', function(context) {
             // #/
+            console.log("Rule 1");
             console.log("[" + self.ViewType + "] context.path = " + context.path);
             context.redirect("#/intro");
         });
@@ -22,6 +24,7 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
         self.get(/#\/intro\/{0,1}$/, function(context) {
             // NOTE: was anchored to root slash --> /^\/#\/intro\/{0,1}$/
             // #/intro
+            console.log("Rule 2");
             console.log("[" + self.ViewType + "] context.path = " + context.path);
             self.CurrentPageExit = context.SplashPageExit;
             vm.Layouts.SplashView.Show();
@@ -34,6 +37,7 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
 
         self.get(/#\/state\/{0,1}$/, function(context) {
             // #/state
+            console.log("Rule 3");
             console.log("[" + self.ViewType + "] context.path = " + context.path);
             context.redirect("#/state/overview");
         });
@@ -217,11 +221,12 @@ define(["viewmodels/viewmodels", "routes/router.pageexit"], function(vm, PageExi
         /**************************************/
         /* DEFAULT (MUST BE THE LAST RULE) */
 
-        self.get('', function(context) {
+        //self.get('', function(context) {
             // Default route
-            console.log("[" + self.ViewType + "] context.path = " + context.path);
-            context.redirect("#/intro");
-        });
+            //console.log("Default Rule");
+            //console.log("[" + self.ViewType + "] context.path = " + context.path);
+            //context.redirect("#/intro");
+        //});
 
     });
 

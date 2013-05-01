@@ -1,15 +1,14 @@
 .splash {
 
 	min-height: 500px;
-
-	.big-slogan {
-		margin-top: 10px;
-		margin-bottom: 10px;
-	}
 	
 	.row {
 		padding-left: 20px;
 		padding-right: 20px;
+	}
+	
+	.big-message h5 {
+		max-width: 280px;
 	}
 }
 .splash-background {

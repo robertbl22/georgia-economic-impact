@@ -32,13 +32,17 @@ define(["datasource/datasource"], function(datasource) {"use strict";
 
         // Watch the user as they type
         self.CommoditySearchTerm.subscribe(function(currValue) {
-
             console.log("[" + self.ViewType + "] The commodity search term is " + currValue);
-            self.CommodityTypeahead.removeAll();
+            
+            // Get data from database
             datasource.Commodity.GetTypeahead(currValue, function(results) {
-
                 console.log("[" + self.ViewType + "] adding typeahead results");
                 console.log(results);
+                
+                // Clear the typeahead
+                self.CommodityTypeahead.removeAll();
+                
+                // Add database results to user control
                 for (var i = 0, j = results.length; i < j; i++) {
                     console.log("[" + self.ViewType + "] adding '" + (results[i]).Name + "'");
                     self.CommodityTypeahead.push((results[i]).Name);
@@ -49,13 +53,17 @@ define(["datasource/datasource"], function(datasource) {"use strict";
 
         // Watch the user as they type
         self.CountySearchTerm.subscribe(function(currValue) {
-
             console.log("[" + self.ViewType + "] The county search term is " + currValue);
-            self.CountyTypeahead.removeAll();
+            
+            // Get data from database
             datasource.County.GetTypeahead(currValue, function(results) {
-
                 console.log("[" + self.ViewType + "] adding typeahead results");
                 console.log(results);
+                
+                // Clear the typeahead
+                self.CountyTypeahead.removeAll();
+                
+                // Add database results to user control
                 for (var i = 0, j = results.length; i < j; i++) {
                     console.log("[" + self.ViewType + "] adding '" + (results[i]).Name + "'");
                     self.CountyTypeahead.push((results[i]).Name);

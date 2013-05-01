@@ -62,12 +62,13 @@
 }
 
 @media (max-width: 580px) {
-	@import "views/splash-580";
 	@import "components/big-slogan-580";
+	@import "views/splash-580";
 }
 
 /* Landscape phones and down */
 @media (max-width: 480px) {
+	@import "components/big-slogan-480";
 	@import "views/splash-480";
 }
 

@@ -1,4 +1,20 @@
-.big-slogan {
-	font-size: 36pt;
-	line-height: 36pt;
+.splash {
+	
+	.big-slogan {
+		position: absolute;
+		top: 0;
+		margin-top: 20px;
+		margin-right: 10px;
+	}
+	
+}
+.splash-background {
+	position: static;
+}
+
+.main-panel {
+	.big-slogan {
+		font-size: 36pt;
+		line-height: 36pt;
+	}
 }

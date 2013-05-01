@@ -9,22 +9,22 @@ define([], function() {"use strict";
         commoditiesData : null,
         companiesData : null,
         GetState : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetState";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetState";
             var event = {
                 type : "state_data_loaded"
             }
             CachedAjaxPost(url, params.UrlKeys, this.stateData, params.Callback, event);
         },
         GetCounties : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCounties";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetAllCounties";
             CachedAjaxPost(url, params.UrlKeys, this.countiesData, params.Callback);
         },
         GetCommodities : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCommodities";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetAllCommodities";
             CachedAjaxPost(url, params.UrlKeys, this.commoditiesData, params.Callback);
         },
         GetCompanies : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetAllCompanies";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetAllCompanies";
             CachedAjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
         }
     };
@@ -35,7 +35,7 @@ define([], function() {"use strict";
     var Region = {
         regionData : null,
         GetRegion : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetRegion";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetRegion";
             CachedAjaxPost(url, params.UrlKeys, this.regionData, params.Callback);
         }
     };
@@ -48,18 +48,18 @@ define([], function() {"use strict";
         companiesData : null,
         commoditiesData : null,
         GetCounty : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCounty";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCounty";
             var event = {
                 type : "county_data_loaded"
             }
             CachedAjaxPost(url, params.UrlKeys, this.countyData, params.Callback, event);
         },
         GetCommodities : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesByCounty";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesByCounty";
             CachedAjaxPost(url, params.UrlKeys, this.commoditiesData, params.Callback);
         },
         GetCompanies : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCounty";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCounty";
             CachedAjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
         },
         Search : function(searchterm, Callback) {
@@ -67,7 +67,7 @@ define([], function() {"use strict";
                 Callback("region1", "chatham-county");
         },
         GetTypeahead : function(searchterm, callback) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCountiesTypeahead";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCountiesTypeahead";
             var postData = {
                 'SearchTerm' : searchterm
             };
@@ -76,7 +76,7 @@ define([], function() {"use strict";
             }
         },
         GetSearchPreview : function(searchterm, callback) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCountiesSearchPreview";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCountiesSearchPreview";
             var postData = {
                 'SearchTerm' : searchterm
             };
@@ -94,18 +94,18 @@ define([], function() {"use strict";
         companiesData : null,
         countiesData : null,
         GetCommodity : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommodity";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCommodity";
             var event = {
                 type : "commodity_data_loaded"
             }
             CachedAjaxPost(url, params.UrlKeys, this.commodityData, params.Callback, event);
         },
         GetCounties : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCountiesByCommodity";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCountiesByCommodity";
             CachedAjaxPost(url, params.UrlKeys, this.countiesData, params.Callback);
         },
         GetCompanies : function(params) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCommodity";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCompaniesByCommodity";
             CachedAjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
         },
         Search : function(searchterm, callback) {
@@ -113,7 +113,7 @@ define([], function() {"use strict";
                 callback(searchterm);
         },
         GetTypeahead : function(searchterm, callback) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesTypeahead";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesTypeahead";
             var postData = {
                 'SearchTerm' : searchterm
             };
@@ -122,7 +122,7 @@ define([], function() {"use strict";
             }
         },
         GetSearchPreview : function(searchterm, callback) {
-            var url = "/dnn614/DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesSearchPreview";
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesSearchPreview";
             var postData = {
                 'SearchTerm' : searchterm
             };
@@ -161,7 +161,8 @@ define([], function() {"use strict";
     function AjaxPost(url, postData, callback, event) {
         $.ajax({
             type : "POST",
-            url : "http://localhost" + url,
+            //url : "http://localhost/dnn614/" + url, /* DEVELOPMENT */
+            url : "http://www.gaports.com/" + url, /* PRODUCTION */
             data : $.serializeJSON(postData),
             contentType : "application/json; charset=utf-8",
             dataType : "json",
