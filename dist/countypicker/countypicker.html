@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>State of Georgia Economic Impact</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="styles/countypicker.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css">
+</head>
+<body>
+
+	<div style="clear: both; height: 50px; border: 1px solid black;" id="selections"></div>
+	<div id="CountyPickerContainer">
+		<img id="GeorgiaMap" src="http://www.realmadvertising.com/misc/realm/map-georgia-regions.png" usemap="#GeorgiaMapAreas">
+		<div class="countypicker-mask"></div>
+		<div class="region1">
+			<img src="http://www.realmadvertising.com/misc/realm/region1.png">
+			<button type="button" class="btn btn-info closable">
+				&times;
+			</button>
+		</div>
+		<map id="GeorgiaMapAreas" name="GeorgiaMapAreas">
+			<area shape="poly" name="region1" alt="Region 1" title="Region 1" coords="127,0,131,33,106,48,116,65,117,98,132,106,134,87,148,100,173,78,191,88,202,80,215,82,230,87,247,79,237,57,221,57,193,32,216,7,219,-1,165,2" href="#" />
+			<area shape="poly" name="region2" alt="Region 2" title="Region 2" coords="248,80,263,108,242,114,225,135,222,165,209,180,202,168,180,172,182,200,151,205,152,179,136,160,150,138,139,131,158,114,149,97,173,76,193,89,203,80,231,88" href="#" />
+		</map>
+	</div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+	<script>
+        window.jQuery || document.write('<script src="scripts/vendor/jquery.min.js"><\/script>')
+	</script>
+	<script src="scripts/plugins.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+	<script src="scripts/countypicker.js"></script>
+
+</body>
+</html>
