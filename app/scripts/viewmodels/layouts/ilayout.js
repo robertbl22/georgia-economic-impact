@@ -29,7 +29,8 @@ define(["viewmodels/ui-controls/usercontrols"], function(UserControls) {"use str
         /* Private Methods */
 
         self.IsInView = function() {
-            if ($("#" + self.ViewType).length) {
+            var $el = $("#" + self.ViewType);
+            if ($el.length) {
                 console.log("[" + self.ViewType + "] exists ---vvv");
                 console.log($(self.ViewType));
                 return true;
