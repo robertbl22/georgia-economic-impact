@@ -5,8 +5,8 @@ td.cell-border-left, th.cell-border-left {
 	border-left: solid 2px $tableBorder;
 }
 .table th {
-	background-color:  $blue;
-	color:  $white;
+	background-color:   $blue;
+	color:   $white;
 }
 td.centered {
 	text-align: center;
@@ -14,4 +14,10 @@ td.centered {
 div.centered-wrapper {
 	display: inline-block;
 	text-align: left;
+}
+td.cell-commodity-name {
+	width: 180px;
+	overflow: hidden;
+	text-transform: capitalize;
+	display: block;
 }
