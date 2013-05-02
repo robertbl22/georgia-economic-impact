@@ -1,0 +1,153 @@
+@font-face {
+	font-family: 'GPA-Round-Icons';
+	src:url('../fonts/GPA-Round-Icons.eot');
+	src:url('../fonts/GPA-Round-Icons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/GPA-Round-Icons.woff') format('woff'),
+		url('../fonts/GPA-Round-Icons.ttf') format('truetype'),
+		url('../fonts/GPA-Round-Icons.svg#GPA-Round-Icons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'GPA-Round-Icons';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="your-class-prefix"] {
+*/
+.gpa-icon-web-access, .gpa-icon-warehouse, .gpa-icon-trucking-companies, .gpa-icon-tool, .gpa-icon-time, .gpa-icon-terminal, .gpa-icon-sustainability, .gpa-icon-services, .gpa-icon-security, .gpa-icon-rpg, .gpa-icon-reefer, .gpa-icon-rail-access, .gpa-icon-purchasing, .gpa-icon-play-button, .gpa-icon-overnight, .gpa-icon-locations, .gpa-icon-interstate, .gpa-icon-i16-and-i95, .gpa-icon-heart-health, .gpa-icon-healthcare, .gpa-icon-georgia, .gpa-icon-flexibility, .gpa-icon-first-aid, .gpa-icon-economics, .gpa-icon-downloads, .gpa-icon-disc, .gpa-icon-customer-service, .gpa-icon-cranes, .gpa-icon-cost-effective, .gpa-icon-class-1-rail, .gpa-icon-carrier-weights, .gpa-icon-berth-space, .gpa-icon-48-hours, .gpa-icon-30-miles, .gpa-icon-24-7-access, .gpa-icon-3-day, .gpa-icon-2-day, .gpa-ring-icon-economics {
+	font-family: 'GPA-Round-Icons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.gpa-icon-web-access:before {
+	content: "\e000";
+}
+.gpa-icon-warehouse:before {
+	content: "\e001";
+}
+.gpa-icon-trucking-companies:before {
+	content: "\e002";
+}
+.gpa-icon-tool:before {
+	content: "\e003";
+}
+.gpa-icon-time:before {
+	content: "\e004";
+}
+.gpa-icon-terminal:before {
+	content: "\e005";
+}
+.gpa-icon-sustainability:before {
+	content: "\e006";
+}
+.gpa-icon-services:before {
+	content: "\e007";
+}
+.gpa-icon-security:before {
+	content: "\e008";
+}
+.gpa-icon-rpg:before {
+	content: "\e009";
+}
+.gpa-icon-reefer:before {
+	content: "\e00a";
+}
+.gpa-icon-rail-access:before {
+	content: "\e00b";
+}
+.gpa-icon-purchasing:before {
+	content: "\e00c";
+}
+.gpa-icon-play-button:before {
+	content: "\e00d";
+}
+.gpa-icon-overnight:before {
+	content: "\e00e";
+}
+.gpa-icon-locations:before {
+	content: "\e00f";
+}
+.gpa-icon-interstate:before {
+	content: "\e010";
+}
+.gpa-icon-i16-and-i95:before {
+	content: "\e011";
+}
+.gpa-icon-heart-health:before {
+	content: "\e012";
+}
+.gpa-icon-healthcare:before {
+	content: "\e013";
+}
+.gpa-icon-georgia:before {
+	content: "\e014";
+}
+.gpa-icon-flexibility:before {
+	content: "\e015";
+}
+.gpa-icon-first-aid:before {
+	content: "\e016";
+}
+.gpa-icon-economics:before {
+	content: "\e017";
+}
+.gpa-icon-downloads:before {
+	content: "\e018";
+}
+.gpa-icon-disc:before {
+	content: "\e019";
+}
+.gpa-icon-customer-service:before {
+	content: "\e01a";
+}
+.gpa-icon-cranes:before {
+	content: "\e01b";
+}
+.gpa-icon-cost-effective:before {
+	content: "\e01c";
+}
+.gpa-icon-class-1-rail:before {
+	content: "\e01d";
+}
+.gpa-icon-carrier-weights:before {
+	content: "\e01e";
+}
+.gpa-icon-berth-space:before {
+	content: "\e01f";
+}
+.gpa-icon-48-hours:before {
+	content: "\e020";
+}
+.gpa-icon-30-miles:before {
+	content: "\e021";
+}
+.gpa-icon-24-7-access:before {
+	content: "\e022";
+}
+.gpa-icon-3-day:before {
+	content: "\e023";
+}
+.gpa-icon-2-day:before {
+	content: "\e024";
+}
+.gpa-ring-icon-economics:before {
+	content: "\e025";
+}
