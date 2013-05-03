@@ -34,9 +34,22 @@ define([], function() {"use strict";
 
     var Region = {
         regionData : null,
+        countiesData : null,
+        commoditiesData : null,
         GetRegion : function(params) {
             var url = "DesktopModules/EconomicImpact/WebService.asmx/GetRegion";
-            CachedAjaxPost(url, params.UrlKeys, this.regionData, params.Callback);
+            var event = {
+                type : "region_data_loaded"
+            }
+            CachedAjaxPost(url, params.UrlKeys, this.regionData, params.Callback, event);
+        },
+        GetCommodities : function(params) {
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesByRegion";
+            CachedAjaxPost(url, params.UrlKeys, this.commoditiesData, params.Callback);
+        },
+        GetCounties : function(params) {
+            var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCountiesByRegion";
+            CachedAjaxPost(url, params.UrlKeys, this.countiesData, params.Callback);
         }
     };
 

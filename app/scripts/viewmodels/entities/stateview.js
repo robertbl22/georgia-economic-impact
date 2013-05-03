@@ -20,7 +20,7 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
         // Init gridview tabs
         self.Tabs.Counties.GetData = self.datasource.State.GetCounties;
         self.Tabs.Commodities.GetData = self.datasource.State.GetCommodities;
-        self.Tabs.Companies.GetData = self.datasource.State.GetCompanies;
+        //self.Tabs.Companies.GetData = self.datasource.State.GetCompanies;
 
         /*************************************/
         /* Event Handlers */

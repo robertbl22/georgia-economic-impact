@@ -31,7 +31,7 @@ define(['viewmodels/layouts/ilayout'], function(ILayout) {"use strict";
                 $ParentContainer.fadeIn();
                 
                 // Event handlers
-                $("button.btn-primary").click(function() {
+                $(".btn-see-state").click(function() {
                     document.location = "#/state/overview";
                 });
                 
