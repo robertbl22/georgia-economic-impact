@@ -1,0 +1,40 @@
+<div id="CountyGridView">
+	<div data-bind="template: { name: 'pagercontrol', templateUrl: 'templates/ui-controls', ajax: { cache: false }, data: $root }"></div>
+	<table class="table table-bordered table-striped table-condensed" title="County export and import">
+		<thead>
+			<tr>
+				<th rowspan="2">County</th>
+				<th colspan="3" class="cell-border-left"><i class="icon-signin"></i> Import</th>
+				<th colspan="3" class="cell-border-left"><i class="icon-signout"></i> Export</th>
+			</tr>
+			<tr>
+				<th class="cell-border-left">TEU</th>
+				<th>STONS</th>
+				<th>Est.&nbsp;Value</th>
+				<th class="cell-border-left">TEU</th>
+				<th>STONS</th>
+				<th>Est.&nbsp;Value</th>
+			</tr>
+		</thead>
+		<tbody data-bind="foreach: $data.dataset">
+			<tr>
+				<td><a data-bind="text: Name, attr: {href: ('#/state/' + RegionUrlKey + '/' + UrlKey), title: Name}"></a></td>
+				<td data-bind="text: $.number(ImportTEUs, 1)" class="cell-numeric cell-border-left"></td>
+				<td data-bind="text: $.number(ImportSTONS, 1)" class="cell-numeric"></td>
+				<td data-bind="text: ('$' + $.number(ImportEstValue))" class="cell-numeric"></td>
+				<td data-bind="text: $.number(ExportTEUs, 1)" class="cell-numeric cell-border-left"></td>
+				<td data-bind="text: $.number(ExportSTONS, 1)" class="cell-numeric"></td>
+				<td data-bind="text: ('$' + $.number(ExportEstValue))" class="cell-numeric"></td>
+			</tr>
+		</tbody>
+		<tbody data-bind="visible: $root.pages().length < 1">
+			<tr>
+				<td colspan="7">
+				<div class="well-small">
+					No records to display
+				</div></td>
+			</tr>
+		</tbody>
+	</table>
+	<div data-bind="template: { name: 'pagercontrol', templateUrl: 'templates/ui-controls', ajax: { cache: false }, data: $root }"></div>
+</div>
