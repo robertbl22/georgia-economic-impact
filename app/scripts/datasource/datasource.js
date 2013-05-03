@@ -76,8 +76,9 @@ define([], function() {"use strict";
             CachedAjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
         },
         Search : function(searchterm, Callback) {
-            if (Callback)
+            if (Callback) {
                 Callback("region1", "chatham-county");
+            }
         },
         GetTypeahead : function(searchterm, callback) {
             var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCountiesTypeahead";
@@ -122,8 +123,9 @@ define([], function() {"use strict";
             CachedAjaxPost(url, params.UrlKeys, this.companiesData, params.Callback);
         },
         Search : function(searchterm, callback) {
-            if (callback)
+            if (callback) {
                 callback(searchterm);
+            }
         },
         GetTypeahead : function(searchterm, callback) {
             var url = "DesktopModules/EconomicImpact/WebService.asmx/GetCommoditiesTypeahead";

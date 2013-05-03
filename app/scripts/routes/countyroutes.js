@@ -47,19 +47,21 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
                         _gaq.push(['_trackEvent', 'County Companies', 'view', context.path]);
                         break;
                     default :
-                        vm.Layouts.TwoColumnView.Show(function() {
-                            vm.Entities.CountyView.Show({
-                                "UrlKeys" : {
-                                    "CountyUrlKey" : countyUrlKey
-                                },
-                                "Callback" : vm.Entities.CountyView.Tabs.Overview.Show
+                        context.Exit(function() {
+                            vm.Layouts.TwoColumnView.Show(function() {
+                                vm.Entities.CountyView.Show({
+                                    "UrlKeys" : {
+                                        "CountyUrlKey" : countyUrlKey
+                                    },
+                                    "Callback" : vm.Entities.CountyView.Tabs.Overview.Show
+                                });
                             });
                         });
                         // Google Analytics Event Tracking
                         _gaq.push(['_trackEvent', 'County Overview', 'view', context.path]);
                 }
             });
-            
+
         }
 
         return (self);

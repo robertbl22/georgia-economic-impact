@@ -54,12 +54,14 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
                         _gaq.push(['_trackEvent', 'Commodity Companies', 'view', context.path]);
                         break;
                     default :
-                        vm.Layouts.TwoColumnView.Show(function() {
-                            vm.Entities.CommodityView.Show({
-                                "UrlKeys" : {
-                                    "CommodityUrlKey" : commodityUrlKey
-                                },
-                                "Callback" : vm.Entities.CommodityView.Tabs.Overview.Show
+                        context.Exit(function() {
+                            vm.Layouts.TwoColumnView.Show(function() {
+                                vm.Entities.CommodityView.Show({
+                                    "UrlKeys" : {
+                                        "CommodityUrlKey" : commodityUrlKey
+                                    },
+                                    "Callback" : vm.Entities.CommodityView.Tabs.Overview.Show
+                                });
                             });
                         });
                         // Google Analytics Event Tracking

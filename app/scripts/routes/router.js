@@ -6,7 +6,7 @@ define(["routes/routes", "routes/router.pageexit"], function(Routes, PageExit) {
         //self.currentExit = null;
         self.use(PageExit);
         self.ViewType = "Router";
-        self.HomePath = "/economicimpact-temp/"
+        self.HomePath = "/moreimpact/"
         
         self.SplashRoutes = new Routes.SplashRoutes(self);
         self.StateRoutes = new Routes.StateRoutes(self);

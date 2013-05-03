@@ -33,15 +33,15 @@ define(["datasource/datasource"], function(datasource) {"use strict";
         // Watch the user as they type
         self.CommoditySearchTerm.subscribe(function(currValue) {
             //console.log("[" + self.ViewType + "] The commodity search term is " + currValue);
-            
+
             // Get data from database
             datasource.Commodity.GetTypeahead(currValue, function(results) {
                 //console.log("[" + self.ViewType + "] adding typeahead results");
                 //console.log(results);
-                
+
                 // Clear the typeahead
                 self.CommodityTypeahead.removeAll();
-                
+
                 // Add database results to user control
                 for (var i = 0, j = results.length; i < j; i++) {
                     //console.log("[" + self.ViewType + "] adding '" + (results[i]).Name + "'");
@@ -54,15 +54,15 @@ define(["datasource/datasource"], function(datasource) {"use strict";
         // Watch the user as they type
         self.CountySearchTerm.subscribe(function(currValue) {
             //console.log("[" + self.ViewType + "] The county search term is " + currValue);
-            
+
             // Get data from database
             datasource.County.GetTypeahead(currValue, function(results) {
                 //console.log("[" + self.ViewType + "] adding typeahead results");
                 //console.log(results);
-                
+
                 // Clear the typeahead
                 self.CountyTypeahead.removeAll();
-                
+
                 // Add database results to user control
                 for (var i = 0, j = results.length; i < j; i++) {
                     //console.log("[" + self.ViewType + "] adding '" + (results[i]).Name + "'");
@@ -106,6 +106,11 @@ define(["datasource/datasource"], function(datasource) {"use strict";
                     document.location = "#/commodities/" + data[0].UrlKey;
                 } else {
                     //console.log("[" + self.ViewType + "] More than one result found");
+                    $.each(data, function(i) {
+                        if (searchterm.toLowerCase() === data[i].UrlKey.toLowerCase()) {
+                            document.location = "#/commodities/" + data[i].UrlKey;
+                        }
+                    });
                     // #/state/counties?search=Calhoun+County
                     //document.location = "#/state/counties?search=" + encodeURIComponent(searchterm);
                 }
@@ -122,6 +127,11 @@ define(["datasource/datasource"], function(datasource) {"use strict";
                     document.location = "#/state/" + data[0].RegionUrlKey + "/" + data[0].UrlKey;
                 } else {
                     //console.log("[" + self.ViewType + "] More than one result found");
+                    $.each(data, function(i) {
+                        if (searchterm.toLowerCase() === data[i].UrlKey.toLowerCase()) {
+                            document.location = "#/state/" + data[i].RegionUrlKey + "/" + data[i].UrlKey;
+                        }
+                    });
                     // #/state/counties?search=Calhoun+County
                     //document.location = "#/state/counties?search=" + encodeURIComponent(searchterm);
                 }
