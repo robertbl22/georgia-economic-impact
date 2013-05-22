@@ -70,49 +70,49 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
         /* Private Methods */
 
         self.ShowCountiesTab = function() {
-            vm.Layouts.TwoColumnView.Show(function() {
-                vm.Entities.RegionView.Show({
+            vm.Layouts.TwoColumnView().Show(function() {
+                vm.Entities.RegionView().Show({
                     "UrlKeys" : {
                         "RegionUrlKey" : self.RegionUrlKey,
                         "PageIndex" : 0
                     },
-                    "Callback" : vm.Entities.RegionView.Tabs.Counties.Show
+                    "Callback" : vm.Entities.RegionView().Tabs.Counties.Show
                 });
             });
         }
 
         self.ShowCommoditiesTab = function() {
-            vm.Layouts.TwoColumnView.Show(function() {
-                vm.Entities.RegionView.Show({
+            vm.Layouts.TwoColumnView().Show(function() {
+                vm.Entities.RegionView().Show({
                     "UrlKeys" : {
                         "RegionUrlKey" : self.RegionUrlKey,
                         "PageIndex" : 0
                     },
-                    "Callback" : vm.Entities.RegionView.Tabs.Commodities.Show
+                    "Callback" : vm.Entities.RegionView().Tabs.Commodities.Show
                 });
             });
         }
 
         self.ShowCompaniesTab = function() {
-            vm.Layouts.TwoColumnView.Show(function() {
-                vm.Entities.RegionView.Show({
+            vm.Layouts.TwoColumnView().Show(function() {
+                vm.Entities.RegionView().Show({
                     "UrlKeys" : {
                         "RegionUrlKey" : self.RegionUrlKey,
                         "PageIndex" : 0
                     },
-                    "Callback" : vm.Entities.RegionView.Tabs.Companies.Show
+                    "Callback" : vm.Entities.RegionView().Tabs.Companies.Show
                 });
             });
         }
 
         self.ShowOverviewTab = function() {
-            vm.Layouts.TwoColumnView.Show(function() {
-                vm.Entities.RegionView.Show({
+            vm.Layouts.TwoColumnView().Show(function() {
+                vm.Entities.RegionView().Show({
                     "UrlKeys" : {
                         "RegionUrlKey" : self.RegionUrlKey,
                         "PageIndex" : 0
                     },
-                    "Callback" : vm.Entities.RegionView.Tabs.Overview.Show
+                    "Callback" : vm.Entities.RegionView().Tabs.Overview.Show
                 });
             });
         }

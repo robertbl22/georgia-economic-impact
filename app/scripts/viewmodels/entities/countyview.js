@@ -1,4 +1,4 @@
-define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
+define(["viewmodels/entities/ientity"], function(IEntity, CountyOverviewTab) {"use strict";
 
     function CountyView() {
         var self = this;
@@ -14,6 +14,7 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
         self.GetData = self.datasource.County.GetCounty;
         
         // Init overview tab
+        self.Tabs.Overview = self.Tabs.CountyOverview;
         self.Tabs.Overview.tpl = 'tab-overviews/CountyOverview';
         self.Tabs.Overview.GetData = self.datasource.County.GetCounty;
         
@@ -38,6 +39,6 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
     if (Object.create) {
         CountyView.prototype = Object.create(IEntity.prototype);
     }
-    return (new CountyView());
+    return CountyView;
 
 });

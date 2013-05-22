@@ -11,6 +11,8 @@ define(['viewmodels/layouts/ilayout'], function(ILayout) {"use strict";
         self.isSearchControlLoaded = false;
         self.ParentContainerID = "#ContentContainer";
         self.SearchControlContainerID = "#ControlContainer";
+        
+        //console.log("[" + self.ViewType + "] instantiated");
 
         /*************************************/
         /* Private Methods */
@@ -50,6 +52,6 @@ define(['viewmodels/layouts/ilayout'], function(ILayout) {"use strict";
     if (Object.create) {
         SplashView.prototype = Object.create(ILayout.prototype);
     }
-    return (new SplashView());
+    return (SplashView);
 
 });

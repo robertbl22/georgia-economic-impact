@@ -6,7 +6,7 @@ define(["viewmodels/entities/entities", "viewmodels/layouts/layouts", "viewmodel
     return {
         Entities : Entities,
         Layouts : Layouts,
-        Tabs : Tabs,
+        //Tabs : Tabs,
         UserControls : UserControls
     };
 

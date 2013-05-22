@@ -14,6 +14,7 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
         self.GetData = self.datasource.State.GetState;
         
         // Init overview tab
+        self.Tabs.Overview = self.Tabs.StateOverview;
         self.Tabs.Overview.tpl = 'tab-overviews/StateOverview';
         self.Tabs.Overview.GetData = self.datasource.State.GetState;
         
@@ -40,6 +41,6 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
     if (Object.create) {
         StateView.prototype = Object.create(IEntity.prototype);
     }
-    return (new StateView());
+    return StateView;
 
 });

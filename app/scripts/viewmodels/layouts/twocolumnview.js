@@ -12,6 +12,9 @@ define(["viewmodels/layouts/ilayout"], function(ILayout) {"use strict";
         self.SearchControlContainerID = "#SearchControlContainer";
         self.StateMapControlContainerID = "#StateMapControlContainer";
         self.StateMapControl = new self.UserControls.StateMapControl();
+        
+        //console.log("[" + self.ViewType + "] instantiated");
+
 
         /*************************************/
         /* Private Methods */
@@ -49,6 +52,6 @@ define(["viewmodels/layouts/ilayout"], function(ILayout) {"use strict";
     if (Object.create) {
         TwoColumnView.prototype = Object.create(ILayout.prototype);
     }
-    return (new TwoColumnView());
+    return (TwoColumnView);
 
 });

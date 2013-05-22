@@ -24,10 +24,10 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
                 // #/state/overview
                 //console.log("[" + self.ViewType + "] context.path = " + context.path);
                 context.Exit(function() {
-                    vm.Layouts.TwoColumnView.Show(function() {
-                        vm.Entities.StateView.Show({
+                    vm.Layouts.TwoColumnView().Show(function() {
+                        vm.Entities.StateView().Show({
                             "UrlKeys" : {},
-                            "Callback" : vm.Entities.StateView.Tabs.Overview.Show
+                            "Callback" : vm.Entities.StateView().Tabs.Overview.Show
                         })
                     });
                 });
@@ -39,12 +39,12 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
                 // #/state/counties
                 //console.log("[" + self.ViewType + "] context.path = " + context.path);
                 context.Exit(function() {
-                    vm.Layouts.TwoColumnView.Show(function() {
-                        vm.Entities.StateView.Show({
+                    vm.Layouts.TwoColumnView().Show(function() {
+                        vm.Entities.StateView().Show({
                             "UrlKeys" : {
                                 "PageIndex" : 0
                             },
-                            "Callback" : vm.Entities.StateView.Tabs.Counties.Show
+                            "Callback" : vm.Entities.StateView().Tabs.Counties.Show
                         })
                     });
                 });
@@ -56,12 +56,12 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
                 // #/state/commodities
                 //console.log("[" + self.ViewType + "] context.path = " + context.path);
                 context.Exit(function() {
-                    vm.Layouts.TwoColumnView.Show(function() {
-                        vm.Entities.StateView.Show({
+                    vm.Layouts.TwoColumnView().Show(function() {
+                        vm.Entities.StateView().Show({
                             "UrlKeys" : {
                                 "PageIndex" : 0
                             },
-                            "Callback" : vm.Entities.StateView.Tabs.Commodities.Show
+                            "Callback" : vm.Entities.StateView().Tabs.Commodities.Show
                         })
                     });
                 });

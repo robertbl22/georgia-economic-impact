@@ -14,6 +14,7 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
         self.GetData = self.datasource.Region.GetRegion;
         
         // Init overview tab
+        self.Tabs.Overview = self.Tabs.RegionOverview;
         self.Tabs.Overview.tpl = 'tab-overviews/RegionOverview';
         self.Tabs.Overview.GetData = self.datasource.Region.GetRegion;
         
@@ -40,6 +41,6 @@ define(["viewmodels/entities/ientity"], function(IEntity) {"use strict";
     if (Object.create) {
         RegionView.prototype = Object.create(IEntity.prototype);
     }
-    return (new RegionView());
+    return RegionView;
 
 });

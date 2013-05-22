@@ -13,7 +13,7 @@ define(["datasource/datasource", "viewmodels/tabs/tabs", "viewmodels/ui-controls
         self.CurrentViewID = "";
         self.GetData = null;
         self.UrlKeys = {};
-        self.Tabs = new Tabs.Tabs(self);
+        self.Tabs = new Tabs(self);
         self.datasource = datasource;
         self.Title = "";
         self.AjaxSpinner = new UserControls.AjaxSpinner();

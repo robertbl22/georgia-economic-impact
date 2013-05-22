@@ -8,6 +8,8 @@ define([], function() {"use strict";
         /*************************************/
         /* Private Properties */
 
+        //console.log("[" + self.ViewType + "] instantiated");
+
         self.StateMapControlID = "#StateMapControl";
         self.StateMapImageID = "#StateMapImg";
         var resizeTimer = null;
@@ -24,11 +26,17 @@ define([], function() {"use strict";
         /*************************************/
         /* Event Handlers */
 
-        $(window).resize(function() {
-            if (resizeTimer)
-                clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(playResizeAnimation, 50);
-        });
+        /*
+         $(window).resize(function() {
+         //console.log("[" + self.ViewType + "] $(window).resize() handler fired!");
+         if (resizeTimer) {
+         clearTimeout(resizeTimer);
+         }
+         var resizeTimer = setTimeout(resizeImageMap, 50);
+         });
+         */
+
+        $(window).on('resize', resizeImageMap, 50);
 
         /*************************************/
         /* Public Methods */
@@ -43,13 +51,18 @@ define([], function() {"use strict";
         /*************************************/
         /* Private Methods */
 
-        function playResizeAnimation() {
-            //console.log("[" + self.ViewType + "] .playResizeAnimation() running");
+        function resizeImageMap() {
+            //console.log("[" + self.ViewType + "] .playResizeAnimation() running v2");
             var map = $(self.StateMapImageID);
-            map.mapster('unbind');
-            map.animate("width : ''" + getMapWidth() + "px'", 500, function() {
-                $(this).mapster(self.MapsterOptions);
-            });
+            //map.mapster('unbind');
+            /*
+             map.animate("width : ''" + getMapWidth() + "px'", 500, function() {
+             $(this).mapster(self.MapsterOptions);
+             });
+             */
+            //console.log(map)
+            var width = getMapWidth(); //Math.floor(map.parents("#StateMapControlContainer").width() * .9);
+            map.mapster('resize', width, '', 500);
         };
 
         function playLoadAnimation($img) {
@@ -64,7 +77,8 @@ define([], function() {"use strict";
 
         function getMapWidth() {
             // NOTE: original image width is 424px
-            var colWidth = $(".span4").width();
+            //var colWidth = $(".span4").width();
+            var colWidth = $("#StateMapControlContainer").width();
             var newWidth = Math.floor(colWidth * .9);
             var maxWidth = 380;
             if (newWidth > maxWidth)

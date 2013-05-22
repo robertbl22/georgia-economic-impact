@@ -27,7 +27,8 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
                 //console.log("Rule 2");
                 //console.log("[" + self.ViewType + "] context.path = " + context.path);
                 router.CurrentPageExit = context.SplashPageExit;
-                vm.Layouts.SplashView.Show();
+                var vw = new vm.Layouts.SplashView();
+                vw.Show();
 
                 // Google Analytics Event Tracking
                 _gaq.push(['_trackEvent', 'Introduction', 'view', context.path]);

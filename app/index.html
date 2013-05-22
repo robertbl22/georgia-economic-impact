@@ -16,10 +16,12 @@
 
 		<link rel="stylesheet" href="styles/main.css">
 		<script src="scripts/vendor/modernizr.min.js"></script>
+		<script type='text/javascript' src="http://www.google.com/jsapi?fake=.js"></script>
 		<!--[if lte IE 8]>
 		<link rel="stylesheet" href="styles/oldie.css">
 		<script src="scripts/vendor/respond.min.js"></script>
 		<script src="scripts/vendor/es5-shim.min.js"></script>
+		<script> document.isIE8orLess = true; </script>
 		<![endif]-->
 	</head>
 	<body>
@@ -120,8 +122,10 @@
 		<script src="scripts/vendor/bootstrap/bootstrap-tab.js"></script>
 		<!-- jquery plugins -->
 		<script src="scripts/vendor/jquery.number.min.js"></script>
+		<script src="scripts/vendor/jquery.normalizeWhitespace.js"></script>
 		<script src="scripts/vendor/jquery.serializeJSON.js"></script>
 		<script src="scripts/vendor/jquery.imagemapster.min.js"></script>
+		<script src="scripts/vendor/jquery.unevent.js"></script>
 		<!-- endbuild -->
 
 		<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js"></script>

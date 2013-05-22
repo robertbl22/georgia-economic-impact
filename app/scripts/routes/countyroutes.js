@@ -21,26 +21,26 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
 
                 switch(this.params.splat[1]) {
                     case "commodities":
-                        vm.Layouts.TwoColumnView.Show(function() {
-                            vm.Entities.CountyView.Show({
+                        vm.Layouts.TwoColumnView().Show(function() {
+                            vm.Entities.CountyView().Show({
                                 "UrlKeys" : {
                                     "CountyUrlKey" : countyUrlKey,
                                     "PageIndex" : 0
                                 },
-                                "Callback" : vm.Entities.CountyView.Tabs.Commodities.Show
+                                "Callback" : vm.Entities.CountyView().Tabs.Commodities.Show
                             });
                         });
                         // Google Analytics Event Tracking
                         _gaq.push(['_trackEvent', 'County Commodities', 'view', context.path]);
                         break;
                     case "companies":
-                        vm.Layouts.TwoColumnView.Show(function() {
-                            vm.Entities.CountyView.Show({
+                        vm.Layouts.TwoColumnView().Show(function() {
+                            vm.Entities.CountyView().Show({
                                 "UrlKeys" : {
                                     "CountyUrlKey" : countyUrlKey,
                                     "PageIndex" : 0
                                 },
-                                "Callback" : vm.Entities.CountyView.Tabs.Companies.Show
+                                "Callback" : vm.Entities.CountyView().Tabs.Companies.Show
                             });
                         });
                         // Google Analytics Event Tracking
@@ -48,12 +48,12 @@ define(["viewmodels/viewmodels"], function(vm) {"use strict";
                         break;
                     default :
                         context.Exit(function() {
-                            vm.Layouts.TwoColumnView.Show(function() {
-                                vm.Entities.CountyView.Show({
+                            vm.Layouts.TwoColumnView().Show(function() {
+                                vm.Entities.CountyView().Show({
                                     "UrlKeys" : {
                                         "CountyUrlKey" : countyUrlKey
                                     },
-                                    "Callback" : vm.Entities.CountyView.Tabs.Overview.Show
+                                    "Callback" : vm.Entities.CountyView().Tabs.Overview.Show
                                 });
                             });
                         });

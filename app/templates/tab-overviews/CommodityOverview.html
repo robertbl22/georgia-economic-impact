@@ -1,10 +1,10 @@
 <div id="CommodityOverview">
 	<div class="row">
-		<div class="span3">
+		<div class="span4">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th colspan="2"><i class="icon-signin"></i> Total Import</th>
+						<th colspan="2" class="inverse"><i class="icon-signin"></i> Total Import</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -20,11 +20,11 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="span3">
+		<div class="span4">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th colspan="2"><i class="icon-signout"></i> Total Export</th>
+						<th colspan="2" class="inverse"><i class="icon-signout"></i> Total Export</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -42,11 +42,11 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="span3">
+		<div class="span4">
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<th colspan="2"><i class="icon-exchange"></i> Total Import + Export</th>
+						<th colspan="2" class="inverse"><i class="icon-exchange"></i> Total Import + Export</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -62,5 +62,38 @@
 				</tbody>
 			</table>
 		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			<table class="table" title="Top 5 Counties">
+				<thead>
+					<tr>
+						<th colspan="2"><i class="icon-map-marker"></i> Top 5 Counties</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: $data.TopCounties">
+					<tr>
+						<td class="cell-commodity-name"><a data-bind="text: Name, attr: {href: ('#/state/' + RegionUrlKey + '/' + UrlKey), title: Name}"></a></td>
+						<td data-bind="text: ('$' + $.number(ImportEstValue + ExportEstValue))" class="cell-numeric"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--
+		<div class="span4">
+			<table class="table">
+				<thead>
+					<tr>
+						<th><i class="icon-bar-chart"></i> Percent of State</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><div id="PercentOfStateChart"></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		-->
 	</div>
 </div>
