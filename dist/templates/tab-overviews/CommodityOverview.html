@@ -1,0 +1,99 @@
+<div id="CommodityOverview">
+	<div class="row">
+		<div class="span4">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2" class="inverse"><i class="icon-signin"></i> Total Import</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportTEUs, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportSTONS, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="centered"><div class="centered-wrapper">Est. Value<br/><h4 data-bind="text: ('$' + $.number(ImportEstValue))"></h4></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span4">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2" class="inverse"><i class="icon-signout"></i> Total Export</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportTEUs, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportSTONS, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="centered"><div class="centered-wrapper">Est. Value<br/><h4 data-bind="text: ('$' + $.number(ExportEstValue))"></h4></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2" class="inverse"><i class="icon-exchange"></i> Total Import + Export</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalTEUs, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalSTONS, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="centered"><div class="centered-wrapper">Est. Value<br/><h4 data-bind="text: ('$' + $.number(TotalEstValue))"></h4></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			<table class="table" title="Top 5 Counties">
+				<thead>
+					<tr>
+						<th colspan="2"><i class="icon-map-marker"></i> Top 5 Counties</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: $data.TopCounties">
+					<tr>
+						<td class="cell-commodity-name"><a data-bind="text: Name, attr: {href: ('#/state/' + RegionUrlKey + '/' + UrlKey), title: Name}"></a></td>
+						<td data-bind="text: ('$' + $.number(ImportEstValue + ExportEstValue))" class="cell-numeric"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!--
+		<div class="span4">
+			<table class="table">
+				<thead>
+					<tr>
+						<th><i class="icon-bar-chart"></i> Percent of State</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><div id="PercentOfStateChart"></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		-->
+	</div>
+</div>

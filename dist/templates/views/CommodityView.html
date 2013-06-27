@@ -1,0 +1,28 @@
+<div id="CommodityView">
+	<div class="row">
+		<div class="span8">
+			<ul class="breadcrumb">
+				<li>
+					<a href="#/state/overview">State of Georgia</a><span class="divider">/</span>
+				</li>
+				<li>
+					<a href="#/state/commodities">Commodities</a><span class="divider">/</span>
+				</li>
+				<li class="active" style="text-transform:capitalize;" data-bind="text:$.normalizeWhitespace(Name.toLowerCase())"></li>
+			</ul>
+			<h1><!--<i class="icon-truck"></i>&nbsp;--><span data-bind="text:$.normalizeWhitespace(Name)"></span></h1>
+		</div>
+	</div>
+	<ul class="nav nav-pills" id="TabSet">
+		<li data-bind="css: Tabs.Overview.isSelected">
+			<a href="#/" data-bind="attr: {href: '#/commodities/' + UrlKey + '/overview'}"><i class="icon-bar-chart"></i> Overview</a>
+		</li>
+		<li data-bind="css: Tabs.Counties.isSelected">
+			<a href="#/" data-bind="attr: {href: '#/commodities/' + UrlKey + '/counties'}"><i class="icon-map-marker"></i> By County <span class="badge badge-info" data-bind="text: TotalCounties"></span></a>
+		</li>
+		<!-- li data-bind="css: Tabs.Companies.isSelected">
+		<a href="#/" data-bind="attr: {href: '#/commodities/' + UrlKey + '/companies'}"><i class="icon-building"></i> By Company <span class="badge badge-info" data-bind="text: TotalCompanies"></span></a>
+		</li -->
+	</ul>
+	<div id="TabViewContainer"></div>
+</div>

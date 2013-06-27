@@ -1,0 +1,166 @@
+<div id="StateOverview">
+	<div class="row">
+		<div class="span4">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2" class="inverse"><i class="icon-signin"></i> Total Import</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportTEUs, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ImportSTONS, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="centered">
+						<div class="centered-wrapper">
+							Est. Value
+							<br/>
+							<h4 data-bind="text: ('$' + $.number(ImportEstValue))"></h4>
+						</div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span4">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2" class="inverse"><i class="icon-signout"></i> Total Export</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportTEUs, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(ExportSTONS, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="centered">
+						<div class="centered-wrapper">
+							Est. Value
+							<br/>
+							<h4 data-bind="text: ('$' + $.number(ExportEstValue))"></h4>
+						</div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2" class="inverse"><i class="icon-exchange"></i> Total Import + Export</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>TEUs</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalTEUs, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td>Short Tons</td><td class="cell-numeric"><h4 data-bind="text: $.number(TotalSTONS, 1)"></h4></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="centered">
+						<div class="centered-wrapper">
+							Est. Value
+							<br/>
+							<h4 data-bind="text: ('$' + $.number(TotalEstValue))"></h4>
+						</div><div id="ImportVsExportChart"></div></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span4">
+			<!-- <div class="well alert-info" style="text-align: center"> -->
+			<div class="callout-impact-on-employment">
+				<h1><i class="icon-group"></i></h1><h5>Economic Impact on Employment</h5><h3 data-bind="text: $.number(TotalEmployment)"></h3>
+			</div>
+		</div>
+	</div>
+<!--
+	<div class="row">
+		<div class="span4">
+			<table class="table" title="Top 5 Imports">
+				<thead>
+					<tr>
+						<th colspan="2"><i class="icon-signin"></i> Top 5 Imports</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: $data.TopImports">
+					<tr>
+						<td class="cell-commodity-name"><a data-bind="text: $.normalizeWhitespace(Name.toLowerCase()), attr: {href: ('#/commodities/' + UrlKey), title: Name}"></a></td>
+						<td data-bind="text: ('$' + $.number(ImportEstValue))" class="cell-numeric"></td>
+					</tr>
+				</tbody>
+				<tbody data-bind="visible: $data.TopImports.length < 1">
+					<tr>
+						<td colspan="2">No imports</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="span4">
+			<table class="table" title="Top 5 Exports">
+				<thead>
+					<tr>
+						<th colspan="2"><i class="icon-signout"></i> Top 5 Exports</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: $data.TopExports">
+					<tr>
+						<td class="cell-commodity-name"><a data-bind="text: $.normalizeWhitespace(Name.toLowerCase()), attr: {href: ('#/commodities/' + UrlKey), title: Name}"></a></td>
+						<td data-bind="text: ('$' + $.number(ExportEstValue))" class="cell-numeric"></td>
+					</tr>
+				</tbody>
+				<tbody data-bind="visible: $data.TopExports.length < 1">
+					<tr>
+						<td colspan="2">No exports</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+-->
+	<div class="row">
+		<div class="span7">
+			<h4><i class="icon-signin"></i> Top 5 Imports</h4>
+			<div id="Top5ImportsChart" class="chart"></div>
+			<p>
+				&nbsp;
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span7">
+			<h4><i class="icon-signout"></i> Top 5 Exports</h4>
+			<div id="Top5ExportsChart" class="chart"></div>
+			<p>
+				&nbsp;
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="span4">
+			<table class="table" title="Top 10 Counties">
+				<thead>
+					<tr>
+						<th colspan="2"><i class="icon-map-marker"></i> Top 10 Counties</th>
+					</tr>
+				</thead>
+				<tbody data-bind="foreach: $data.TopCounties">
+					<tr>
+						<td><a data-bind="text: Name, attr: {href: ('#/state/' + RegionUrlKey + '/' + UrlKey), title: Name}"></a></td>
+						<td data-bind="text: ('$' + $.number(TotalEstValue))" class="cell-numeric"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,42 @@
+CACHE MANIFEST
+
+# Time: Wed May 22 2013 12:10:15 GMT-0400 (Eastern Daylight Time)
+# This manifest was created by confess.js, http://github.com/jamesgpearce/confess
+#
+# Retrieved URL: http://localhost:3501/#/intro
+# User-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
+#
+# Config:
+#  task: appcache
+#  userAgent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11
+#  wait: 0
+#  consolePrefix: #
+#  verbose: true
+#  appcache:
+#   urlsFromDocument: true
+#   urlsFromRequests: false
+#   cacheFilter: .*
+#   networkFilter: null
+#  url: http://localhost:3501
+#  configFile: c:\Users\Robert Blaske\AppData\Roaming\npm\node_modules\yeoman\lib\support\confess.json
+
+CACHE:
+http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js
+http://cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js
+http://cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js
+http://localhost:3501/images/ajax-spinner.gif
+http://www.google-analytics.com/ga.js
+http://www.google.com/jsapi?fake=.js
+images/3DX_5148-two-longshoremen.jpg
+images/ajax-spinner.gif
+images/gpa-mobile-logo.png
+images/gpa-tag-logo.png
+scripts/amd-app.js
+scripts/plugins.js
+scripts/vendor/knockout-bootstrap.min.js
+scripts/vendor/koExternalTemplateEngine_all.js
+scripts/vendor/modernizr.min.js
+styles/main.css
+
+NETWORK:
+*
