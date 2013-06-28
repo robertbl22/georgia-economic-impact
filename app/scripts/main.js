@@ -1,11 +1,6 @@
 require.config({
-    shim : {
-    },
-
-    paths : {
-        jquery : 'vendor/jquery.min',
-        ko : '//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js'
-    }
+    paths : {},
+    shim: {}
 });
 
 require(['routes/router'], function(router) {"use strict";

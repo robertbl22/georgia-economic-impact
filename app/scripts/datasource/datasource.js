@@ -176,8 +176,8 @@ define([], function() {"use strict";
     function AjaxPost(url, postData, callback, event) {
         $.ajax({
             type : "POST",
-            //url : "http://192.168.1.223/dnn614/" + url, /* DEVELOPMENT */
-            url : "http://www.gaports.com/" + url, /* PRODUCTION */
+            url : "http://192.168.1.223/dnn614/" + url, /* DEVELOPMENT */
+            //url : "http://www.gaports.com/" + url, /* PRODUCTION */
             data : $.serializeJSON(postData),
             contentType : "application/json; charset=utf-8",
             dataType : "json",

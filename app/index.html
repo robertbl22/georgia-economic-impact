@@ -18,7 +18,6 @@
 		<script src="scripts/vendor/modernizr.min.js"></script>
 		<script type='text/javascript' src="http://www.google.com/jsapi?fake=.js"></script>
 		<!--[if lte IE 8]>
-		<link rel="stylesheet" href="styles/oldie.css">
 		<script src="scripts/vendor/respond.min.js"></script>
 		<script src="scripts/vendor/es5-shim.min.js"></script>
 		<script> document.isIE8orLess = true; </script>
@@ -126,16 +125,17 @@
 		<script src="scripts/vendor/jquery.serializeJSON.js"></script>
 		<script src="scripts/vendor/jquery.imagemapster.min.js"></script>
 		<script src="scripts/vendor/jquery.unevent.js"></script>
-		<!-- endbuild -->
-
+		<!-- knockout and sammy frameworks -->
 		<script src="//cdnjs.cloudflare.com/ajax/libs/knockout/2.2.1/knockout-min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/sammy.js/0.7.4/sammy.min.js"></script>
 		<script src="scripts/vendor/koExternalTemplateEngine_all.js"></script>
 		<script src="scripts/vendor/knockout-bootstrap.min.js"></script>
-
-		<!-- build:js scripts/amd-app.js -->
-		<script data-main="scripts/main" src="scripts/vendor/require.js"></script>
 		<!-- endbuild -->
+
+
+		<!-- build:js scripts/main.js -->
+        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+        <!-- endbuild -->
 
 		<!-- preload ajax spinner -->
 		<img src="images/ajax-spinner.gif" style="display: none;" />
